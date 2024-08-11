@@ -18,3 +18,7 @@ def is_doctor(user):
 def is_patient(user):
     return user_has_group(user, patient_group)
 
+
+@register.filter
+def is_superuser(user):
+    return user.is_superuser or user.is_staff

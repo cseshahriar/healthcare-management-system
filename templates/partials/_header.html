@@ -9,19 +9,18 @@
             <div class="row">
                 <div class="col-md-6 col-sm-8">
                     <ul>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i> Call at: <strong>+8801843070993</strong></li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i> Call at: <strong>+8801710835653</strong></li>
                         <li><i class="fa fa-envelope-o" aria-hidden="true"></i> Email us:
-                            <strong>pm-system@dkkundu.com</strong>
+                            <strong>cse.shahriar.hosen@gmail.com</strong>
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-6 col-sm-4 top-social"><a href="#"><i class="fa fa-twitter"
-                                                                         aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="#"><i
-                            class="fa fa-google-plus"
-                            aria-hidden="true"></i></a> <a href="#"><i class="fa fa-instagram"
-                                                                       aria-hidden="true"></i></a> <a
-                            href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></div>
+                <div class="col-md-6 col-sm-4 top-social">
+                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> 
+                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a> 
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a> 
+                    <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></div>
             </div>
         </div>
     </div>
@@ -33,14 +32,14 @@
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                                     data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span
-                                    class="sr-only">Toggle
-                  navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-                                    class="icon-bar"></span></button>
-                            <a class="navbar-brand logo-image" href="{% url 'index' %}"><img
-                                    src="{% static 'heartcare/images/logo.png' %}"
-                                    alt=""></a>
-                                
-                                </div>
+                                    class="sr-only">Toggle navigation</span> 
+                                    <span class="icon-bar"></span> 
+                                    <span class="icon-bar"></span> <span
+                                    class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand logo-image" href="{% url 'index' %}">
+                            <img src="{% static 'heartcare/images/logo.png' %}" alt=""></a>
+                        </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -50,10 +49,10 @@
                                 <li><a href="{% url 'services' %}">Services</a></li>
                                 <li><a href="{% url 'doctors' %}">Doctors</a></li>
 
-                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                                        role="button"
-                                                        aria-haspopup="true" aria-expanded="false">Features <span
-                                        class="fa fa-angle-down"></span></a>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Features <span
+                                        class="fa fa-angle-down"></span>
+                                    </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{% url 'gallery' %}">Gallery</a></li>
                                         <li><a href="{% url 'faqs' %}">Faqs</a></li>
@@ -81,6 +80,10 @@
 
                                     </li>
                                     <ul class="dropdown-menu">
+                                        {% if user|is_superuser %}
+                                            <li><a href="/manage" target="_blank"> Manage </a></li>
+                                        {% endif %}
+
                                         {% if user|is_doctor %}
                                             <li><a href="{% url 'doctor_dashboard' %}"> Dashboard </a></li>
                                         {% endif %}

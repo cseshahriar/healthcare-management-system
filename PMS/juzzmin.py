@@ -6,9 +6,9 @@ https://django-jazzmin.readthedocs.io/configuration/
 CONFIG = {  # -----------------------------------------------------------------
 
     # title of the window
-    "site_title": "DK",
+    "site_title": "Patient Care",
     # Title on the brand, and the login screen (19 chars max)
-    "site_header": "DK Kundu",
+    "site_header": "Patient Care System", 
     # square logo to use for your site
     "site_logo": "image/PM.png",
     # Welcome text on the login screen
@@ -32,8 +32,8 @@ CONFIG = {  # -----------------------------------------------------------------
         },
         # external url that opens in a new window (Permissions can be added)
         {
-            "name": "DK Kundu",
-            "url": "http://dkkundu.com/",
+            "name": "MD. Shahriar Hosen",
+            "url": "https://cseshahriar.github.io/portfolio/",
             "new_window": True
         },
         # model admin to link to (Permissions checked against model)

@@ -22,9 +22,17 @@ class AppointmentView(View):
         note = request.POST.get('note')
         if doctor_id:
             doctor = get_object_or_404(Doctor, id=doctor_id)
+        else:
+            messages.error(request, 'Please select a doctor')
+            return redirect('appointment')
 
         if(name and phone and email and doctor and date and time):
             Appointment.objects.create(
-                name=name, phone=phone, email=email, doctor=doctor, date=date, time=time, note=note)
-            messages.success(request,'Appointment done successfully')
+                name=name, phone=phone, email=email,
+                doctor=doctor, date=date, time=time, note=note
+            )
+            messages.success(request, 'Appointment done successfully')
+        else:
+            messages.error(request, 'Please fill all the required fields')
+
         return redirect('appointment')

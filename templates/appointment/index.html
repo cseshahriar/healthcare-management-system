@@ -3,17 +3,15 @@
 {% load crispy_forms_tags %}
 
 {% block style %}
-
-
 <style>
   .row.form-field {
     display: grid;
     grid-template-columns: 0% 50% 50%;
     grid-gap: 2px;
-}
+  }
   span.asteriskField {
      color: #f00;
-}
+  }
 </style>
 {% endblock style %}
 
@@ -84,14 +82,9 @@
                     </div>
                 </div>
 
-
-
-
-
-              <div class="col-md-12 text-center">
+              <div class="col-md-12 text-center" style="margin-bottom:50px">
                 <input value="Book Appointment" type="submit">
               </div>
-                <br>
             </div>
           </form>
         </div>

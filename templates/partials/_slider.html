@@ -7,7 +7,8 @@
             <div class="container">
               <h1>{{ slider.caption }}</h1>
               <p>{{ slider.slogan }}</p>
-              <a class="btn-1" href="#">Call for Inquiry</a> <a class="btn-1" href="#">Ask Cardiologist</a>
+              <a class="btn-1" href="tel:{{slider.phone_number}}">Call for Inquiry</a> 
+              <a class="btn-1" href="{{ slider.service_page_url}}" target="_blank">Ask Cardiologist</a>
             </div>
           </div>
           <span class="simg"><img src="{{ slider.image.url }}" alt=""></span>

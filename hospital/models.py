@@ -9,6 +9,8 @@ class Slider(models.Model):
     caption = models.CharField(max_length=150)
     slogan = models.CharField(max_length=120)
     image = models.ImageField(upload_to='sliders/')
+    phone_number = models.CharField(max_length=15, null=True, blank=True)
+    service_page_url = models.URLField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return self.caption[:20]

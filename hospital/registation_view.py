@@ -3,9 +3,11 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.views.generic import View
 from django.contrib.auth.models import Group
-from hospital.forms import DoctorForm
 from Core.forms import CommonSignupForm
+from hospital.forms import DoctorForm
 from patient_ms.forms import PatientForm
+
+
 logger = logging.getLogger(__name__)
 
 
@@ -31,14 +33,17 @@ class RegistrationPages(View):
 
         if form_patient.is_valid() and signup_patient.is_valid():
             patient_group, is_create = Group.objects.get_or_create(
-                name='Patient')
+                name='Patient'
+            )
             save_user = signup_patient.save()
             save_user.groups.add(patient_group)
             obj = form_patient.save(commit=False)
             obj.user = save_user
             obj.save()
             try:
-                patient_group, is_create = Group.objects.get_or_create(name='Patient')
+                patient_group, is_create = Group.objects.get_or_create(
+                    name='Patient'
+                )
                 save_user = signup_patient.save()
                 save_user.groups.add(patient_group)
                 obj = form_patient.save(commit=False)
@@ -70,11 +75,6 @@ class RegistrationPages(View):
             print("form----- Doctor", form.errors)
             print("form_patient-----", form_patient.errors)
             print("CommonSignupForm-----", CommonSignupForm.errors)
-            messages.warning(
-                self.request, f"Invalid data for NID and Password"
-
-
-            )
             logger.debug(self.request, "Unable to create account")
 
         context = {
@@ -85,5 +85,3 @@ class RegistrationPages(View):
 
         }
         return render(request, self.template_name, context)
-
-

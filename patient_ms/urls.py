@@ -36,7 +36,6 @@ urlpatterns = [
         AppointmentCopyPDFView.as_view(),
         name='appointment_download'
     ),
-
     path(
         'forget/appointment/',
         ForgetAppointmentSerialView.as_view(), name='appointment_forget'

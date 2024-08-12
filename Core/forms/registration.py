@@ -30,6 +30,15 @@ class CommonSignupForm(UserCreationForm):
         super(CommonSignupForm, self).__init__(*args, **kwargs)
         self.fields["phone"].required = True
 
+    def clean(self):
+        cleaned_data = super().clean()
+        phone = cleaned_data.get("phone")
+        if phone:
+            if USER_MODEL.objects.filter(phone=phone).exists():
+                raise forms.ValidationError("Phone number already exists.")
+
+        return cleaned_data
+
 
 class UpdateForm(forms.ModelForm):
     class Meta:

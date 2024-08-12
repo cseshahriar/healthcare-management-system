@@ -62,8 +62,3 @@ class ForgetAppointmentSerialView(
                 self.request, "Dont have any Appointment on Searching date"
             )
         return redirect('patient_ms:appointment_forget')
-
-
-
-
-

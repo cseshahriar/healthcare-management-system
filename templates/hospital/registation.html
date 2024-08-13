@@ -10,6 +10,15 @@
         width: 65% !important;
         margin: 30px auto !important;
     }
+    .invalid-feedback {
+        color : #d64555;
+    }
+    .requiredField {
+        color: #000 !important;
+    } 
+    .asteriskField {
+        margin-left: 5px !important;
+    }
     </style>
 {% endblock style %}
 
@@ -40,37 +49,32 @@
             {% if registration_type == 'doctor' %}
                 <h5 class="modal-title text-center">Doctor Registration Form</h5>
                 <div class="form-group">
-                    {{ form.name|as_crispy_field }}
+                    {{ doctor_form.name|as_crispy_field }}
                 </div>
                 <div class="form-group">
-                    {{ form.doctor_id|as_crispy_field }}
+                    {{ doctor_form.doctor_id|as_crispy_field }}
                 </div>
                 <div class="form-group">
-                    {{ form.picture|as_crispy_field }}
+                    {{ doctor_form.picture|as_crispy_field }}
                 </div>
-
                 <div class="form-group">
-                        {{ form.speciality|as_crispy_field }}
-                </div>
-
-                <div class="form-group">
-                    {% crispy signup %}
+                    {{ doctor_form.speciality|as_crispy_field }}
                 </div>
             {% else %}
-                <h5 class="text-center py-3">Patient Registration Form</h5>
+                <h5 class="text-center py-3">Patient Registration Form</h5>     
                 <div class="form-group">
-                    {{ form_patient.name|as_crispy_field }}
+                    {{ patient_form.name|as_crispy_field }}
                 </div>
                 <div class="form-group">
-                    {{ form_patient.age|as_crispy_field }}
+                    {{ patient_form.age|as_crispy_field }}
                 </div>
                 <div class="form-group">
-                    {{ form_patient.nid|as_crispy_field }}
-                </div>
-                <div class="form-group">
-                    {% crispy signup_patient %}
+                    {{ patient_form.nid|as_crispy_field }}
                 </div>
             {% endif %}
+            <div class="form-group">
+                {% crispy signup_form %}
+            </div>
 
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit Form</button>

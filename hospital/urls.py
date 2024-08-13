@@ -32,7 +32,12 @@ urlpatterns = [
     path('contact/', views.ContactView.as_view(), name="contact"),
     path(
         'registration/type/',
-        registation_view.RegistrationPages.as_view(), name="registration_type"
+        registation_view.RegistrationTypePages.as_view(),
+        name="registration_type"
+    ),
+    path(
+        'registration/',
+        registation_view.RegistrationPages.as_view(), name="registration"
     ),
     path(
         'login/', views.LoginView.as_view(), name="login"

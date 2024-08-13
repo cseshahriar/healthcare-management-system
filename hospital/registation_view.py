@@ -11,11 +11,24 @@ from patient_ms.forms import PatientForm
 logger = logging.getLogger(__name__)
 
 
+class RegistrationTypePages(View):
+    template_name = 'hospital/registation_type.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {})
+
+    def post(self, request, *args, **kwargs):
+        # set session variable
+        return render(request, self.template_name, {})
+
+
 class RegistrationPages(View):
     template_name = 'hospital/registation.html'
 
     def get(self, request, *args, **kwargs):
+        type = request.GET.get('type', None)
         context = {
+            'registration_type': type,
             "form": DoctorForm,
             "signup": CommonSignupForm,
             "form_patient": PatientForm,
@@ -25,22 +38,15 @@ class RegistrationPages(View):
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
+        registration_type = request.GET.get('type', None)
         form = DoctorForm(request.POST, request.FILES or None)
         signup_form = CommonSignupForm(request.POST or None)
 
         form_patient = PatientForm(request.POST or None)
         signup_patient = CommonSignupForm(request.POST or None)
 
-        if form_patient.is_valid() and signup_patient.is_valid():
-            patient_group, is_create = Group.objects.get_or_create(
-                name='Patient'
-            )
-            save_user = signup_patient.save()
-            save_user.groups.add(patient_group)
-            obj = form_patient.save(commit=False)
-            obj.user = save_user
-            obj.save()
-            try:
+        if registration_type == "patient":
+            if form_patient.is_valid() and signup_patient.is_valid():
                 patient_group, is_create = Group.objects.get_or_create(
                     name='Patient'
                 )
@@ -49,35 +55,45 @@ class RegistrationPages(View):
                 obj = form_patient.save(commit=False)
                 obj.user = save_user
                 obj.save()
-                messages.success(self.request, "Account successfully created")
-                logger.debug(self.request, "Account successfully created")
-            except Exception as e:
-                logger.error(f"Unable to create account: {e}")
-                messages.warning(self.request, "Unable to create account")
-                logger.debug(self.request, "Unable to create account")
-
-        elif form.is_valid() and signup_form.is_valid():
-            try:
-                doctor_group, is_create = Group.objects.get_or_create(name='Doctor')
-                save_user = signup_form.save()
-                save_user.groups.add(doctor_group)
-                obj = form.save(commit=False)
-                obj.user = save_user
-                obj.save()
-                messages.success(self.request, "Account successfully created")
-                logger.debug(self.request, "Account successfully created")
-            except Exception as e:
-                logger.error(f"Unable to create account: {e}")
-                messages.warning(self.request, "Unable to create account")
-                logger.debug(self.request, "Unable to create account")
+                try:
+                    patient_group, is_create = Group.objects.get_or_create(
+                        name='Patient'
+                    )
+                    save_user = signup_patient.save()
+                    save_user.groups.add(patient_group)
+                    obj = form_patient.save(commit=False)
+                    obj.user = save_user
+                    obj.save()
+                    messages.success(self.request, "Account successfully created")
+                    logger.debug(self.request, "Account successfully created")
+                except Exception as e:
+                    logger.error(f"Unable to create account: {e}")
+                    messages.warning(self.request, "Unable to create account")
+                    logger.debug(self.request, "Unable to create account")
         else:
-            print("signup_form Doctor-----", signup_form.errors)
-            print("form----- Doctor", form.errors)
-            print("form_patient-----", form_patient.errors)
-            print("CommonSignupForm-----", CommonSignupForm.errors)
-            logger.debug(self.request, "Unable to create account")
+            if form.is_valid() and signup_form.is_valid():
+                try:
+                    doctor_group, is_create = Group.objects.get_or_create(name='Doctor')
+                    save_user = signup_form.save()
+                    save_user.groups.add(doctor_group)
+                    obj = form.save(commit=False)
+                    obj.user = save_user
+                    obj.save()
+                    messages.success(self.request, "Account successfully created")
+                    logger.debug(self.request, "Account successfully created")
+                except Exception as e:
+                    logger.error(f"Unable to create account: {e}")
+                    messages.warning(self.request, "Unable to create account")
+                    logger.debug(self.request, "Unable to create account")
+            else:
+                print("signup_form Doctor-----", signup_form.errors)
+                print("form----- Doctor", form.errors)
+                print("form_patient-----", form_patient.errors)
+                print("CommonSignupForm-----", CommonSignupForm.errors)
+                logger.debug(self.request, "Unable to create account")
 
         context = {
+            "registration_type": registration_type,
             "form": form,
             "signup": signup_form,
             "form_patient": PatientForm,

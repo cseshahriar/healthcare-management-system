@@ -1,4 +1,4 @@
-# __PMS__
+# Patient Management System
 [![django-version](https://img.shields.io/badge/django-3.2-green)](https://www.djangoproject.com)
 [![python-version](https://img.shields.io/badge/python-3.8-blue)](https://www.python.org)
 [![postgresql-version](https://img.shields.io/badge/postgresql-12.3-orange)](https://www.postgresql.org)

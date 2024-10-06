@@ -3,9 +3,9 @@
 [![python-version](https://img.shields.io/badge/python-3.8-blue)](https://www.python.org)
 [![postgresql-version](https://img.shields.io/badge/postgresql-12.3-orange)](https://www.postgresql.org)
 
-###### _A Django Project._
+###### Patient Care Management
 
-# __Template features:__
+# features:
 - User Model with Profile (using Email address as username)
 - Local Settings (to separate Dev/Production environments)
 - Logging enabled (timely rotated daily at midnight)
@@ -14,24 +14,16 @@
 - Django REST Framework with API endpoints and view sets
 - Django-Cors-Headers to work with Cross Origin Resource Sharing in REST API
 - Django-filter for dynamic queryset filtering from url parameters
-- Django-cleanup (auto removal of unused/unlinked files and images)
-- Celery integration using RabbitMQ (can also use Redis)
-- Test Driven Development (TDD on all written codes)
-- Testing using coverage, and linting with flake8
-- GitHub Actions CI, as well as Jenkins CI/CD with Docker
-- Prometheus Monitoring with Model / Middleware metrics
 - ...more features will be added regularly, stay tuned!
 
 # __Usage:__
-> _This document will be using the following as an input variable: `<variable>`. Please input your own value, i.e. `<project_name>` --> My-Project_
->
-> _Please make sure `git`, `python`, `postgresql` and `rabbitmq` is installed in the system._
+> _Please make sure `git`, `python` and `postgresql` is installed in the system._
 >
 > _NOTE for Windows users: Please use `Git Bash` for the following steps_
 
 1. ### Prepare project directory
-    - Make your project directory (must be the same name as your github repository name)
-    - Work from the project directory as current directory using `cd`.
+    - clone the repository `git clone git@github.com:cseshahriar/patient-management-system.git`
+    - Work from the project directory as current directory using `cd patient-management-system.git`.
     - Create a virtual environment using `python`. (Test via `python -V`. Must be python 3.6+)
     - `Activate` the virtual environment. (Windows: `source venv/Scripts/activate`)
     - Install `Django` using `pip`.
@@ -43,7 +35,7 @@
     python -m pip install --upgrade pip
     ```
 
-2. ### Install Django and startproject
+2. ### Install requirements
     - Install `Django` v3 using `pip` within your `venv`
     pip install -r requirements.txt
     rm -f template.zip
@@ -90,11 +82,7 @@
     python manage.py test && flake8
     python manage.py createsuperuser
     python manage.py runserver
-    
-    # coverage reports
-    coverage run manage.py test
-    coverage xml -o coverage.xml
-    coverage report
+
     ```
    > _NOTE: Browse to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to view the site. Admin site is at url [/manage](http://127.0.0.1:8000/manage) changed from default to keep the project secure. Admin url can be changed in `settings.py` --> `ADMIN_URL`_
     ```

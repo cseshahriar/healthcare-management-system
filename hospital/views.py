@@ -54,18 +54,20 @@ class HomeView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        context['sliders'] = Slider.objects.all()
-        context['experts'] = Doctor.objects.all()
+        context['sliders'] = Slider.objects.filter(
+            is_active=True, is_deleted=False)
+        context['experts'] = Doctor.objects.filter(
+            is_active=True, is_deleted=False)
         context['form'] = self.form_class
         try:
-            doctor = Doctor.objects.get(user=self.request.user)
+            doctor = Doctor.objects.filter(user=self.request.user).first()
             if doctor:
                 context['login_user'] = doctor
         except Exception as e:
             logger.debug(self.request, f"Doctor profile Not available {e}")
 
         try:
-            patient = Patient.objects.get(user=self.request.user)
+            patient = Patient.objects.filter(user=self.request.user).first()
             if patient:
                 context['login_user'] = patient
                 context['patient'] = patient

@@ -4,7 +4,7 @@ from import_export.admin import (
     ImportExportModelAdmin, ImportExportActionModelAdmin
 )
 
-from address.models import Division, District, Upazila
+from address.models import Division, District, Upazila, Thana
 
 
 class DivisionResource(resources.ModelResource):
@@ -53,6 +53,18 @@ class UpazilaAdmin(
     resource_class = UpazilaResource
 
 
+class ThanaAdmin(
+    ImportExportModelAdmin, ImportExportActionModelAdmin, admin.ModelAdmin
+):
+    list_display = [
+        'district', 'name_english', 'name_bangla', 'code'
+    ]
+    list_filter = ['district']
+    search_fields = ['name_english', 'name_bangla', 'code']
+    readonly_fields = ['code']
+
+
 admin.site.register(Division, DivisionAdmin)
 admin.site.register(District, DistrictAdmin)
 admin.site.register(Upazila, UpazilaAdmin)
+admin.site.register(Thana, ThanaAdmin)

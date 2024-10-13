@@ -48,7 +48,7 @@ class DoctorDashboard(TemplateView):
 
 class HomeView(ListView):
     template_name = 'hospital/index.html'
-    queryset = Service.objects.all()
+    queryset = Service.objects.filter(is_active=True, is_deleted=False)
     context_object_name = 'services'
     form_class = CustomLoginForm
 
@@ -76,7 +76,7 @@ class HomeView(ListView):
 
 class LoginView(View):
     template_name = 'hospital/login.html'
-    queryset = Service.objects.all()
+    queryset = Service.objects.filter(is_active=True, is_deleted=False)
     form_class = CustomLoginForm
 
     def get(self, request):
@@ -138,12 +138,12 @@ def logout_request(request):
 
 
 class ServiceListView(ListView):
-    queryset = Service.objects.all()
+    queryset = Service.objects.filter(is_active=True, is_deleted=False)
     template_name = "hospital/services.html"
 
 
 class ServiceDetailView(DetailView):
-    queryset = Service.objects.all()
+    queryset = Service.objects.filter(is_active=True, is_deleted=False)
     template_name = "hospital/service_details.html"
 
     def get_context_data(self, **kwargs):
@@ -154,7 +154,7 @@ class ServiceDetailView(DetailView):
 
 class DoctorListView(ListView):
     template_name = 'hospital/team.html'
-    queryset = Doctor.objects.all()
+    queryset = Doctor.objects.filter(is_active=True, is_deleted=False)
     paginate_by = 8
 
 
@@ -170,12 +170,12 @@ class DoctorDetailView(DetailView):
 
 class FaqListView(ListView):
     template_name = 'hospital/faqs.html'
-    queryset = Faq.objects.all()
+    queryset = Faq.objects.filter(is_active=True, is_deleted=False)
 
 
 class GalleryListView(ListView):
     template_name = 'hospital/gallery.html'
-    queryset = Gallery.objects.all()
+    queryset = Gallery.objects.filter(is_active=True, is_deleted=False)
     paginate_by = 9
 
 

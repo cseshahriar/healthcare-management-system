@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block maincontent %}
 
 <!--inner banner-->
@@ -28,8 +28,15 @@
         {% for doctor in object_list %}
         <div class="col-md-3 col-sm-6">
           <div class="team-box mb50">
-            <div class="team-thumb"> <a href="{% url 'doctor_details' doctor.id %}" class="view"><i class="fa fa-Heart"
-                  aria-hidden="true"></i></a> <img src="{{ doctor.picture.url }}" alt=""></div>
+            <div class="team-thumb">
+              <a href="{% url 'doctor_details' doctor.id %}" class="view">
+                <i class="fa fa-Heart" aria-hidden="true"></i></a>
+                {% if doctor.picture %}
+                  <img src="{{ doctor.picture.url }}" alt="">
+                {% else %}
+                  <img src="{% static 'image/list.gif' %}" alt="Doctor Image">
+                {% endif %}
+            </div>
             <div class="team-text">
               <h5><a href="{% url 'doctor_details' doctor.id %}">{{ doctor.name }}</a></h5>
               <strong>{{ doctor.speciality }}</strong>

@@ -1,7 +1,7 @@
 from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
 import debug_toolbar
 
 urlpatterns = [
@@ -11,11 +11,11 @@ urlpatterns = [
     path('patient/', include('patient_ms.urls')),
     path('appointment/', include('appointment.urls')),
 
-    path('__debug__/', include(debug_toolbar.urls)),
     path('', include('django_prometheus.urls')),
     path('core/', include('Core.urls')),
     path('core/api/', include('API.urls')),
     path('api/', include('patient_ms.api.urls')),
+    path('__debug__/', include(debug_toolbar.urls)),
 ]
 
 if settings.DEBUG:

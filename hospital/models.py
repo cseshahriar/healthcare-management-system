@@ -1,11 +1,48 @@
 from django.db import models
 from django.conf import settings
 from django.core.validators import RegexValidator
-from address.models import District, Division, Upazila
+from address.models import District, Division, Upazila, Thana
 from django.utils.translation import gettext_lazy as _
 
 
-class Slider(models.Model):
+class CommonField(models.Model):
+    ''' Abstract Mdoel '''
+    created_user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
+        blank=True, null=True, related_name="%(app_label)s_%(class)s_createdby"
+    )
+    update_user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
+        blank=True, null=True, related_name="%(app_label)s_%(class)s_updated"
+    )
+    deleted_user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
+        blank=True, null=True, related_name="%(app_label)s_%(class)s_deleted"
+    )
+    order = models.CharField(
+        _("Order"),
+        max_length=255,
+        blank=True,
+        null=True
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_At = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=False)
+    is_deleted = models.BooleanField(
+        _('Is Deleted'), default=False
+    )
+
+    def soft_delete(self):
+        self.is_deleted = True
+        self.deleted_at = timezone.now()
+        self.save()
+
+    class Meta:
+        abstract = True
+
+
+class Slider(CommonField):
+    ''' Home page sliders '''
     caption = models.CharField(max_length=150)
     slogan = models.CharField(max_length=120)
     image = models.ImageField(upload_to='sliders/')
@@ -19,7 +56,8 @@ class Slider(models.Model):
         verbose_name_plural = 'Slider'
 
 
-class Speciality(models.Model):
+class Speciality(CommonField):
+    ''' Doctor speciality '''
     name = models.CharField(max_length=150)
 
     def __str__(self):
@@ -29,7 +67,8 @@ class Speciality(models.Model):
         verbose_name_plural = 'Doctor Speciality'
 
 
-class Service(models.Model):
+class Service(CommonField):
+    ''' Hospital services '''
     title = models.CharField(max_length=120)
     description = models.TextField()
     items = models.ManyToManyField(to='Item',)
@@ -42,14 +81,14 @@ class Service(models.Model):
         return self.title
 
 
-class Item(models.Model):
+class Item(CommonField):
     title = title = models.CharField(max_length=120)
 
     def __str__(self):
         return self.title
 
 
-class Doctor(models.Model):
+class Doctor(CommonField):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
         blank=True, null=True, related_name="doctor"
@@ -71,7 +110,6 @@ class Doctor(models.Model):
     twitter = models.CharField(max_length=120, blank=True, null=True)
     facebook = models.CharField(max_length=120, blank=True, null=True)
     instagram = models.CharField(max_length=120, blank=True, null=True)
-
     division = models.ForeignKey(
         Division, models.SET_NULL,
         related_name='doctor_division',
@@ -86,6 +124,11 @@ class Doctor(models.Model):
         Upazila, models.SET_NULL,
         related_name='doctor_upazila',
         null=True
+    )
+    thana = models.ForeignKey(
+        Thana, models.SET_NULL,
+        related_name='doctor_upazila',
+        null=True, blank=True
     )
     post_code = models.PositiveIntegerField(
         null=True,
@@ -119,14 +162,14 @@ class Doctor(models.Model):
         return save_present_address
 
 
-class Expertize(models.Model):
+class Expertize(CommonField):
     name = models.CharField(max_length=120)
 
     def __str__(self):
         return self.name
 
 
-class Faq(models.Model):
+class Faq(CommonField):
     question = models.CharField(max_length=120)
     answer = models.TextField()
 
@@ -134,7 +177,7 @@ class Faq(models.Model):
         return self.question
 
 
-class Gallery(models.Model):
+class Gallery(CommonField):
     title = models.CharField(max_length=120)
     image = models.ImageField(upload_to="gallery/")
 
@@ -145,7 +188,7 @@ class Gallery(models.Model):
         verbose_name_plural = "Galleries"
 
 
-class Contact(models.Model):
+class Contact(CommonField):
     name = models.CharField(
         max_length=120, null=True, blank=True
     )

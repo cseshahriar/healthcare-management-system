@@ -26,7 +26,6 @@ class SliderAdmin(admin.ModelAdmin):
         'update_user',
         'deleted_user',
         'created_at',
-        'updated_At',
         'is_active',
         'is_deleted',
     )
@@ -49,7 +48,6 @@ class SpecialityAdmin(admin.ModelAdmin):
         'update_user',
         'deleted_user',
         'created_at',
-        'updated_At',
         'is_active',
         'is_deleted',
     )
@@ -78,7 +76,6 @@ class ServiceAdmin(admin.ModelAdmin):
         'update_user',
         'deleted_user',
         'created_at',
-        'updated_At',
         'is_active',
         'is_deleted',
     )
@@ -102,7 +99,6 @@ class ItemAdmin(admin.ModelAdmin):
         'update_user',
         'deleted_user',
         'created_at',
-        'updated_At',
         'is_active',
         'is_deleted',
     )
@@ -140,7 +136,6 @@ class DoctorAdmin(admin.ModelAdmin):
         'update_user',
         'deleted_user',
         'created_at',
-        'updated_At',
         'is_active',
         'is_deleted',
         'user',
@@ -171,7 +166,6 @@ class ExpertizeAdmin(admin.ModelAdmin):
         'update_user',
         'deleted_user',
         'created_at',
-        'updated_At',
         'is_active',
         'is_deleted',
     )
@@ -196,7 +190,6 @@ class FaqAdmin(admin.ModelAdmin):
         'update_user',
         'deleted_user',
         'created_at',
-        'updated_At',
         'is_active',
         'is_deleted',
     )
@@ -220,7 +213,6 @@ class GalleryAdmin(admin.ModelAdmin):
         'update_user',
         'deleted_user',
         'created_at',
-        'updated_At',
         'is_active',
         'is_deleted',
     )
@@ -248,7 +240,6 @@ class ContactAdmin(admin.ModelAdmin):
         'update_user',
         'deleted_user',
         'created_at',
-        'updated_At',
         'is_active',
         'is_deleted',
         'response',

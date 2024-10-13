@@ -26,7 +26,7 @@ class CommonField(models.Model):
         null=True
     )
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_At = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=False)
     is_deleted = models.BooleanField(
         _('Is Deleted'), default=False

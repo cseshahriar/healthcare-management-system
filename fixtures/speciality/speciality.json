@@ -3,49 +3,56 @@
     "model": "hospital.speciality",
     "pk": 1,
     "fields": {
-        "name": "Medicine"
+        "name": "Medicine",
+        "created_at": "2024-10-10"
     }
 },
 {
     "model": "hospital.speciality",
     "pk": 2,
     "fields": {
-        "name": "Neurology"
+        "name": "Neurology",
+        "created_at": "2024-10-10"
     }
 },
 {
     "model": "hospital.speciality",
     "pk": 3,
     "fields": {
-        "name": "Pathology"
+        "name": "Pathology",
+        "created_at": "2024-10-10"
     }
 },
 {
     "model": "hospital.speciality",
     "pk": 4,
     "fields": {
-        "name": "Radiation oncology"
+        "name": "Radiation oncology",
+        "created_at": "2024-10-10"
     }
 },
 {
     "model": "hospital.speciality",
     "pk": 5,
     "fields": {
-        "name": "Surgery"
+        "name": "Surgery",
+        "created_at": "2024-10-10"
     }
 },
 {
     "model": "hospital.speciality",
     "pk": 6,
     "fields": {
-        "name": "Urology"
+        "name": "Urology",
+        "created_at": "2024-10-10"
     }
 },
 {
     "model": "hospital.speciality",
     "pk": 7,
     "fields": {
-        "name": "Neurology"
+        "name": "Neurology",
+        "created_at": "2024-10-10"
     }
 }
 ]

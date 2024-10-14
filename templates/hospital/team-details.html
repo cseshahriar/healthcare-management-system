@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block maincontent %}
 <!--inner banner-->
 <div class="inner-banner">
@@ -25,7 +25,13 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-6">
-          <div class="team-detail-img"> <img class="col-md-10 col-sm-10" src="{{ object.picture.url }}" alt=""> </div>
+          <div class="team-detail-img">
+            {% if object.picture %}
+              <img class="col-md-10 col-sm-10" src="{{ object.picture.url }}" alt="">
+            {% else %}
+              <img class="col-md-10 col-sm-10" src="{% static 'image/list.gif' %}" alt="Doctor Image">
+            {% endif %}
+          </div>
         </div>
         <div class="col-md-6 col-sm-6">
           <div class="team-details-text">
@@ -75,8 +81,15 @@
               {% for doctor in doctors %}
               <div class="item">
                 <div class="team-box">
-                  <div class="team-thumb"> <a href="{% url 'doctor_details' doctor.id %}" class="view"><i
-                        class="fa fa-Heart" aria-hidden="true"></i></a> <img src="{{ doctor.picture.url }}" alt="">
+                  <div class="team-thumb">
+                      <a href="{% url 'doctor_details' doctor.id %}" class="view"><i
+                        class="fa fa-Heart" aria-hidden="true"></i>
+                      </a>
+                      {% if object.picture %}
+                        <img src="{{ object.picture.url }}" alt="">
+                      {% else %}
+                        <img src="{% static 'image/list.gif' %}" alt="Doctor Image">
+                      {% endif %}
                   </div>
                   <div class="team-text">
                     <h5><a href="{% url 'doctor_details' doctor.id %}">{{ doctor.name }}</a></h5>

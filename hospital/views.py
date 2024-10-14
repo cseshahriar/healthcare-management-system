@@ -162,11 +162,14 @@ class DoctorListView(ListView):
 
 class DoctorDetailView(DetailView):
     template_name = 'hospital/team-details.html'
-    queryset = Doctor.objects.all()
+    model = Doctor
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["doctors"] = Doctor.objects.all()
+        self.object = self.get_object()
+        context["doctor_list"] = Doctor.objects.filter(
+            is_active=True, is_deleted=False
+        ).exclude(pk=self.object.pk).distinct()
         return context
 
 

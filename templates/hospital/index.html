@@ -228,44 +228,62 @@
   <!--Team Start-->
   <section class="team">
     <div class="container">
+
       <div class="row">
         <div class="section-title-3"> <strong>Our Team</strong>
           <h2>Expert Team</h2>
         </div>
       </div>
+
       <div class="row">
         {% for doctor in experts|slice:':4' %}
-        <div class="col-md-3 col-sm-6">
-          <div class="team-box mb50">
-            <div class="team-thumb"> <a href="{% url 'doctor_details' doctor.id %}" class="view">
-              <i class="fa fa-Heart" aria-hidden="true"></i></a>
+          <div class="col-md-3 col-sm-6">
+            <div class="team-box mb50">
+              <div class="team-thumb">
+                <a href="{% url 'doctor_details' doctor.id %}" class="view">
+                  <i class="fa fa-Heart" aria-hidden="true"></i>
+                </a>
+                {% if doctor.picture %}
+                    <img src="{{ doctor.picture.url }}" alt="">
+                {% else %}
+                    <img src="{% static 'image/list.gif' %}" alt="Doctor Image">
+                {% endif %}
+              </div>
 
-              {% if doctor.picture %}
-                <img src="{{ doctor.picture.url }}" alt="">
-              {% else %}
-                <img src="{% static 'image/list.gif' %}" alt="Doctor Image">
-              {% endif %}
-            <div class="team-text">
-              <h5><a href="{% url 'doctor_details' doctor.id %}">{{ doctor.name }}</a></h5>
-              <strong>{{ doctor.speciality }}</strong>
-              <ul class="team-social">
-                {% if doctor.twitter %}
-                <li><a class="tw" href="{{ doctor.twitter }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                {% endif %}
-                {% if doctor.facebook %}
-                <li><a class="fb" href="{{ doctor.facebook }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                </li>
-                {% endif %}
-                {% if doctor.instagram %}
-                <li><a class="insta" href="{{ doctor.instagram }}"><i class="fa fa-instagram"
-                      aria-hidden="true"></i></a></li>
-                {% endif %}
-              </ul>
+              <div class="team-text">
+                <h5><a href="{% url 'doctor_details' doctor.id %}">{{ doctor.name }}</a></h5>
+                <strong>MBBS ({{ doctor.speciality }})</strong>
+                <p>
+                  {% for obj in doctor.expertize.all %}
+                    {{ obj }}{% if not forloop.last %},{% endif%}
+                  {% endfor %}
+                </p>
+
+                <p style="margin-top:10px;color:#000">
+                  {% if doctor.present_hospital %}
+                    {{ doctor.present_hospital }}
+                  {% endif %}
+                </p>
+
+                <ul class="team-social">
+                  {% if doctor.twitter %}
+                  <li><a class="tw" href="{{ doctor.twitter }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                  {% endif %}
+                  {% if doctor.facebook %}
+                  <li><a class="fb" href="{{ doctor.facebook }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                  </li>
+                  {% endif %}
+                  {% if doctor.instagram %}
+                  <li><a class="insta" href="{{ doctor.instagram }}"><i class="fa fa-instagram"
+                        aria-hidden="true"></i></a></li>
+                  {% endif %}
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
         {% endfor %}
       </div>
+
     </div>
   </section>
   <!--Team End-->

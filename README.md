@@ -24,7 +24,7 @@
 1. ### Prepare project directory
     - clone the repository `git clone git@github.com:cseshahriar/patient-management-system.git`
     - Work from the project directory as current directory using `cd patient-management-system.git`.
-    - Create a virtual environment using `python`. (Test via `python -V`. Must be python 3.6+)
+    - Create a virtual environment using `python`. (Test via `python -V`. Must be python 3.8+)
     - `Activate` the virtual environment. (Windows: `source venv/Scripts/activate`)
     - Install `Django` using `pip`.
     ```shell script
@@ -38,7 +38,6 @@
 2. ### Install requirements
     - Install `Django` v3 using `pip` within your `venv`
     pip install -r requirements.txt
-    rm -f template.zip
     ```
 3. ### Create Database and User
     - Using `psql`, create a `user` with encrypted `password`.

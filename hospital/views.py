@@ -167,9 +167,11 @@ class DoctorDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         self.object = self.get_object()
-        context["doctor_list"] = Doctor.objects.filter(
+        related_doctor_list = Doctor.objects.filter(
             is_active=True, is_deleted=False
         ).exclude(pk=self.object.pk).distinct()
+        context["related_doctor_list"] = related_doctor_list
+        logger.info(f"{'*' * 10} related_doctor_list: {related_doctor_list}\n")
         return context
 
 

@@ -77,15 +77,15 @@
 
             <div id="team-slider" class="owl-carousel owl-theme">
               <!--Slide item start-->
-              {% for doctor in doctor_list %}
+              {% for doctor in related_doctor_list %}
               <div class="item">
                 <div class="team-box">
                   <div class="team-thumb">
                       <a href="{% url 'doctor_details' doctor.id %}" class="view"><i
                         class="fa fa-Heart" aria-hidden="true"></i>
                       </a>
-                      {% if object.picture %}
-                        <img src="{{ object.picture.url }}" alt="">
+                      {% if doctor.picture %}
+                        <img src="{{ doctor.picture.url }}" alt="">
                       {% else %}
                         <img src="{% static 'image/list.gif' %}" alt="Doctor Image">
                       {% endif %}

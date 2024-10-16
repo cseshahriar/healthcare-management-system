@@ -3,28 +3,13 @@
 [![python-version](https://img.shields.io/badge/python-3.8-blue)](https://www.python.org)
 [![postgresql-version](https://img.shields.io/badge/postgresql-12.3-orange)](https://www.postgresql.org)
 
-###### Patient Care Management
+# __Setup Guidline:__
+> _Make sure `git`, `python3` and `postgresql` is installed in the system._
 
-# features:
-- User Model with Profile (using Email address as username)
-- Local Settings (to separate Dev/Production environments)
-- Logging enabled (timely rotated daily at midnight)
-- Log entries viewable under Django Admin, reusable anywhere  
-- Import_Export plug-in (csv,xls,xlsx,json,etc import/export)
-- Django REST Framework with API endpoints and view sets
-- Django-Cors-Headers to work with Cross Origin Resource Sharing in REST API
-- Django-filter for dynamic queryset filtering from url parameters
-- ...more features will be added regularly, stay tuned!
-
-# __Usage:__
-> _Please make sure `git`, `python` and `postgresql` is installed in the system._
->
-> _NOTE for Windows users: Please use `Git Bash` for the following steps_
-
-1. ### Prepare project directory
+1. ### Preparing the project
     - clone the repository `git clone git@github.com:cseshahriar/patient-management-system.git`
     - Work from the project directory as current directory using `cd patient-management-system.git`.
-    - Create a virtual environment using `python`. (Test via `python -V`. Must be python 3.6+)
+    - Create a virtual environment using `python`. (Test via `python -V`. Must be python 3.8+)
     - `Activate` the virtual environment. (Windows: `source venv/Scripts/activate`)
     - Install `Django` using `pip`.
     ```shell script
@@ -35,12 +20,11 @@
     python -m pip install --upgrade pip
     ```
 
-2. ### Install requirements
+2. ### Installing Dependencies
     - Install `Django` v3 using `pip` within your `venv`
     pip install -r requirements.txt
-    rm -f template.zip
     ```
-3. ### Create Database and User
+3. ### Make Database
     - Using `psql`, create a `user` with encrypted `password`.
     - Create a `database` for your project.
     - Give privileges to the `user` for the `database`.
@@ -55,7 +39,7 @@
     \q
     ```
 
-4. ### Configure the project
+4. ### Configuration of the project
     - Create folders for `logs`, and `media`.
     - Copy `local_settings.example` to `local_settings.py`.
     - Update `local_settings.py` with proper `settings`, including `database`.
@@ -70,7 +54,7 @@
     DB_PASS = '<password>'
     ```
 
-5. ### Run the project
+5. ### Live the project
     - Run `makemigrations` and `migrate`.
     - Run `tests` and `linting` to assure nothing is broken.
     - Create superuser to access the admin panel.
@@ -84,5 +68,5 @@
     python manage.py runserver
 
     ```
-   > _NOTE: Browse to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to view the site. Admin site is at url [/manage](http://127.0.0.1:8000/manage) changed from default to keep the project secure. Admin url can be changed in `settings.py` --> `ADMIN_URL`_
+   > Browse to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to view the site. Admin site is at url [/manage](http://127.0.0.1:8000/manage) changed from default to keep the project secure. Admin url can be changed in `settings.py` --> `ADMIN_URL`_
     ```

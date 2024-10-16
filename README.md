@@ -20,11 +20,11 @@
     python -m pip install --upgrade pip
     ```
 
-2. ### Install Dependicies
+2. ### Installing Dependencies
     - Install `Django` v3 using `pip` within your `venv`
     pip install -r requirements.txt
     ```
-3. ### Create Database
+3. ### Make Database
     - Using `psql`, create a `user` with encrypted `password`.
     - Create a `database` for your project.
     - Give privileges to the `user` for the `database`.
@@ -39,7 +39,7 @@
     \q
     ```
 
-4. ### Config of the project
+4. ### Configuration of the project
     - Create folders for `logs`, and `media`.
     - Copy `local_settings.example` to `local_settings.py`.
     - Update `local_settings.py` with proper `settings`, including `database`.

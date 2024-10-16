@@ -214,3 +214,20 @@ class Contact(CommonField):
 
     def __str__(self):
         return str(self.name)
+
+
+class Feedback(CommonField):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
+        blank=True, null=True, related_name="feedbacks"
+    )
+    name = models.CharField(max_length=255, null=True, blank=True)
+    patient_type = models.CharField(max_length=255, null=True, blank=True)
+    message = models.TextField(_("Feedback"), max_length=500, blank=False)
+    images = models.ImageField(
+        _("Photo"), upload_to="feedbacks/", null=True, blank=True)
+    phone = models.CharField(max_length=255, null=True, blank=True)
+    email = models.EmailField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        return self.name

@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from .models import (
     Slider, Speciality, Service, Item, Doctor, Expertize, Faq, Gallery,
-    Contact
+    Contact, Feedback
 )
 
 
@@ -87,7 +87,7 @@ class ServiceAdmin(admin.ModelAdmin):
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     list_display = (
-       'id',
+        'id',
         'order',
         'created_at',
         'is_active',
@@ -243,6 +243,25 @@ class ContactAdmin(admin.ModelAdmin):
         'is_active',
         'is_deleted',
         'response',
+    )
+    search_fields = ('name',)
+    date_hierarchy = 'created_at'
+    list_editable = ('is_active', 'is_deleted', )
+
+
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'order',
+        'created_at',
+        'is_active',
+        'is_deleted',
+        'name',
+        'email',
+        'phone',
+        'message',
+        'user',
     )
     search_fields = ('name',)
     date_hierarchy = 'created_at'

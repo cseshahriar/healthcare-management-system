@@ -1,16 +1,17 @@
+import logging
 import datetime
 from django.shortcuts import render, redirect
-from patient_ms.models import DoctorAppointment
 from django.contrib import messages
-from .models import Slider, Service, Doctor, Faq, Gallery
-from django.views.generic import ListView, DetailView, TemplateView, View
-from hospital.models import Contact
 from patient_ms.models import Patient
-import logging
-from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse_lazy
+from django.contrib.auth import authenticate, login, logout
+from django.views.generic import ListView, DetailView, TemplateView, View
+
+from hospital.models import Contact, Feedback
+from .models import Slider, Service, Doctor, Faq, Gallery
 from hospital.forms import CustomLoginForm
 from hospital.uility import user_has_group
+from patient_ms.models import DoctorAppointment
 from patient_ms.variable import (
     doctor_group,
     patient_group
@@ -73,6 +74,9 @@ class HomeView(ListView):
                 context['patient'] = patient
         except Exception as e:
             logger.debug(self.request, f"patient profile Not available {e}")
+
+        context['feedback_list'] = Feedback.objects.filter(is_active=True)
+        # Todo: faq
         return context
 
 

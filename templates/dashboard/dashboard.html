@@ -93,7 +93,6 @@
             {{ doctor.name }}
             {% endif %}
           </p>
-          {% endif %}
           <p class="app-sidebar__user-designation">Doctor</p>
         </div>
       </div>
@@ -108,7 +107,7 @@
         </li>
         <li><a class="app-menu__item" href="{% url 'patient_list' %}"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Find Patient</span></a></li>
 
-        
+
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Profile</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{% url 'doctor_view'  pk=request.user.doctor.pk %}"><i class="icon fa fa-circle-o"></i> Profile Details</a></li>

@@ -303,48 +303,26 @@
             <div id="testimonial-slider" class="owl-carousel owl-theme">
 
               <!--Slider Start-->
+              {% for feedback in feedback_list %}
               <div class="item">
                 <div class="testimonial-holder">
-                  <div class="user-thumb"> <img src="{% static 'heartcare/images/tuser.jpg' %}" alt=""> <strong>Anna
-                      Anderson</strong>
-                    <i>A heart patient</i> </div>
+                  <div class="user-thumb">
+                    {% if feedback.images %}
+                      <img src="{{ feedback.images.url }}" alt="">
+                    {% else %}
+                    <img src="{% static 'heartcare/images/tuser.jpg' %}" alt="">
+                    {% endif %}
+                    <strong>{{ feedback.name|default_if_none:"Anna Anderson"}}</strong>
+                    <i> {{ feedback.patient_type|default_if_none:"A hert"}} patient</i> </div>
                   <div class="test-text">
-                    <p>An exellent hospital and a Cardiologists. Quisque egestas libero vitae lacus sagittis, eget
-                      viverra tellus vehicula. Aenean efficitur faucibus felis, non laoreet nisl congue non. In quis
-                      pharetra urna. Aliquam in enim efficitur, bibendum dolor eu, elementum turpis.
+                    <p>
+                      {{ feedback.message}}
                     </p>
                   </div>
                 </div>
               </div>
-              <div class="item">
-                <div class="testimonial-holder">
-                  <div class="user-thumb"> <img src="{% static 'heartcare/images/tuser-2.jpg' %}" alt=""> <strong>Anna
-                      Anderson</strong>
-                    <i>A heart patient</i> </div>
-                  <div class="test-text">
-                    <p>An exellent hospital and a Cardiologists. Quisque egestas libero vitae lacus sagittis, eget
-                      viverra tellus vehicula. Aenean efficitur faucibus felis, non laoreet nisl congue non. In quis
-                      pharetra urna. Aliquam in enim efficitur, bibendum dolor eu, elementum turpis.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimonial-holder">
-                  <div class="user-thumb"> <img src="{% static 'heartcare/images/tuser.jpg' %}" alt=""> <strong>Anna
-                      Anderson</strong>
-                    <i>A heart patient</i> </div>
-                  <div class="test-text">
-                    <p>An exellent hospital and a Cardiologists. Quisque egestas libero vitae lacus sagittis, eget
-                      viverra tellus vehicula. Aenean efficitur faucibus felis, non laoreet nisl congue non. In quis
-                      pharetra urna. Aliquam in enim efficitur, bibendum dolor eu, elementum turpis.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
+              {% endfor %}
               <!--Slider End-->
-
             </div>
           </div>
         </div>

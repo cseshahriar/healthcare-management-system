@@ -35,8 +35,13 @@
         </div>
         <div class="col-md-6 col-sm-6">
           <div class="team-details-text">
-            <div class="sectio-title-2"> <strong>{{ object.speciality }}</strong>
+            <div class="sectio-title-2"> <strong>MBBS({{ object.speciality }})</strong>
               <h2>{{ object.name }}</h2>
+              <p style="margin-top:10px;color:#000">
+                {% if doctor.present_hospital %}
+                  {{ doctor.present_hospital }}
+                {% endif %}
+              </p>
             </div>
             <p>{{ object.details }}</p>
             <ul>
@@ -93,6 +98,17 @@
                   <div class="team-text">
                     <h5><a href="{% url 'doctor_details' doctor.id %}">{{ doctor.name }}</a></h5>
                     <strong>{{ doctor.speciality }}</strong>
+
+                    {% for obj in doctor.expertize.all %}
+                      {{ obj }}{% if not forloop.last %},{% endif%}
+                    {% endfor %}
+
+                    <p style="margin-top:10px;color:#000">
+                      {% if doctor.present_hospital %}
+                        <strong>{{ doctor.present_hospital }}</strong>
+                      {% endif %}
+                    </p>
+
                     <ul class="team-social">
                       {% if doctor.twitter %}
                       <li><a class="tw" href="{{ doctor.twitter }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>

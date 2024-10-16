@@ -26,7 +26,7 @@
     <div class="container">
       <div class="row">
         {% for doctor in object_list %}
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-6 col-sm-6">
           <div class="team-box mb50">
             <div class="team-thumb">
               <a href="{% url 'doctor_details' doctor.id %}" class="view">
@@ -39,7 +39,20 @@
             </div>
             <div class="team-text">
               <h5><a href="{% url 'doctor_details' doctor.id %}">{{ doctor.name }}</a></h5>
-              <strong>{{ doctor.speciality }}</strong>
+              <strong>MBBS ({{ doctor.speciality }})</strong>
+
+              <p>
+              {% for obj in doctor.expertize.all %}
+                {{ obj }}{% if not forloop.last %},{% endif%}
+              {% endfor %}
+              </p>
+
+              <p style="margin-top:10px;color:#000">
+                {% if doctor.present_hospital %}
+                  <strong>{{ doctor.present_hospital }}</strong>
+                {% endif %}
+              </p>
+
               <ul class="team-social">
                 {% if doctor.twitter %}
                 <li><a class="tw" href="{{ doctor.twitter }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>

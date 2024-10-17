@@ -12,8 +12,7 @@
 -->
 <script src="{% static 'heartcare/js/custom.js' %}"></script>
 <script src="{% static 'custom/sweetalert2.all.min.js' %}"></script>
-
-
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -83,3 +82,9 @@ $("#district").change(function () {
 });
 
 </script>
+
+<script>
+    $(document).ready(function() {
+      $('select').select2();
+    });
+  </script>

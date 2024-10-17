@@ -3,16 +3,17 @@
 {% load static %}
 
 {% block maincontent %}
+
 {% block style %}
 <link rel="stylesheet" href="{% static 'custom/re_design.css' %}"/>
 <link rel="stylesheet" href="{% static 'custom/profile.css' %}"/>
 <style>
   .inner-banner {
     padding: 30px 0 30px !important;
-}
-
+  }
 </style>
 {% endblock %}
+
 <!--inner banner-->
 <div class="inner-banner">
     <div class="container">
@@ -26,7 +27,6 @@
                     <li><a href="{% url 'index' %}">Home</a></li>
                     <li class="active">Profile</li>
                     {%  endblock %}
-
                 </ol>
             </div>
         </div>
@@ -155,3 +155,6 @@
 </div>
 <!--Main Content End-->
 {% endblock maincontent %}
+
+{% block extra_js %}
+{% endblock extra_js %}

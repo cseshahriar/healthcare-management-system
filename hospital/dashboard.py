@@ -34,6 +34,13 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
     model = DoctorAppointment
     template_name = 'dashboard/appointment/not_vistied.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["doctor"] = Doctor.objects.filter(
+            user=self.request.user).first()
+        context["total"] = self.get_queryset().count()
+        return context
+
     def get_queryset(self):
         today = datetime.date.today()
         qs = self.model.objects.filter(

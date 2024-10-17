@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import ListView, DetailView, TemplateView, View
 
-from hospital.models import Contact, Feedback
+from hospital.models import Contact, Feedback, Faq
 from .models import Slider, Service, Doctor, Faq, Gallery
 from hospital.forms import CustomLoginForm
 from hospital.uility import user_has_group
@@ -75,7 +75,8 @@ class HomeView(ListView):
         except Exception as e:
             logger.debug(self.request, f"patient profile Not available {e}")
 
-        context['feedback_list'] = Feedback.objects.filter(is_active=True)
+        context['feedback_list'] = Feedback.objects.filter(is_active=True).order_by('order')
+        context['faq_list'] = Faq.objects.filter(is_active=True).order_by('order')
         # Todo: faq
         return context
 

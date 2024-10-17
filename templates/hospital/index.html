@@ -336,43 +336,17 @@
             </div>
             <div class="faqs">
               <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                {% for faq in faq_list %}
                 <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingOne">
+                  <div class="panel-heading" role="tab" id="heading-{{faq.pk}}">
                     <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion"
-                        href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> How much you charge
-                        for consultancy </a> </h4>
+                        href="#collapse-{{faq.pk}}" aria-expanded="true" aria-controls="collapseOne"> {{ faq.question }}</a> </h4>
                   </div>
-                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body"> Our commercialization strategy involves a rapid development of
-                      treatments for both rotator cuff injuries in the shoulder and meniscus injuries of the knee
-                      joint, with an initial focus on the highly developed. </div>
+                  <div id="collapse-{{faq.pk}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{faq.pk}}">
+                    <div class="panel-body">{{ faq.answer }} </div>
                   </div>
                 </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse"
-                        data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        What kind of patients do you treat? </a> </h4>
-                  </div>
-                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body"> Our commercialization strategy involves a rapid development of
-                      treatments for both rotator cuff injuries in the shoulder and meniscus injuries of the knee
-                      joint, with an initial focus on the highly developed. </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse"
-                        data-parent="#accordion" href="#collapseThree" aria-expanded="false"
-                        aria-controls="collapseThree"> Where does my refering Cardiologist go? </a> </h4>
-                  </div>
-                  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
-                    aria-labelledby="headingThree">
-                    <div class="panel-body"> Our commercialization strategy involves a rapid development of
-                      treatments for both rotator cuff injuries in the shoulder and meniscus injuries of the knee
-                      joint, with an initial focus on the highly developed. </div>
-                  </div>
-                </div>
+               {% endfor %}
 
               </div>
             </div>

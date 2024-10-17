@@ -38,12 +38,12 @@ class ForgetAppointmentSerialView(
     def post(self, request):
         try:
             appointment_time = request.POST.get('appointment_day')
-            print("--------", appointment_time)
             appointment = self.model.objects.filter(
                 patient=self.request.user,
                 appointment_day=appointment_time
             ).last()
         except Exception as e:
+            appointment = None
             logger.debug(self.request, f'Unable to get Appointment {e}')
             messages.warning(
                 self.request, "Unable to get data"
@@ -54,11 +54,12 @@ class ForgetAppointmentSerialView(
             return HttpResponseRedirect(
                 reverse_lazy(
                     "patient_ms:appointment_confirmation",
-                    kwargs={'pk': self.appointment.pk}
+                    kwargs={'pk': appointment.pk}
                 )
             )
         else:
             messages.warning(
                 self.request, "Dont have any Appointment on Searching date"
             )
+
         return redirect('patient_ms:appointment_forget')

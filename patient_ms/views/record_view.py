@@ -27,8 +27,6 @@ class ViewAllSavedRecord(
         return self.request.user.is_active  # any active user
 
     def get(self, request, pk):
-        print("--------------------", pk)
-
         try:
             patient_object = Patient.objects.get(
                 pk=pk
@@ -36,15 +34,12 @@ class ViewAllSavedRecord(
             objects_list = self.model.objects.filter(
                 patient=patient_object
             ).order_by('-created_at')
-            print("--------------------", patient_object)
-            print("--------------------", objects_list)
         except Exception as e:
             logging.debug(request, f'Unable to get data {e}')
             objects_list = None
 
-        context ={
+        context = {
             "objects_list": objects_list,
             "patient": patient_object
         }
         return render(request, self.template_name, context)
-

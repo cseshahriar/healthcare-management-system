@@ -75,9 +75,10 @@ class HomeView(ListView):
         except Exception as e:
             logger.debug(self.request, f"patient profile Not available {e}")
 
-        context['feedback_list'] = Feedback.objects.filter(is_active=True).order_by('order')
-        context['faq_list'] = Faq.objects.filter(is_active=True).order_by('order')
-        # Todo: faq
+        context['feedback_list'] = Feedback.objects.filter(
+            is_active=True).order_by('order')
+        context['faq_list'] = Faq.objects.filter(
+            is_active=True).order_by('order')
         return context
 
 

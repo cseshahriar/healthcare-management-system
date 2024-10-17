@@ -1,6 +1,6 @@
 import logging
 import datetime
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from patient_ms.models import Patient
 from django.urls import reverse_lazy
@@ -39,7 +39,8 @@ class DoctorDashboard(TemplateView):
             todays_appointment = 0
             total_appointment = 0
 
-        kwargs["doctor"] = Doctor.objects.get(user=self.request.user)
+        doctor = get_object_or_404(Doctor, user=self.request.user)
+        kwargs["doctor"] = doctor
         kwargs["doctor_count"] = Doctor.objects.all().count()
         kwargs["patient_count"] = Patient.objects.all().count()
         kwargs["total_appointment"] = total_appointment

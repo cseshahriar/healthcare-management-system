@@ -28,18 +28,21 @@
                         <h4 class="text-right">Profile Settings</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-12"> {{ form.name | as_crispy_field }}</div>
+                        <div class="col-md-12"> {{ form.doctor_id|as_crispy_field }}</div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12"> {{ form.name|as_crispy_field }}</div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">{{ form.speciality | as_crispy_field }}</div>
                         <div class="col-md-12">{{ form.present_hospital | as_crispy_field }}</div>
-                        <div class="col-md-12">{{ form.picture | as_crispy_field }}</div>
+                        <div class="col-md-12">{{ form.picture|as_crispy_field }}</div>
 
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12">{{ form.facebook | as_crispy_field }}</div>
-                        <div class="col-md-6">{{ form.twitter | as_crispy_field }}</div>
-                        <div class="col-md-6">{{ form.instagram | as_crispy_field }}</div>
+                        <div class="col-md-12">{{ form.facebook|as_crispy_field }}</div>
+                        <div class="col-md-6">{{ form.twitter|as_crispy_field }}</div>
+                        <div class="col-md-6">{{ form.instagram|as_crispy_field }}</div>
                     </div>
                     <div class="mt-5 text-center">
                         <button class="btn btn-primary profile-button" type="submit">Update Profile</button>

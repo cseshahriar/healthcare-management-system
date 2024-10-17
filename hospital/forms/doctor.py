@@ -25,7 +25,7 @@ class DoctorFormUpdate(forms.ModelForm):
 
     class Meta:
         model = Doctor
-        exclude = ['user']
+        exclude = ['user',]
         widgets = {
             'division': forms.Select(attrs={
                 'id': 'division'

@@ -1,17 +1,22 @@
 import datetime
 from django.urls import reverse_lazy
 from patient_ms.models import Patient
+from django.shortcuts import redirect
 from django.views.generic import ListView, UpdateView, DetailView
+
 from patient_ms.models import DoctorAppointment
 from hospital.models import Doctor
 from hospital.forms import DoctorFormUpdate
 from django.contrib import messages
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
+)
 import logging
 
 logger = logging.getLogger(__name__)
 
 
-class VisitedAppointmentList(ListView):
+class VisitedAppointmentList(LoginRequiredMixin, ListView):
     model = DoctorAppointment
     template_name = 'dashboard/appointment/vistied.html'
 
@@ -25,7 +30,7 @@ class VisitedAppointmentList(ListView):
         return qs
 
 
-class UnVisitedAppointmentList(ListView):
+class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
     model = DoctorAppointment
     template_name = 'dashboard/appointment/not_vistied.html'
 
@@ -35,27 +40,36 @@ class UnVisitedAppointmentList(ListView):
             doctor__user=self.request.user,
             appointment_day=today, is_visited=False
         )
-        for x in qs:
-            print("--------------", x.patient.patient_data.name)
         return qs
 
 
-class AllPatientList(ListView):
+class AllPatientList(LoginRequiredMixin, ListView):
     model = Patient
     template_name = 'dashboard/patient/list.html'
 
 
-class ProfileUpdate(UpdateView):
+class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = Doctor
     form_class = DoctorFormUpdate
     template_name = 'dashboard/profile/profile.html'
 
-    def get_success_url(self):
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            logger.info(f"{'*' * 10} form.errors: {form.errors}\n")
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        """If the form is valid, save the associated model."""
+        self.object = form.save()
         messages.success(self.request, "Successfully Updated")
-        logger.debug("Successfully Updated")
-        return reverse_lazy("index")
+        logger.info(f"{'*' * 10} self.object: {self.object}\n")
+        return redirect('doctor_view', pk=self.object.pk)
 
 
-class DrProfileView(DetailView):
+class DrProfileView(LoginRequiredMixin, DetailView):
     model = Doctor
     template_name = 'dashboard/profile/profile_view.html'

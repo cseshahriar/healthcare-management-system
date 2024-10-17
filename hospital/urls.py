@@ -56,8 +56,7 @@ urlpatterns = [
         UnVisitedAppointmentList.as_view(), name='uncheck_appointment_list'
     ),
     path('patient/list/', AllPatientList.as_view(), name='patient_list'),
-
-
+    # doctor dashboard urls
     path(
         'doctor/<int:pk>/update/',
         ProfileUpdate.as_view(), name='doctor_update'

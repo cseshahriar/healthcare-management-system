@@ -5,12 +5,11 @@ register = template.Library()
 
 @register.filter
 def message_check(take_message):
+    print('----------------msg ')
     try:
         if str(take_message.tags) == "warning":
-            print("Worling")
             return True
         else:
-            print("OK----------")
             return False
-    except Exception as e:
-        print(e)
+    except Exception:
+        return True

@@ -8,6 +8,7 @@ from address.views import (
 from .dashboard import (
     VisitedAppointmentList,
     UnVisitedAppointmentList,
+    AllAppointmentList,
     AllPatientList,
     ProfileUpdate,
     DrProfileView,
@@ -47,6 +48,7 @@ urlpatterns = [
     ),
     path('load-district/', load_district, name='load_district'),
     path('load-upazila/', load_upazila, name='load_upazila'),
+    # Appointments
     path(
         'checked/appointment/list/',
         VisitedAppointmentList.as_view(), name='checked_appointment_list'
@@ -54,6 +56,10 @@ urlpatterns = [
     path(
         'uncheck/appointment/list/',
         UnVisitedAppointmentList.as_view(), name='uncheck_appointment_list'
+    ),
+    path(
+        'all/appointment/list/',
+        AllAppointmentList.as_view(), name='all_appointment_list'
     ),
     path('patient/list/', AllPatientList.as_view(), name='patient_list'),
     # doctor dashboard urls

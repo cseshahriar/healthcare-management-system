@@ -53,7 +53,7 @@ class DoctorAppointment(CommonField):
     appointment_close_time = models.DateField(
         _('Appointment Close Time'), null=True, blank=True
     )
-    serial_number = models.PositiveIntegerField(
+    serial_number = models.PositiveIntegerField(  # Todo: check it works
         _('Serial Number'), default=0
     )
     is_visited = models.BooleanField(

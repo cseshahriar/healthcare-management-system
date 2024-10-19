@@ -50,6 +50,24 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
         return qs
 
 
+class AllAppointmentList(LoginRequiredMixin, ListView):
+    model = DoctorAppointment
+    template_name = 'dashboard/appointment/all_appointment_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["doctor"] = Doctor.objects.filter(
+            user=self.request.user).first()
+        context["total"] = self.get_queryset().count()
+        return context
+
+    def get_queryset(self):
+        qs = self.model.objects.filter(
+            doctor__user=self.request.user,
+        ).order_by('-created_at')
+        return qs
+
+
 class AllPatientList(LoginRequiredMixin, ListView):
     model = Patient
     template_name = 'dashboard/patient/list.html'

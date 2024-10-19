@@ -8,7 +8,7 @@ from .models import Appointment
 class AppointmentView(View):
     def get(self, request, *args, **kwargs):
         context = {
-            'doctors': Doctor.objects.all()
+            'doctors': Doctor.objects.filter(is_vacation_mode=False)
         }
         return render(request, "appointment/index.html", context)
 
@@ -26,7 +26,7 @@ class AppointmentView(View):
             messages.error(request, 'Please select a doctor')
             return redirect('appointment')
 
-        if(name and phone and email and doctor and date and time):
+        if (name and phone and email and doctor and date and time):
             Appointment.objects.create(
                 name=name, phone=phone, email=email,
                 doctor=doctor, date=date, time=time, note=note

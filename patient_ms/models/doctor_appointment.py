@@ -6,13 +6,14 @@ from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from address.models import District, Division, Upazila
 from hospital.models import Doctor, Speciality
+from hospital.models import CommonField
 
 # CORE IMPORTS
 
 logger = logging.getLogger(__name__)
 
 
-class DoctorAppointment(models.Model):
+class DoctorAppointment(CommonField):
     patient = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
         blank=True, null=True, related_name="appointment"
@@ -60,6 +61,5 @@ class DoctorAppointment(models.Model):
     )
 
     def __str__(self):
-        return f'{self.patient}- Dr:({self.doctor}), Time: {self.appointment_time}'
-
-
+        return f'{self.patient}- Dr:({self.doctor}), Time: \
+            {self.appointment_time}'

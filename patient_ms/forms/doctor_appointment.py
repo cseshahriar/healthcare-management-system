@@ -9,7 +9,8 @@ class DoctorAppointmentForm(forms.ModelForm):
             'patient',
             "serial_number",
             "is_visited",
-            'appointment_close_time'
+            'appointment_close_time',
+            'status'
         ]
         widgets = {
             'division': forms.Select(attrs={

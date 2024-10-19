@@ -23,7 +23,9 @@
                 <th>Name</th>
                 <th>Phone Number</th>
                 <th>Age</th>
+                <th>Problem</th>
                 <th>Time</th>
+                <th>Created At</th>
                 <th>Status</th>
                 <th class="col-md-3 col-xs-1">Actions</th>
             </tr>
@@ -35,10 +37,21 @@
                     <td>{{ forloop.counter }}</td>
                     <td>{{ object.patient.patient_data.name }}</td>
                     <td>{{ object.patient.phone }}</td>
-
                     <td>{{ object.patient.patient_data.age }}</td>
+                    <td>{{ object.problem }}</td>
                     <td>{{ object.appointment_time }}</td>
-                    <td>{{ object.status|title }}</td>
+                    <td>{{ object.created_at|date:"l, M d, Y h:i:s a" }}</td>
+                    <td class="text-center">
+                        {% if object.status == "pending"  %}
+                            <span class="label label-default">{{ object.status|title }}</storng>
+                        {% elif object.status == "cancelled"  %}
+                            <span class="label label-danger">{{ object.status|title }}</storng>
+                        {% elif object.status == "confirmed"  %}
+                            <span class="label label-primary">{{ object.status|title }}</storng>
+                        {% elif object.status == "completed"  %}
+                            <span class="label label-success">{{ object.status|title }}</storng>
+                        {% endif %}
+                    </td>
                     <td class="col-md-3 col-xs-1">
                         <a class="btn btn-outline-success" href="{% url 'patient_ms:view_record' pk=object.patient.patient_data.pk %}">
                             <i class="fa fa-clipboard"> All Record </i>

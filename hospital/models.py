@@ -13,7 +13,7 @@ class CommonField(models.Model):
     STATUS_CHOICES = (
         ('pending', _('Pending')),
         ('cancelled', _('Cancelled')),
-        ('approved', _('Approved')),
+        ('confirmed', _('Confirmed')),
         ('completed', _('Completed')),
     )
     status = models.CharField(

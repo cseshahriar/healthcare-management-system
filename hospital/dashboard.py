@@ -24,16 +24,15 @@ class VisitedAppointmentList(LoginRequiredMixin, ListView):
         today = datetime.date.today()
         qs = self.model.objects.filter(
             doctor__user=self.request.user,
-            appointment_day=today, is_visited=True
+            appointment_day=today,
+            status="completed",
         )
-
         return qs
 
 
 class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
     model = DoctorAppointment
     template_name = 'dashboard/appointment/not_vistied.html'
-    # Todo: status pending to confirm update
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -46,9 +45,41 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
         today = datetime.date.today()
         qs = self.model.objects.filter(
             doctor__user=self.request.user,
-            appointment_day=today, is_visited=False
-        )
+            status__in=["pending", "confirmed", "cancelled"],
+            appointment_day=today,
+        ).order_by('serial_number')
         return qs
+
+    def get_instance(self, request):
+        pk = request.POST.get('id')
+        return self.model._default_manager.filter(pk=pk).first()
+
+    def post(self, request, *args, **kwargs):
+        """post object with lines if not any payments"""
+        # with page number
+        submit = request.POST.get('submit')
+        if submit == "confirm":
+            instance = self.get_instance(request)
+            # Check if instance exists
+            if not instance:
+                messages.warning(request, "Invoice not found.")
+                return redirect('uncheck_appointment_list')
+
+            instance.status = "confirmed"
+            instance.save()
+            messages.success(request, "Confirm successful!")
+        elif submit == "completed":
+            instance = self.get_instance(request)
+            # Check if instance exists
+            if not instance:
+                messages.warning(request, "Invoice not found.")
+                return redirect('uncheck_appointment_list')
+
+            instance.status = "completed"
+            instance.save()
+            messages.success(request, "completed successful!")
+
+        return redirect('uncheck_appointment_list')
 
 
 class AllAppointmentList(LoginRequiredMixin, ListView):

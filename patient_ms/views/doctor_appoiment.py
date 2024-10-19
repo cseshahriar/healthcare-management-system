@@ -25,8 +25,19 @@ class DoctorAppointment(
         """Tests if the user is active"""
         return self.request.user.is_active  # any active user
 
+    def post(self, request, *args, **kwargs):
+        self.object = None
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            logger.info(f"{'*' * 10} form.errors: {form.errors}\n")
+            return self.form_invalid(form)
+
     def form_valid(self, form):
-        appointment_day = form.cleaned_data.get("appointment_day").strftime("%Y-%m-%d")
+        appointment_day = form.cleaned_data.get(
+            "appointment_day"
+        ).strftime("%Y-%m-%d")
         doctor = form.cleaned_data.get("doctor")
         serial = 1
         try:
@@ -39,28 +50,18 @@ class DoctorAppointment(
                     serial = serial + save_object.serial_number
         except Exception as e:
             logger.debug(self.request, f"Unable to get Doctor as {e}")
-            redirect(self.get_error_url())
+            messages.warning(
+                self.request, "Oops! Something went wrong. Pleae try again."
+            )
+            return self.form_invalid(form)
 
         save_form = form.save(commit=False)
         save_form.patient = self.request.user
         save_form.serial_number = serial
         save_form.save()
-        return super(DoctorAppointment, self).form_valid(form)
-
-    def get_success_url(self):
         messages.success(
             self.request,
             "Successfully Appointment Taken, "
             "Please Download the appointment letter"
         )
-        logger.debug("Successfully Updated")
-        return reverse_lazy(
-                    "patient_ms:appointment_confirmation",
-                    kwargs={'pk': self.object.pk}
-        )
-
-    def get_error_url(self):
-        messages.warning(self.request, "Unable to take Appointment")
-        logger.debug("Unable to get Appointment")
-        return reverse_lazy("index")
-
+        return redirect('patient_ms:patient_profile')

@@ -19,7 +19,9 @@ class PatientAdmin(admin.ModelAdmin):
 class DoctorAppointmentAdmin(admin.ModelAdmin):
     list_display = [
         'patient', 'doctor', 'appointment_time', 'serial_number', 'is_visited',
+        'status', 'appointment_day'
     ]
+    list_editable = ('status', 'appointment_day', )
 
 
 @admin.register(DoctorPrescription)

@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import (
 )
 from django.contrib import messages
 from patient_ms.models import (
+    DoctorAppointment,
     DoctorPrescription,
     Patient
 )
@@ -15,6 +16,7 @@ from patient_ms.forms import (
     DoctorPrescriptionForm,
     record_file_formset
 )
+from hospital.models import Doctor
 
 logger = logging.getLogger(__name__)
 
@@ -34,10 +36,7 @@ class DoctorPrescriptionView(
         return self.request.user.is_active  # any active user
 
     def get(self, request, pk):
-        patient_object = Patient.objects.get(
-            pk=pk
-        )
-        print("----", patient_object)
+        patient_object = Patient.objects.filter(pk=pk).first()
         context = {
             'form': self.form_class,
             'file': self.file_form,
@@ -50,21 +49,18 @@ class DoctorPrescriptionView(
         file_form = self.file_form(request.POST, request.FILES)
 
         try:
-            patient_object = Patient.objects.get(
-                pk=pk
-            )
+            patient_object = Patient.objects.filter(pk=pk).first()
             if patient_object and form.is_valid():
                 save_object = form.save(commit=False)
                 save_object.doctor = self.request.user
                 save_object.patient = patient_object
                 save_object.save()
-                print("Text saved")
+
             for file_form_object in file_form:
                 if file_form_object.is_valid():
                     file = file_form_object.save(commit=False)
                     file.record = save_object
                     file.save()
-                    print("Text Document")
             return HttpResponseRedirect(self.get_success_url())
         except Exception as e:
             logging.debug(request, f"Unable to save record {e}")

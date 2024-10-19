@@ -41,6 +41,20 @@
       <div class="row">
         <div class="col-md-6"><img src="{% static 'heartcare/images/form-pic.jpg' %}" alt=""></div>
         <div class="col-md-6">
+
+          {% include "../snippets/base_msgs.html" %}
+          {% if form.errors %}
+          <div style="color: red;">
+              <p>There were errors in your form:</p>
+              <ul>
+                  {% for field in form %}
+                      {% for error in field.errors %}
+                          <li>{{ field.name }} : {{ error }}</li>
+                      {% endfor %}
+                  {% endfor %}
+              </ul>
+          </div>
+          {% endif %}
           <form id="application_form" action="" enctype="multipart/form-data" class="form-register" method="POST" accept-charset="UTF-8"
                 data-upazila-url={% url 'load_upazila' %} data-district-url={% url 'load_district' %} data-doctor-url={% url 'patient_ms:load_doctor' %}>
             {% csrf_token %}

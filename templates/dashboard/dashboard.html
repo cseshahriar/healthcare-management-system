@@ -3,25 +3,32 @@
 <html lang="en">
   <head>
     <link rel="icon" type="image/png" href="{% static 'image/PM.png' %}">
-   {% block title %}
-        <title>{% block title_text %}Dashboard{% endblock title_text %} | PM-System</title>
-    {% endblock title %}
-
-
-    <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/main.css' %}">
-    <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <title>{% block title_text %}Dashboard{% endblock title_text %} | PM-System</title>
+    <link href="{% static 'doctor/css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'doctor/css/font-awesome.min.css' %}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="{% static 'heartcare/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'heartcare/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'heartcare/css/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'heartcare/css/color.css' %}" rel="stylesheet">
+    <link href="{% static 'heartcare/css/prettyPhoto.css' %}" rel="stylesheet">
+    <link href="{% static 'heartcare/css/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'heartcare/css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
+    <link href="{% static 'custom/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'heartcare/css/responsive.css' %}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'image/PM.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     {% block extra_css  %}
     {% endblock extra_css %}
-
   </head>
+
   <body class="app sidebar-mini">
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="{% url 'index' %}">PM-System</a>
-      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+    <header class="app-header">
+      <a class="app-header__logo" href="{% url 'index' %}">PM-System</a>
+      <!-- Sidebar toggle button-->
+       <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
         <li class="app-search">
@@ -73,7 +80,7 @@
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li><a class="dropdown-item" href="{% url 'doctor_view'  pk=request.user.doctor.pk %}"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out fa-lg"></i> Signout</a></li>
           </ul>
         </li>
       </ul>
@@ -81,45 +88,44 @@
 
     <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-    <aside class="app-sidebar">
-
-      {% if doctor %}
-        <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{{ doctor.picture.url }}" style="width:55px; hight:70px" alt="User Image">
-      {% else %}
-            <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{% static 'image/doctor.jpg' %}" style="width:55px; hight:70px" alt="User Image">
-      {% endif %}
+      <aside class="app-sidebar">
+        {% if doctor %}
+          <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{{ doctor.picture.url }}" style="width:55px; hight:70px" alt="User Image">
+        {% else %}
+              <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{% static 'image/doctor.jpg' %}" style="width:55px; hight:70px" alt="User Image">
+        {% endif %}
         <div>
-          <p class="app-sidebar__user-name">
-            {% if doctor %}
-            {{ doctor.name }}
-            {% endif %}
-          </p>
-          <p class="app-sidebar__user-designation">Doctor</p>
+          {% if doctor %}
+              <p class="app-sidebar__user-name">
+                {{ doctor.name }}
+              </p>
+              <p class="app-sidebar__user-designation">{{ doctor.speciality }}</p>
+              {% endif %}
+          </div>
         </div>
-      </div>
-      <ul class="app-menu">
-        <li><a class="app-menu__item active" href="{% url 'doctor_dashboard' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Today's appointment</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="{% url 'uncheck_appointment_list' %}" rel="noopener"><i class="icon fa fa-circle-o"></i>Uncheck Appointments</a></li>
-            <li><a class="treeview-item" href="{% url 'checked_appointment_list' %}"><i class="icon fa fa-circle-o"></i>Checked Appointments</a></li>
-          </ul>
-        </li>
-        <li><a class="app-menu__item" href="{% url 'all_appointment_list' %}"><i class="app-menu__icon fa fa-pie-chart"></i>All Appointments</a></li>
-        <li><a class="app-menu__item" href="{% url 'patient_list' %}"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Find Patient</span></a></li>
+        <ul class="app-menu">
+          <li><a class="app-menu__item active" href="{% url 'doctor_dashboard' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+          <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Today's appointment</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a class="treeview-item" href="{% url 'uncheck_appointment_list' %}" rel="noopener"><i class="icon fa fa-circle-o"></i>Uncheck Appointments</a></li>
+              <li><a class="treeview-item" href="{% url 'checked_appointment_list' %}"><i class="icon fa fa-circle-o"></i>Checked Appointments</a></li>
+            </ul>
+          </li>
+          <li><a class="app-menu__item" href="{% url 'all_appointment_list' %}"><i class="app-menu__icon fa fa-pie-chart"></i>All Appointments</a></li>
+          <li><a class="app-menu__item" href="{% url 'patient_list' %}"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Find Patient</span></a></li>
 
 
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Profile</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="{% url 'doctor_view'  pk=request.user.doctor.pk %}"><i class="icon fa fa-circle-o"></i> Profile Details</a></li>
-            <li><a class="treeview-item" href="{% url 'doctor_update'  pk=request.user.doctor.pk %}"><i class="icon fa fa-circle-o"></i> Update profile</a></li>
-            <li><a class="treeview-item" href="{% url 'dr_change_password' %}"><i class="icon fa fa-circle-o"></i> Change Password</a></li>
+          <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Profile</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a class="treeview-item" href="{% url 'doctor_view'  pk=request.user.doctor.pk %}"><i class="icon fa fa-circle-o"></i> Profile Details</a></li>
+              <li><a class="treeview-item" href="{% url 'doctor_update'  pk=request.user.doctor.pk %}"><i class="icon fa fa-circle-o"></i> Update profile</a></li>
+              <li><a class="treeview-item" href="{% url 'dr_change_password' %}"><i class="icon fa fa-circle-o"></i> Change Password</a></li>
 
-          </ul>
-        </li>
-        <li><a class="app-menu__item" href="{% url 'prediction_type' %}"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Prediction</span></a></li>
-      </ul>
-    </aside>
+            </ul>
+          </li>
+          <li><a class="app-menu__item" href="{% url 'prediction_type' %}"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Prediction</span></a></li>
+        </ul>
+      </aside>
 
     <main class="app-content">
       <div class="app-title">
@@ -135,77 +141,73 @@
 
       {% include 'success_message.html' %}
 
-    {% block body  %}
-      <div class="row">
-        <div class="col-md-6 col-lg-3">
-          <div class="widget-small primary coloured-icon"><i class="icon fa fa-user-plus fa-3x"></i>
-            <div class="info">
-              <h4>Today's Appointment </h4>
-              <p><b>{{ todays_appointment }}</b></p>
+      {% block body  %}
+        <div class="row">
+          <div class="col-md-6 col-lg-3">
+            <div class="widget-small primary coloured-icon"><i class="icon fa fa-user-plus fa-3x"></i>
+              <div class="info">
+                <h4>Today's Appointment </h4>
+                <p><b>{{ todays_appointment }}</b></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="widget-small info coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+              <div class="info">
+                <h4>Total Appointment</h4>
+                <p><b>{{ total_appointment }}</b></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="widget-small warning coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+              <div class="info">
+                <h4>Total Patient</h4>
+                <p><b>{{ patient_count }}</b></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="widget-small danger coloured-icon"><i class="icon fa fas fa-user-md fa-3x"></i>
+              <div class="info">
+                <h4>Total Doctor</h4>
+                <p><b>{{ doctor_count }}</b></p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="widget-small info coloured-icon"><i class="icon fa fa-users fa-3x"></i>
-            <div class="info">
-              <h4>Total Appointment</h4>
-              <p><b>{{ total_appointment }}</b></p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="tile">
+              <h3 class="tile-title">Total Appointment</h3>
+              <div class="embed-responsive embed-responsive-16by9">
+                <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="tile">
+              <h3 class="tile-title">Appointment Rate</h3>
+              <div class="embed-responsive embed-responsive-16by9">
+                <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="widget-small warning coloured-icon"><i class="icon fa fa-users fa-3x"></i>
-            <div class="info">
-              <h4>Total Patient</h4>
-              <p><b>{{ patient_count }}</b></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="widget-small danger coloured-icon"><i class="icon fa fas fa-user-md fa-3x"></i>
-            <div class="info">
-              <h4>Total Doctor</h4>
-              <p><b>{{ doctor_count }}</b></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">Total Appointment</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-              <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">Appointment Rate</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-              <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-    {% endblock %}
+      {% endblock %}
     </main>
 
     <!-- Essential javascripts for application to work-->
     <script src="{% static 'doctor/js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'doctor/js/popper.min.js'  %}"></script>
-    <script src="{% static 'doctor/js/bootstrap.min.js'  %}"></script>
     <script src="{% static 'doctor/js/main.js'  %}"></script>
     <script src="{% static 'doctor/js/jquery.formset.min.js' %}"></script>
+    <script src="{% static 'heartcare/js/bootstrap.min.js'  %}"></script>
 
     <!-- The javascript plugin to display page loading on top-->
     <script src="{% static 'doctor/js/plugins/pace.min.js'  %}"></script>
 
     <!-- Page specific javascripts-->
     <script type="text/javascript" src="{% static 'doctor/js/plugins/chart.js' %}"></script>
-    <script type="text/javascript">
-
-    </script>
     <!-- Google analytics script-->
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {
@@ -218,7 +220,6 @@
       }
     </script>
 
-{% block extra_ja %}
-{% endblock %}
+  {% block extra_ja %}{% endblock %}
   </body>
 </html>

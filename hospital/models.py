@@ -1,8 +1,11 @@
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 from django.core.validators import RegexValidator
-from address.models import District, Division, Upazila, Thana
 from django.utils.translation import gettext_lazy as _
+from django.db.models import Avg
+
+from address.models import District, Division, Upazila, Thana
 
 
 class CommonField(models.Model):
@@ -155,6 +158,12 @@ class Doctor(CommonField):
         return str(self.name)
 
     @property
+    def average_rating(self):
+        # Calculate the average rating
+        average = self.ratings.aggregate(Avg('stars'))['stars__avg']
+        return average if average is not None else 0.0  # Return 0 if no ratings
+
+    @property
     def get_full__address(self):
         save_present_address = ''
         if self.address:
@@ -246,7 +255,7 @@ class Feedback(CommonField):
 class Symptom(CommonField):
     """ Symptoms model """
     name = models.CharField(max_length=100)
-    description =  models.TextField(max_length=500, blank=True)
+    description = models.TextField(max_length=500, blank=True)
 
     def __str__(self):
         return self.name

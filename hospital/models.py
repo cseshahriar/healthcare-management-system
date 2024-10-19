@@ -153,6 +153,8 @@ class Doctor(CommonField):
         null=True, help_text='Ex: 2/17, Mirpur-11'
     )
     # working_symptoms = models.ManyToManyField(Symptom)
+    is_vacation_mode = models.BooleanField(
+        verbose_name="Activate Vacation Mode", default=False)
 
     def __str__(self):
         return str(self.name)

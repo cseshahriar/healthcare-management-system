@@ -149,6 +149,7 @@ class Doctor(CommonField):
     address = models.TextField(
         null=True, help_text='Ex: 2/17, Mirpur-11'
     )
+    # working_symptoms = models.ManyToManyField(Symptom)
 
     def __str__(self):
         return str(self.name)
@@ -237,6 +238,15 @@ class Feedback(CommonField):
         _("Photo"), upload_to="feedbacks/", null=True, blank=True)
     phone = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Symptom(CommonField):
+    """ Symptoms model """
+    name = models.CharField(max_length=100)
+    description =  models.TextField(max_length=500, blank=True)
 
     def __str__(self):
         return self.name

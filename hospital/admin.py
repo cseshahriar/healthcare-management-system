@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from .models import (
     Slider, Speciality, Service, Item, Doctor, Expertize, Faq, Gallery,
-    Contact, Feedback
+    Contact, Feedback, Symptom
 )
 
 
@@ -262,6 +262,21 @@ class FeedbackAdmin(admin.ModelAdmin):
         'phone',
         'message',
         'user',
+    )
+    search_fields = ('name',)
+    date_hierarchy = 'created_at'
+    list_editable = ('is_active', 'is_deleted', )
+
+
+@admin.register(Symptom)
+class SymptomAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'order',
+        'created_at',
+        'is_active',
+        'is_deleted',
+        'name',
     )
     search_fields = ('name',)
     date_hierarchy = 'created_at'

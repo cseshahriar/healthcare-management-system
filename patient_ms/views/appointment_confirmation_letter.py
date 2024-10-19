@@ -18,4 +18,3 @@ class AppointmentConfirmationLetterView(
     def test_func(self):
         """Tests if the user is active"""
         return self.request.user.is_active  # any active user
-

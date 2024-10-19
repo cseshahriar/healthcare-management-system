@@ -28,6 +28,10 @@
                         <h4 class="text-right">Profile Settings</h4>
                     </div>
                     <div class="row mt-2">
+                        <div class="col-md-12"> {{ form.is_vacation_mode|as_crispy_field }}</div>
+                        <p class="help-block">if you are want to vacation then please check it.</p>
+                    </div>
+                    <div class="row mt-2">
                         <div class="col-md-12"> {{ form.doctor_id|as_crispy_field }}</div>
                     </div>
                     <div class="row mt-2">

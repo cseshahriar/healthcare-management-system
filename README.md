@@ -7,8 +7,8 @@
 > _Make sure `git`, `python3` and `postgresql` is installed in the system._
 
 1. ### Preparing the project
-    - clone the repository `git clone git@github.com:cseshahriar/patient-management-system.git`
-    - Work from the project directory as current directory using `cd patient-management-system.git`.
+    - clone the repository `git clone https://github.com/cseshahriar/healthcare-management-system.git`
+    - Work from the project directory as current directory using `cd healthcare-management-system`.
     - Create a virtual environment using `python`. (Test via `python -V`. Must be python 3.8+)
     - `Activate` the virtual environment. (Windows: `source venv/Scripts/activate`)
     - Install `Django` using `pip`.

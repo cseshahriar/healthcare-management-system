@@ -7,6 +7,15 @@ from django.utils.translation import gettext_lazy as _
 
 class CommonField(models.Model):
     ''' Abstract Mdoel '''
+    STATUS_CHOICES = (
+        ('pending', _('Pending')),
+        ('cancelled', _('Cancelled')),
+        ('approved', _('Approved')),
+        ('completed', _('Completed')),
+    )
+    status = models.CharField(
+        _('Status'), max_length=20, choices=STATUS_CHOICES, default='pending',
+    )
     created_user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
         blank=True, null=True, related_name="%(app_label)s_%(class)s_createdby"

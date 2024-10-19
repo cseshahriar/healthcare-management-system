@@ -33,6 +33,7 @@ class VisitedAppointmentList(LoginRequiredMixin, ListView):
 class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
     model = DoctorAppointment
     template_name = 'dashboard/appointment/not_vistied.html'
+    # Todo: status pending to confirm update
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

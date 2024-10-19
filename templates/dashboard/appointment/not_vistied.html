@@ -24,6 +24,7 @@
                 <th>Phone Number</th>
                 <th>Age</th>
                 <th>Time</th>
+                <th>Status</th>
                 <th class="col-md-3 col-xs-1">Actions</th>
             </tr>
             </thead>
@@ -37,14 +38,15 @@
 
                     <td>{{ object.patient.patient_data.age }}</td>
                     <td>{{ object.appointment_time }}</td>
+                    <td>{{ object.status|title }}</td>
                     <td class="col-md-3 col-xs-1">
+                        <!-- status update : for confirm and complete -->
                         <a class="btn btn-outline-success" href="{% url 'patient_ms:view_record' pk=object.patient.patient_data.pk %}">
                             <i class="fa fa-clipboard"> All Record </i>
                         </a>
                         <a class="btn btn-outline-primary" href="{% url 'patient_ms:add_record' pk=object.patient.patient_data.pk %}">
                             <i class="fa fa-plus-square-o" aria-hidden="true"> Add Record</i>
                         </a>
-
                     </td>
                 </tr>
                 {% endfor  %}

@@ -35,20 +35,25 @@
         </div>
         <div class="col-md-6 col-sm-6">
           <div class="team-details-text">
-            <div class="sectio-title-2"> <strong>MBBS({{ object.speciality }})</strong>
-              <h2>{{ object.name }}</h2>
+            <div class="sectio-title-2">
+
+              <h3>{{ object.name }}</h3>
+                {% for speciality in object.speciality.all %}
+                  <strong>{{ speciality }}</strong>{% if not forloop.last %},{% endif %}
+                {% endfor %}
+
               <p style="margin-top:10px;color:#000">
                 {% if doctor.present_hospital %}
                   {{ doctor.present_hospital }}
                 {% endif %}
               </p>
             </div>
-            <p>{{ object.details }}</p>
-            <ul>
-              {% for exp in object.expertize.all %}
-              <li><i class="fa fa-check-square-o" aria-hidden="true"></i>{{ exp.name }}</li>
-              {% endfor %}
-            </ul>
+            <p>{{ object.details|default_if_none:"" }}</p>
+            <p><i class="fa fa-wrench" aria-hidden="true"></i></i> {{ object.year_of_experience|default_if_none:"1" }} Year of Experiences</p>
+            <p><i class="fa fa-calendar"></i> {{ object.availability_days|default_if_none:"" }}</p>
+            <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{ object.availability_time|default_if_none:"" }}</p>
+            <p><i class="fa fa-location-arrow"></i> {{ object.get_full__address|default_if_none:"" }}</p>
+
             <ul class="team-social">
               <li><strong>Share :</strong></li>
               <li><a class="tw" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -57,14 +62,21 @@
               <li><a class="insta" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
               <li><a class="ytp" href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
             </ul>
-            <a class="book-app" href="{% url 'patient_ms:appointment' %}">Book an Appointment</a>
+
+            {% if not object.is_vacation_mode %}
+              <a class="book-app" href="{% url 'patient_ms:appointment' %}">Book an Appointment</a>
+            {% endif %}
+
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
           <div class="team-exp">
-            <div class="sectio-title-2"> <strong>{{ object.speciality }}</strong>
+            <div class="sectio-title-2">
+              {% for speciality in object.speciality.all %}
+                <strong>{{ speciality }}</strong>{% if not forloop.last %},{% endif %}
+              {% endfor %}
               <h2>Experiences</h2>
             </div>
             {{ object.experience}}
@@ -97,17 +109,20 @@
                   </div>
                   <div class="team-text">
                     <h5><a href="{% url 'doctor_details' doctor.id %}">{{ doctor.name }}</a></h5>
-                    <strong>{{ doctor.speciality }}</strong>
-
-                    {% for obj in doctor.expertize.all %}
-                      {{ obj }}{% if not forloop.last %},{% endif%}
+                    {% for speciality in object.speciality.all %}
+                     <strong>{{ speciality }}</strong>{% if not forloop.last %},{% endif %}
                     {% endfor %}
+
 
                     <p style="margin-top:10px;color:#000">
                       {% if doctor.present_hospital %}
                         <strong>{{ doctor.present_hospital }}</strong>
                       {% endif %}
                     </p>
+
+                    <p>{{ object.year_of_experience|default_if_none:"1" }} Year of Experiences</p>
+                    <p>{{ object.availability_days|default_if_none:"" }}</p>
+                    <p>{{ object.availability_time|default_if_none:"" }}</p>
 
                     <ul class="team-social">
                       {% if doctor.twitter %}

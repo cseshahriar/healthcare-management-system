@@ -26,7 +26,7 @@
   <body class="app sidebar-mini">
     <!-- Navbar-->
     <header class="app-header">
-      <a class="app-header__logo" href="{% url 'index' %}">PM-System</a>
+      <a class="app-header__logo" href="{% url 'index' %}">HMS-System</a>
       <!-- Sidebar toggle button-->
        <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
@@ -89,20 +89,31 @@
     <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
       <aside class="app-sidebar">
-        {% if doctor %}
-          <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{{ doctor.picture.url }}" style="width:55px; hight:70px" alt="User Image">
-        {% else %}
-              <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{% static 'image/doctor.jpg' %}" style="width:55px; hight:70px" alt="User Image">
-        {% endif %}
-        <div>
+
+        <div class="app-sidebar__user" style="margin-bottom:0px">
           {% if doctor %}
-              <p class="app-sidebar__user-name">
-                {{ doctor.name }}
-              </p>
-              <p class="app-sidebar__user-designation">{{ doctor.speciality }}</p>
-              {% endif %}
-          </div>
+              <img class="app-sidebar__user-avatar" src="{{ doctor.picture.url }}" style="width:55px; hight:70px" alt="User Image">
+          {% else %}
+                <img class="app-sidebar__user-avatar" src="{% static 'image/doctor.jpg' %}" style="width:55px; hight:70px" alt="User Image">
+          {% endif %}
         </div>
+        <div style="padding:8px;font-size:12px">
+          {% if doctor %}
+            <p class="app-sidebar__user-name">
+              {{ doctor.name }}
+            </p>
+            <p class="">
+              {% for speciality in doctor.speciality.all %}
+              <strong>{{ speciality }}</strong>{% if not forloop.last %},{% endif %}
+            {% endfor %}
+            </p>
+            {% endif %}
+
+            {% if  doctor.is_vacation_mode %}
+              <p class="text-danger">Vacation Mode Activated</p>
+            {% endif %}
+        </div>
+
         <ul class="app-menu">
           <li><a class="app-menu__item active" href="{% url 'doctor_dashboard' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
           <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Today's appointment</span><i class="treeview-indicator fa fa-angle-right"></i></a>
@@ -131,7 +142,7 @@
       <div class="app-title">
         <div>
           <h1><i class="fa fa-dashboard"></i> Doctor Dashboard</h1>
-          <p>Patient-Management-System</p>
+          <p>Healthcare-Management-System</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>

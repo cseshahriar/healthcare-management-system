@@ -138,8 +138,6 @@ class LoginView(View):
         return reverse_lazy("patient_ms:patient_profile")
 
 
-
-
 def logout_request(request):
     logout(request)
     messages.success(request, "Successfully Logout")

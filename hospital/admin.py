@@ -281,6 +281,6 @@ admin.site.register(Subject)
 admin.site.register(Degree)
 admin.site.register(DoctorDegree)
 
-admin.site.site_header = 'PMS Admin'
-admin.site.site_title = 'PM-System'
-admin.site.index_title = 'PM-System'
+admin.site.site_header = 'HMS Admin'
+admin.site.site_title = 'HMS-System'
+admin.site.index_title = 'HMS-System'

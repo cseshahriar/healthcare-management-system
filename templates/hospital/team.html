@@ -39,7 +39,9 @@
             </div>
             <div class="team-text">
               <h5><a href="{% url 'doctor_details' doctor.id %}">{{ doctor.name }}</a></h5>
-              <strong>MBBS ({{ doctor.speciality }})</strong>
+              {% for speciality in doctor.speciality.all %}
+                <strong>{{ speciality }}</strong>{% if not forloop.last %},{% endif %}
+              {% endfor %}
 
               <p>
               {% for obj in doctor.expertize.all %}
@@ -52,6 +54,7 @@
                   <strong>{{ doctor.present_hospital }}</strong>
                 {% endif %}
               </p>
+              <p>{{ doctor.year_of_experience|default_if_none:"1" }} Year of Experiences</p>
 
               <ul class="team-social">
                 {% if doctor.twitter %}

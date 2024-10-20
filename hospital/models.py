@@ -18,6 +18,7 @@ class CommonField(models.Model):
     )
     status = models.CharField(
         _('Status'), max_length=20, choices=STATUS_CHOICES, default='pending',
+        null=True, blank=True
     )
     created_user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
@@ -168,7 +169,7 @@ class Doctor(CommonField):
     is_vacation_mode = models.BooleanField(
         verbose_name="Activate Vacation Mode", default=False)
     year_of_experience = models.TextField(
-        max_length=4, help_text="5", null=True, blank=False
+        max_length=4, help_text="i.e 5", null=True, blank=False
         # Years of Experience Overall
     )
     availability_days = models.TextField(

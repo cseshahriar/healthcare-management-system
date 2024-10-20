@@ -76,6 +76,7 @@ class RegistrationPages(View):
                 obj = doctor_form.save(commit=False)
                 obj.user = save_user
                 obj.save()
+                doctor_form.save_m2m()
                 messages.success(self.request, "Account successfully created")
                 logger.info(f"{'*' * 10} Doctor Account successfully created")
                 return HttpResponseRedirect('/')

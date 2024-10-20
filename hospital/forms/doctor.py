@@ -10,8 +10,7 @@ class DoctorForm(forms.ModelForm):
             "name",
             "picture",
             'speciality',
-            'doctor_id'
-
+            'doctor_id',
         ]
 
     def __init__(self, *args, **kwargs):
@@ -25,7 +24,7 @@ class DoctorFormUpdate(forms.ModelForm):
 
     class Meta:
         model = Doctor
-        exclude = ['user',]
+        exclude = ['user', ]
         widgets = {
             'division': forms.Select(attrs={
                 'id': 'division'
@@ -45,6 +44,15 @@ class DoctorFormUpdate(forms.ModelForm):
                     'type': 'time'
                 }),
             'details': forms.Textarea(
+                attrs={'rows': 3, 'cols': 5}
+            ),
+            'year_of_experience': forms.Textarea(
+                attrs={'rows': 1, 'cols': 5}
+            ),
+            'availability_days': forms.Textarea(
+                attrs={'rows': 3, 'cols': 5}
+            ),
+            'availability_time': forms.Textarea(
                 attrs={'rows': 3, 'cols': 5}
             ),
 

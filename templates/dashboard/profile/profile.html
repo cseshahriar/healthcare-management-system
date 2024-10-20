@@ -3,7 +3,12 @@
 {% load crispy_forms_tags %}
 
 {% block extra_css  %}
-<link rel="stylesheet" type="text/css" href="{% static 'doctor/css/profile.css' %}" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/profile.css' %}" xmlns="http://www.w3.org/1999/html">
+<style>
+    label.form-check-label {
+        margin-left: 25px;
+    }
+</style>
 {% endblock extra_css %}
 
 {% block body  %}
@@ -41,6 +46,9 @@
                         <div class="col-md-12">{{ form.speciality | as_crispy_field }}</div>
                         <div class="col-md-12">{{ form.present_hospital | as_crispy_field }}</div>
                         <div class="col-md-12">{{ form.picture|as_crispy_field }}</div>
+                        <div class="col-md-12">{{ form.year_of_experience|as_crispy_field }}</div>
+                        <div class="col-md-12">{{ form.availability_days|as_crispy_field }}</div>
+                        <div class="col-md-12">{{ form.availability_time|as_crispy_field }}</div>
 
                     </div>
                     <div class="row mt-3">

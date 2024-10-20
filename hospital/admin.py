@@ -117,7 +117,6 @@ class DoctorAdmin(admin.ModelAdmin):
         'user',
         'name',
         'doctor_id',
-        'speciality',
         'picture',
         'details',
         'present_hospital',
@@ -126,7 +125,6 @@ class DoctorAdmin(admin.ModelAdmin):
         'instagram',
         'division',
         'district',
-        'upazila',
         'thana',
         'post_code',
         'address',
@@ -142,10 +140,8 @@ class DoctorAdmin(admin.ModelAdmin):
         'speciality',
         'division',
         'district',
-        'upazila',
         'thana',
     )
-    raw_id_fields = ('expertize',)
     search_fields = ('name',)
     date_hierarchy = 'created_at'
     list_editable = ('order', 'is_active', 'is_deleted', )

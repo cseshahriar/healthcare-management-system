@@ -100,6 +100,24 @@ class Item(CommonField):
         return self.title
 
 
+class Subject(CommonField):
+    ''' Doctor subject '''
+    name = models.CharField(max_length=255)  # Medicine, Urology
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return str(self.name)
+
+
+class Degree(CommonField):
+    ''' Doctor degree '''
+    name = models.CharField(max_length=255)  # MBBS, MS(ortho), PhD
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return str(self.name)
+
+
 class Doctor(CommonField):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
@@ -109,16 +127,14 @@ class Doctor(CommonField):
     doctor_id = models.CharField(
         max_length=255, null=True, unique=True
     )
-    speciality = models.ForeignKey(
-        Speciality, on_delete=models.PROTECT,
-        blank=True, null=True, related_name="speciality"
+    speciality = models.ManyToManyField(
+        Speciality, blank=True, related_name="specialities"
     )
     picture = models.ImageField(
         upload_to="doctors/", null=True, blank=True
     )
     details = models.TextField(blank=True, null=True)
     present_hospital = models.CharField(max_length=120, blank=True, null=True)
-    expertize = models.ManyToManyField(to='Expertize', blank=True)
     twitter = models.CharField(max_length=120, blank=True, null=True)
     facebook = models.CharField(max_length=120, blank=True, null=True)
     instagram = models.CharField(max_length=120, blank=True, null=True)
@@ -130,11 +146,6 @@ class Doctor(CommonField):
     district = models.ForeignKey(
         District, models.SET_NULL,
         related_name='doctor_district',
-        null=True
-    )
-    upazila = models.ForeignKey(
-        Upazila, models.SET_NULL,
-        related_name='doctor_upazila',
         null=True
     )
     thana = models.ForeignKey(
@@ -150,11 +161,24 @@ class Doctor(CommonField):
         )]
     )
     address = models.TextField(
-        null=True, help_text='Ex: 2/17, Mirpur-11'
+        null=True, help_text='Ex: 2/17, Mirpur-11',
+        verbose_name="Chamber Address"
     )
     # working_symptoms = models.ManyToManyField(Symptom)
     is_vacation_mode = models.BooleanField(
         verbose_name="Activate Vacation Mode", default=False)
+    year_of_experience = models.TextField(
+        max_length=4, help_text="5", null=True, blank=False
+        # Years of Experience Overall
+    )
+    availability_days = models.TextField(
+        max_length=255, help_text="Sat, Sun, Mon, Tue, Wed, Thur",
+        null=True, blank=False
+    )
+    availability_time = models.TextField(
+        max_length=255, help_text="10:00 AM - 12:00 PM & 05:00 PM - 10:00 PM",
+        null=True, blank=False
+    )
 
     def __str__(self):
         return str(self.name)
@@ -181,6 +205,18 @@ class Doctor(CommonField):
         save_present_address += 'Bangladesh '
 
         return save_present_address
+
+
+class DoctorDegree(CommonField):
+    doctor = models.ForeignKey(
+        Doctor, on_delete=models.PROTECT, related_name='doctor_degrees')
+    degree = models.ForeignKey(
+        Degree, on_delete=models.PROTECT, related_name='doctor_degrees')
+    subject = models.ForeignKey(
+        Subject, on_delete=models.PROTECT, related_name='doctor_degrees')
+    institute = models.CharField(max_length=255)
+    passing_year = models.CharField(
+        max_length=4, verbose_name="Year the degree was awarded")
 
 
 class Expertize(CommonField):

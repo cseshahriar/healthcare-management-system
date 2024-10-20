@@ -1,0 +1,816 @@
+[
+    {
+        "model": "hospital.symptom",
+        "pk": 1,
+        "fields": {
+            "name": "Abdominal Pain",
+            "description": "Pain located in the abdominal region.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 2,
+        "fields": {
+            "name": "Allergies",
+            "description": "Reactions to substances like pollen, dust, or food.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 3,
+        "fields": {
+            "name": "Anxiety",
+            "description": "A feeling of worry, nervousness, or unease.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 4,
+        "fields": {
+            "name": "Back Pain",
+            "description": "Pain felt in the back region, can vary in intensity.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 5,
+        "fields": {
+            "name": "Blurred Vision",
+            "description": "Reduced clarity of vision.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 6,
+        "fields": {
+            "name": "Cough",
+            "description": "A sudden expulsion of air from the lungs, often with a sound.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 7,
+        "fields": {
+            "name": "Dizziness",
+            "description": "A sensation of spinning or loss of balance.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 8,
+        "fields": {
+            "name": "Fatigue",
+            "description": "A state of extreme tiredness and lack of energy.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 9,
+        "fields": {
+            "name": "Fever",
+            "description": "An increase in body temperature, often indicating an infection.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 10,
+        "fields": {
+            "name": "Headache",
+            "description": "Pain in the head or neck area.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 11,
+        "fields": {
+            "name": "Nausea",
+            "description": "A feeling of sickness with an inclination to vomit.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 12,
+        "fields": {
+            "name": "Shortness of Breath",
+            "description": "A feeling of not being able to breathe well.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 13,
+        "fields": {
+            "name": "Skin Rash",
+            "description": "A noticeable change in the texture or color of the skin.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 14,
+        "fields": {
+            "name": "Swelling",
+            "description": "An abnormal enlargement of a body part or area.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 15,
+        "fields": {
+            "name": "Vomiting",
+            "description": "The act of expelling the contents of the stomach through the mouth.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 16,
+        "fields": {
+            "name": "Weight Loss",
+            "description": "A decrease in body weight, often due to illness or dieting.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 17,
+        "fields": {
+            "name": "Joint Pain",
+            "description": "Pain in one or more joints.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 18,
+        "fields": {
+            "name": "Heart Palpitations",
+            "description": "An abnormal awareness of the heartbeat.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 19,
+        "fields": {
+            "name": "Confusion",
+            "description": "A state of bewilderment or lack of understanding.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 20,
+        "fields": {
+            "name": "Chest Pain",
+            "description": "Pain or discomfort in the chest area.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 21,
+        "fields": {
+            "name": "Dry Mouth",
+            "description": "A condition where the mouth feels unusually dry.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 22,
+        "fields": {
+            "name": "Hoarseness",
+            "description": "A change in voice quality, often becoming raspy or weak.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 23,
+        "fields": {
+            "name": "Insomnia",
+            "description": "Difficulty falling or staying asleep.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 24,
+        "fields": {
+            "name": "Mood Swings",
+            "description": "Rapid and intense changes in mood.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 25,
+        "fields": {
+            "name": "Numbness",
+            "description": "A loss of sensation or feeling in a part of the body.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 26,
+        "fields": {
+            "name": "Ringing in Ears",
+            "description": "A perception of sound in the ears without an external source.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 27,
+        "fields": {
+            "name": "Seizures",
+            "description": "Uncontrolled electrical disturbances in the brain.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 28,
+        "fields": {
+            "name": "Sensitivity to Light",
+            "description": "Discomfort or pain in bright light conditions.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 29,
+        "fields": {
+            "name": "Sensitivity to Noise",
+            "description": "Discomfort or pain due to loud sounds.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 30,
+        "fields": {
+            "name": "Stomach Cramps",
+            "description": "Painful contractions in the stomach muscles.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 31,
+        "fields": {
+            "name": "Throat Pain",
+            "description": "Discomfort or pain in the throat.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 32,
+        "fields": {
+            "name": "Tingling Sensation",
+            "description": "A prickling sensation in the skin.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 33,
+        "fields": {
+            "name": "Vision Changes",
+            "description": "Alterations in sight, such as blurriness or double vision.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 34,
+        "fields": {
+            "name": "Weight Gain",
+            "description": "An increase in body weight, often due to overeating or health issues.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 35,
+        "fields": {
+            "name": "Acne",
+            "description": "Inflamed or infected sebaceous glands, causing skin blemishes.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 36,
+        "fields": {
+            "name": "Bloating",
+            "description": "A feeling of fullness or swelling in the abdomen.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 37,
+        "fields": {
+            "name": "Burning Sensation",
+            "description": "A feeling of heat in a specific area, often in the chest or extremities.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 38,
+        "fields": {
+            "name": "Constipation",
+            "description": "Infrequent or difficult bowel movements.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 39,
+        "fields": {
+            "name": "Diarrhea",
+            "description": "Frequent loose or watery bowel movements.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 40,
+        "fields": {
+            "name": "Earache",
+            "description": "Pain in the ear.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 41,
+        "fields": {
+            "name": "Fatigue After Eating",
+            "description": "Feeling excessively tired after meals.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 42,
+        "fields": {
+            "name": "Frequent Urination",
+            "description": "The need to urinate more often than usual.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 43,
+        "fields": {
+            "name": "Hair Loss",
+            "description": "Thinning or loss of hair.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 44,
+        "fields": {
+            "name": "Hot Flashes",
+            "description": "Sudden feelings of warmth, often occurring during menopause.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 45,
+        "fields": {
+            "name": "Joint Stiffness",
+            "description": "Reduced range of motion in a joint.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 46,
+        "fields": {
+            "name": "Liver Pain",
+            "description": "Pain or discomfort in the liver area, typically on the right side of the abdomen.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 47,
+        "fields": {
+            "name": "Nasal Congestion",
+            "description": "A blockage of the nasal passages, often due to inflammation.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 48,
+        "fields": {
+            "name": "Night Sweats",
+            "description": "Excessive sweating during the night.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 49,
+        "fields": {
+            "name": "Panic Attacks",
+            "description": "Sudden periods of intense fear or discomfort.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 50,
+        "fields": {
+            "name": "Puffy Eyes",
+            "description": "Swelling around the eyes.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 51,
+        "fields": {
+            "name": "Skin Itching",
+            "description": "A sensation that causes a desire to scratch the skin.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 52,
+        "fields": {
+            "name": "Slurred Speech",
+            "description": "A speech disorder in which words are pronounced unclearly.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 53,
+        "fields": {
+            "name": "Sore Muscles",
+            "description": "Pain or discomfort in muscles, often after exercise.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 54,
+        "fields": {
+            "name": "Tachycardia",
+            "description": "An abnormally rapid heart rate.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 55,
+        "fields": {
+            "name": "Tiredness",
+            "description": "A state of physical or mental exhaustion.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 56,
+        "fields": {
+            "name": "Tooth Pain",
+            "description": "Pain in or around a tooth.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 57,
+        "fields": {
+            "name": "Urinary Tract Infection Symptoms",
+            "description": "Symptoms associated with urinary tract infections, such as pain during urination.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 58,
+        "fields": {
+            "name": "Wheezing",
+            "description": "A high-pitched whistling sound during breathing.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 59,
+        "fields": {
+            "name": "Yellowing of Skin or Eyes",
+            "description": "A yellow discoloration of the skin or the whites of the eyes.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 60,
+        "fields": {
+            "name": "Chest Tightness",
+            "description": "A feeling of constriction or pressure in the chest.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 61,
+        "fields": {
+            "name": "Cold Sweats",
+            "description": "Sweating without an increase in temperature, often indicating a medical issue.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 62,
+        "fields": {
+            "name": "Difficulty Swallowing",
+            "description": "Trouble swallowing food or liquids.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 63,
+        "fields": {
+            "name": "Dizziness",
+            "description": "A sensation of spinning or losing balance.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 64,
+        "fields": {
+            "name": "Dry Mouth",
+            "description": "A condition where the mouth feels dry due to lack of saliva.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 65,
+        "fields": {
+            "name": "Fainting",
+            "description": "Loss of consciousness for a short period.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 66,
+        "fields": {
+            "name": "Frequent Headaches",
+            "description": "Recurring pain in the head, which can vary in intensity.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 67,
+        "fields": {
+            "name": "Loss of Appetite",
+            "description": "A reduced desire to eat.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 68,
+        "fields": {
+            "name": "Muscle Weakness",
+            "description": "A decrease in strength or power of muscles.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 69,
+        "fields": {
+            "name": "Nausea",
+            "description": "A feeling of unease or discomfort in the stomach, often accompanied by the urge to vomit.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 70,
+        "fields": {
+            "name": "Swelling",
+            "description": "An increase in size or volume of a body part, often due to fluid accumulation.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 71,
+        "fields": {
+            "name": "Tremors",
+            "description": "Uncontrollable shaking of a part of the body.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 72,
+        "fields": {
+            "name": "Urge Incontinence",
+            "description": "A sudden and strong need to urinate, leading to involuntary loss of urine.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 73,
+        "fields": {
+            "name": "Weight Loss",
+            "description": "A decrease in body weight, often due to various health issues or lifestyle changes.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.symptom",
+        "pk": 74,
+        "fields": {
+            "name": "Yellow Fever Symptoms",
+            "description": "Symptoms associated with yellow fever, such as fever and chills.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    }
+]

@@ -1,199 +1,219 @@
 [
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 1,
         "fields": {
-            "name": "Allergy and Immunology",
+            "name": "MBBS",
+            "description": "Bachelor of Medicine and Bachelor of Surgery",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 2,
         "fields": {
-            "name": "Anesthesiology",
+            "name": "MD",
+            "description": "Doctor of Medicine",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 3,
         "fields": {
-            "name": "Dermatology",
+            "name": "MS(Ortho)",
+            "description": "Master of Surgery in Orthopedics",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 4,
         "fields": {
-            "name": "Emergency Medicine",
+            "name": "PhD",
+            "description": "Doctor of Philosophy",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 5,
         "fields": {
-            "name": "Family Medicine",
+            "name": "DNB",
+            "description": "Diplomate of National Board",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 6,
         "fields": {
-            "name": "Internal Medicine",
+            "name": "BDS",
+            "description": "Bachelor of Dental Surgery",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 7,
         "fields": {
-            "name": "Neurology",
+            "name": "MCh",
+            "description": "Master of Chirurgiae (Surgery)",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 8,
         "fields": {
-            "name": "Obstetrics and Gynecology",
+            "name": "DM",
+            "description": "Doctorate of Medicine",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 9,
         "fields": {
-            "name": "Ophthalmology",
+            "name": "BPT",
+            "description": "Bachelor of Physiotherapy",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 10,
         "fields": {
-            "name": "Orthopedic Surgery",
+            "name": "MPT",
+            "description": "Master of Physiotherapy",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 11,
         "fields": {
-            "name": "Pediatrics",
+            "name": "BAMS",
+            "description": "Bachelor of Ayurvedic Medicine and Surgery",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 12,
         "fields": {
-            "name": "Psychiatry",
+            "name": "BHMS",
+            "description": "Bachelor of Homeopathic Medicine and Surgery",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 13,
         "fields": {
-            "name": "Radiology",
+            "name": "BPharm",
+            "description": "Bachelor of Pharmacy",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 14,
         "fields": {
-            "name": "Surgery",
+            "name": "MPharm",
+            "description": "Master of Pharmacy",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 15,
         "fields": {
-            "name": "Urology",
+            "name": "BSc Nursing",
+            "description": "Bachelor of Science in Nursing",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 16,
         "fields": {
-            "name": "Cardiology",
+            "name": "MSc Nursing",
+            "description": "Master of Science in Nursing",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 17,
         "fields": {
-            "name": "Gastroenterology",
+            "name": "MHA",
+            "description": "Master of Health Administration",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 18,
         "fields": {
-            "name": "Hematology",
+            "name": "MPH",
+            "description": "Master of Public Health",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 19,
         "fields": {
-            "name": "Oncology",
+            "name": "BAS",
+            "description": "Bachelor of Applied Science in Health Sciences",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"
         }
     },
     {
-        "model": "hospital.speciality",
+        "model": "hospital.degree",
         "pk": 20,
         "fields": {
-            "name": "Endocrinology",
+            "name": "DPT",
+            "description": "Doctor of Physical Therapy",
             "status": "pending",
             "created_at": "2024-10-21T10:00:00Z",
             "updated_at": "2024-10-21T10:00:00Z"

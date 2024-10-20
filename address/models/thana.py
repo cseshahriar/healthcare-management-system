@@ -15,6 +15,5 @@ class Thana(models.Model):
     class Meta:
         ordering = ['name_english']
 
-
     def __str__(self):
         return self.name_english

@@ -148,8 +148,8 @@ class Doctor(CommonField):
         related_name='doctor_district',
         null=True
     )
-    thana = models.ForeignKey(
-        Thana, models.SET_NULL,
+    upazila = models.ForeignKey(
+        Upazila, models.SET_NULL,
         related_name='doctor_upazila',
         null=True, blank=True
     )

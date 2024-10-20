@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from .models import (
     Slider, Speciality, Service, Item, Doctor, Expertize, Faq, Gallery,
-    Contact, Feedback, Symptom
+    Contact, Feedback, Symptom, Subject, Degree, DoctorDegree
 )
 
 
@@ -125,7 +125,6 @@ class DoctorAdmin(admin.ModelAdmin):
         'instagram',
         'division',
         'district',
-        'thana',
         'post_code',
         'address',
     )
@@ -140,7 +139,6 @@ class DoctorAdmin(admin.ModelAdmin):
         'speciality',
         'division',
         'district',
-        'thana',
     )
     search_fields = ('name',)
     date_hierarchy = 'created_at'
@@ -278,6 +276,10 @@ class SymptomAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
     list_editable = ('is_active', 'is_deleted', )
 
+
+admin.site.register(Subject)
+admin.site.register(Degree)
+admin.site.register(DoctorDegree)
 
 admin.site.site_header = 'PMS Admin'
 admin.site.site_title = 'PM-System'

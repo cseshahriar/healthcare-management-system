@@ -1,0 +1,332 @@
+[
+    {
+        "model": "hospital.subject",
+        "pk": 1,
+        "fields": {
+            "name": "MBBS",
+            "description": "Bachelor of Medicine, Bachelor of Surgery - an undergraduate degree awarded to students who have completed their studies in medicine.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 2,
+        "fields": {
+            "name": "MD",
+            "description": "Doctor of Medicine - a postgraduate degree for physicians.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 3,
+        "fields": {
+            "name": "MS",
+            "description": "Master of Surgery - a postgraduate degree in surgery.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 4,
+        "fields": {
+            "name": "PhD",
+            "description": "Doctor of Philosophy - a doctoral degree that involves research in a specific field, including medicine.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 5,
+        "fields": {
+            "name": "BDS",
+            "description": "Bachelor of Dental Surgery - an undergraduate degree in dentistry.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 6,
+        "fields": {
+            "name": "MDS",
+            "description": "Master of Dental Surgery - a postgraduate degree in dentistry.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 7,
+        "fields": {
+            "name": "Nursing",
+            "description": "The science and practice of caring for individuals, families, and communities.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 8,
+        "fields": {
+            "name": "Physiotherapy",
+            "description": "A health profession that helps individuals improve their physical function.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 9,
+        "fields": {
+            "name": "Pharmacy",
+            "description": "The science and practice of preparing and dispensing medications.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 10,
+        "fields": {
+            "name": "Public Health",
+            "description": "The science of protecting and improving community health.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 11,
+        "fields": {
+            "name": "Dentistry",
+            "description": "The science and practice of diagnosing and treating oral diseases.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 12,
+        "fields": {
+            "name": "Occupational Therapy",
+            "description": "A therapy to help individuals participate in daily activities.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 13,
+        "fields": {
+            "name": "Radiography",
+            "description": "The use of imaging to diagnose diseases.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 14,
+        "fields": {
+            "name": "Nutrition",
+            "description": "The study of nutrients in food and their effects on health.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 15,
+        "fields": {
+            "name": "Veterinary Medicine",
+            "description": "The branch of medicine that deals with animal health.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 16,
+        "fields": {
+            "name": "Anesthesiology",
+            "description": "The medical specialty focused on anesthesia and perioperative care.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 17,
+        "fields": {
+            "name": "Cardiology",
+            "description": "The study of heart conditions.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 18,
+        "fields": {
+            "name": "Dermatology",
+            "description": "The branch of medicine dealing with skin conditions.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 19,
+        "fields": {
+            "name": "Endocrinology",
+            "description": "The study of hormones and related disorders.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 20,
+        "fields": {
+            "name": "Gastroenterology",
+            "description": "The study of the digestive system and its disorders.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 21,
+        "fields": {
+            "name": "Hematology",
+            "description": "The study of blood and blood disorders.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 22,
+        "fields": {
+            "name": "Nephrology",
+            "description": "The study of kidney function and diseases.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 23,
+        "fields": {
+            "name": "Neurology",
+            "description": "The study of the nervous system and its disorders.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 24,
+        "fields": {
+            "name": "Obstetrics",
+            "description": "The branch of medicine that deals with childbirth and the care of women giving birth.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 25,
+        "fields": {
+            "name": "Oncology",
+            "description": "The study of cancer.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 26,
+        "fields": {
+            "name": "Pediatrics",
+            "description": "The branch of medicine dealing with children.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 27,
+        "fields": {
+            "name": "Psychiatry",
+            "description": "The study of mental disorders.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 28,
+        "fields": {
+            "name": "Radiology",
+            "description": "The medical specialty that uses imaging to diagnose and treat diseases.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 29,
+        "fields": {
+            "name": "Surgery",
+            "description": "The branch of medicine that deals with the treatment of injuries and disorders through surgical methods.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    },
+    {
+        "model": "hospital.subject",
+        "pk": 30,
+        "fields": {
+            "name": "Urology",
+            "description": "The branch of medicine that focuses on the urinary tract system and male reproductive organs.",
+            "status": "pending",
+            "created_at": "2024-10-21T10:00:00Z",
+            "updated_at": "2024-10-21T10:00:00Z"
+        }
+    }
+]

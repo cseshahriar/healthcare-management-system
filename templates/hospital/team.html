@@ -39,6 +39,22 @@
             </div>
             <div class="team-text">
               <h5><a href="{% url 'doctor_details' doctor.id %}">{{ doctor.name }}</a></h5>
+
+              <!-- educations -->
+              <h4>
+              {% for doctor_degree in doctor.doctor_degrees.all %}
+                <strong>
+                  {{ doctor_degree }}
+
+                  {% if degree.subject %}
+                    ({{degree.subject}})
+                  {% endif %}
+                </strong>
+
+                {% if not forloop.last %},{% endif %}
+              {% endfor %}
+              </h4>
+
               {% for speciality in doctor.speciality.all %}
                 <strong>{{ speciality }}</strong>{% if not forloop.last %},{% endif %}
               {% endfor %}

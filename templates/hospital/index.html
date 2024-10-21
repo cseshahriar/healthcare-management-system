@@ -252,12 +252,25 @@
 
               <div class="team-text">
                 <h5><a href="{% url 'doctor_details' doctor.id %}">{{ doctor.name }}</a></h5>
-                <strong>MBBS ({{ doctor.speciality }})</strong>
-                <p>
-                  {% for obj in doctor.expertize.all %}
-                    {{ obj }}{% if not forloop.last %},{% endif%}
+                 <!-- educations -->
+                 <h4>
+                  {% for doctor_degree in doctor.doctor_degrees.all %}
+                    <strong>
+                      {{ doctor_degree }}
+
+                      {% if degree.subject %}
+                        ({{degree.subject}})
+                      {% endif %}
+                    </strong>
+
+                    {% if not forloop.last %},{% endif %}
                   {% endfor %}
-                </p>
+                  </h4>
+                  <!-- specialies -->
+                  {% for speciality in doctor.speciality.all %}
+                    <strong>{{ speciality }}</strong>{% if not forloop.last %},{% endif %}
+                  {% endfor %}
+
 
                 <p style="margin-top:10px;color:#000">
                   {% if doctor.present_hospital %}

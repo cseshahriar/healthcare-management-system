@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+
+
+
 {% block maincontent %}
 <!--inner banner-->
 <div class="inner-banner">
@@ -35,14 +38,28 @@
         </div>
         <div class="col-md-6 col-sm-6">
           <div class="team-details-text">
-            <div class="sectio-title-2">
+            <div class="sectio-title">
+                <h3>{{ object.name }}</h3>
+                <!-- educations -->
+                <h4>
+                {% for doctor_degree in object.doctor_degrees.all %}
+                  <strong>
+                    {{ doctor_degree }}
 
-              <h3>{{ object.name }}</h3>
+                    {% if degree.subject %}
+                      ({{degree.subject}})
+                    {% endif %}
+                  </strong>
+
+                  {% if not forloop.last %},{% endif %}
+                {% endfor %}
+                </h4>
+                <!-- specialies -->
                 {% for speciality in object.speciality.all %}
                   <strong>{{ speciality }}</strong>{% if not forloop.last %},{% endif %}
                 {% endfor %}
 
-              <p style="margin-top:10px;color:#000">
+              <p style="color:#000" title="Present Hospital">
                 {% if doctor.present_hospital %}
                   {{ doctor.present_hospital }}
                 {% endif %}
@@ -109,9 +126,26 @@
                   </div>
                   <div class="team-text">
                     <h5><a href="{% url 'doctor_details' doctor.id %}">{{ doctor.name }}</a></h5>
-                    {% for speciality in object.speciality.all %}
-                     <strong>{{ speciality }}</strong>{% if not forloop.last %},{% endif %}
-                    {% endfor %}
+
+                      <!-- educations -->
+                 <h4>
+                  {% for doctor_degree in doctor.doctor_degrees.all %}
+                    <strong>
+                      {{ doctor_degree }}
+
+                      {% if degree.subject %}
+                        ({{degree.subject}})
+                      {% endif %}
+                    </strong>
+
+                    {% if not forloop.last %},{% endif %}
+                  {% endfor %}
+                  </h4>
+
+                  <!-- specialies -->
+                  {% for speciality in doctor.speciality.all %}
+                    <strong>{{ speciality }}</strong>{% if not forloop.last %},{% endif %}
+                  {% endfor %}
 
 
                     <p style="margin-top:10px;color:#000">

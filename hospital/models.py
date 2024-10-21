@@ -220,6 +220,9 @@ class DoctorDegree(CommonField):
         max_length=4, verbose_name="Year of Awarded",
     )
 
+    def __str__(self):
+        return f"{self.degree.name}"
+
 
 class Expertize(CommonField):
     name = models.CharField(max_length=120)

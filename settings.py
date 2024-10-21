@@ -10,7 +10,7 @@ from heartcare.local_settings import (
 )
 from heartcare.logging import LOGGING
 
-PROJECT_NAME = 'Patient-Management-System'
+PROJECT_NAME = 'Healthcare-Management-System'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...) -------
 SETTINGS_DIR = os.path.dirname(os.path.abspath(__file__))

@@ -217,7 +217,8 @@ class DoctorDegree(CommonField):
         Subject, on_delete=models.PROTECT, related_name='doctor_degrees')
     institute = models.CharField(max_length=255)
     passing_year = models.CharField(
-        max_length=4, verbose_name="Year the degree was awarded")
+        max_length=4, verbose_name="Year of Awarded",
+    )
 
 
 class Expertize(CommonField):

@@ -1,4 +1,7 @@
-from .doctor import DoctorForm, DoctorFormUpdate
+from .doctor import (
+    DoctorForm, DoctorFormUpdate, DoctorDegreeForm,
+    DoctorDegreeFormSet
+)
 from .login_form import (
     CustomLoginForm,
 )
@@ -6,5 +9,7 @@ from .login_form import (
 __all__ = [
     DoctorForm,
     CustomLoginForm,
-    DoctorFormUpdate
+    DoctorFormUpdate,
+    DoctorDegreeForm,
+    DoctorDegreeFormSet
 ]

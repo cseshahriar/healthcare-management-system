@@ -48,19 +48,18 @@
 </style>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-
-    <script type="text/javascript">
-        $(function () {
-            $(".inline.{{ file.prefix }}").formset({
-                prefix: "{{ file.prefix }}",
-                addCssClass: "add-row btn btn-success",
-                deleteCssClass: "delete-row",
-                addText: "Add Record",
-                deleteText: '<i class="fa fa-trash text-danger"></i>',
-                formCssClass: "inline-form",
-            });
+<script type="text/javascript">
+    $(function () {
+        $(".inline.{{ file.prefix }}").formset({
+            prefix: "{{ file.prefix }}",
+            addCssClass: "add-row btn btn-success",
+            deleteCssClass: "delete-row",
+            addText: "Add Record",
+            deleteText: '<i class="fa fa-trash text-danger"></i>',
+            formCssClass: "inline-form",
         });
-    </script>
+    });
+</script>
 {% endblock extra_css %}
 
 

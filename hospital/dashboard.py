@@ -6,7 +6,7 @@ from django.views.generic import ListView, UpdateView, DetailView
 
 from patient_ms.models import DoctorAppointment
 from hospital.models import Doctor
-from hospital.forms import DoctorFormUpdate
+from hospital.forms import DoctorFormUpdate, DoctorDegreeFormSet
 from django.contrib import messages
 from django.contrib.auth.mixins import (
     LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
@@ -110,21 +110,43 @@ class ProfileUpdate(LoginRequiredMixin, UpdateView):
     form_class = DoctorFormUpdate
     template_name = 'dashboard/profile/profile.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        self.object = self.get_object()
+        doctor_degree_formset = DoctorDegreeFormSet(
+            self.request.POST or None, instance=self.object,
+            prefix="degree"
+        )
+        context["doctor_degree_formset"] = doctor_degree_formset
+        context["total"] = self.get_queryset().count()
+        return context
+
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = self.get_form()
-        if form.is_valid():
-            return self.form_valid(form)
+        self.object = self.get_object()
+        doctor_degree_formset = DoctorDegreeFormSet(
+            self.request.POST, instance=self.object,
+            prefix="degree"
+        )
+        if form.is_valid() and doctor_degree_formset.is_valid():
+            return self.form_valid(form, doctor_degree_formset)
         else:
             logger.info(f"{'*' * 10} form.errors: {form.errors}\n")
-            return self.form_invalid(form)
+            return self.form_invalid(form, doctor_degree_formset)
 
-    def form_valid(self, form):
+    def form_valid(self, form, doctor_degree_formset):
         """If the form is valid, save the associated model."""
         self.object = form.save()
+        doctor_degree = doctor_degree_formset.save()
         messages.success(self.request, "Successfully Updated")
         logger.info(f"{'*' * 10} self.object: {self.object}\n")
         return redirect('doctor_view', pk=self.object.pk)
+
+    def form_invalid(self, form, doctor_degree_formset):
+        """If the form is invalid, render the invalid form."""
+        return self.render_to_response(self.get_context_data(
+            form=form, doctor_degree_formset=doctor_degree_formset))
 
 
 class DrProfileView(LoginRequiredMixin, DetailView):

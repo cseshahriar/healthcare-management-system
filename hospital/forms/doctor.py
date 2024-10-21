@@ -1,6 +1,6 @@
 from django import forms
-from hospital.models import Doctor
-
+from hospital.models import Doctor, DoctorDegree
+from django.forms import inlineformset_factory
 
 class DoctorForm(forms.ModelForm):
 
@@ -50,13 +50,15 @@ class DoctorFormUpdate(forms.ModelForm):
                 attrs={'rows': 1, 'cols': 5}
             ),
             'availability_days': forms.Textarea(
-                attrs={'rows': 3, 'cols': 5}
+                attrs={'rows': 1, 'cols': 5}
             ),
             'availability_time': forms.Textarea(
-                attrs={'rows': 3, 'cols': 5}
+                attrs={'rows': 1, 'cols': 5}
             ),
-
+            'is_vacation_mode': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
+
+
 
     def __init__(self, *args, **kwargs):
         super(DoctorFormUpdate, self).__init__(*args, **kwargs)
@@ -65,3 +67,25 @@ class DoctorFormUpdate(forms.ModelForm):
         self.fields["present_hospital"].required = True
         self.fields["speciality"].required = True
         self.fields['address'].widget.attrs['rows'] = 3
+
+
+class DoctorDegreeForm(forms.ModelForm):
+
+    class Meta:
+        model = DoctorDegree
+        fields = [
+            'degree',
+            'subject',
+            'institute',
+            'passing_year',
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super(DoctorDegreeForm, self).__init__(*args, **kwargs)
+        self.fields["degree"].required = True
+        self.fields["subject"].required = True
+
+
+DoctorDegreeFormSet = inlineformset_factory(
+    Doctor, DoctorDegree, form=DoctorDegreeForm, extra=1, can_delete=True
+)

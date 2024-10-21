@@ -4,111 +4,190 @@
 
 {% block extra_css  %}
     <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/profile.css' %}" xmlns="http://www.w3.org/1999/html">
-<style>
-    label.form-check-label {
-        margin-left: 25px;
-    }
-</style>
+    <style>
+        label.form-check-label {
+            margin-left: 25px;
+        }
+        .row.grid_for_all {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        i.fa.fa-trash.text-danger {
+            font-size: 20px;
+            margin-top: 35px;
+        }
+        #div_id_is_vacation_mode label {
+            color:red;
+        }
+        #id_active_mode_help{
+            margin-left:20px;
+        }
+    </style>
 {% endblock extra_css %}
 
 {% block body  %}
-<form id="application_form" action="" enctype="multipart/form-data" class="form-register" method="POST"
-      accept-charset="UTF-8"
-      data-upazila-url={% url 'load_upazila' %} data-district-url={% url 'load_district' %}>
-{% csrf_token %}
-<div class="col-md-12">
-    <div class="container rounded bg-white mt-5 mb-5">
-        <div class="row">
+<form
+    id="application_form"
+    action=""
+    enctype="multipart/form-data"
+    class="form-register"
+    method="POST"
+    accept-charset="UTF-8"
+    data-upazila-url={% url 'load_upazila' %}
+    data-district-url={% url 'load_district' %}
+>
+    {% csrf_token %}
+    <div class="col-md-12">
+        <div class="container-fluid rounded bg-white mt-5 mb-5">
+            <div class="row">
 
-            <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img id="imagePreview" class="rounded-circle mt-5 col-12" src="{{ object.picture.url }}">
-                    <span class="font-weight-bold">{{ object.name }}</span>
-                    <span class="text-black-50">{{ object.user }}</span>
-                </div>
-            </div>
-            <div class="col-md-5 border-right">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Profile Settings</h4>
+                    <div class="col-md-3 border-right">
+                        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                            <img id="imagePreview" class="rounded-circle mt-5 col-12" src="{{ object.picture.url }}">
+                            <span class="font-weight-bold">{{ object.name }}</span>
+                            <span class="text-black-50">{{ object.user }}</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12"> {{ form.is_vacation_mode|as_crispy_field }}</div>
+                            <p class="help-block" id="id_active_mode_help">if you are want to vacation then please check it.</p>
+                        </div>
                     </div>
-                    <div class="row mt-2">
-                        <div class="col-md-12"> {{ form.is_vacation_mode|as_crispy_field }}</div>
-                        <p class="help-block">if you are want to vacation then please check it.</p>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-12"> {{ form.doctor_id|as_crispy_field }}</div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-12"> {{ form.name|as_crispy_field }}</div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-12">{{ form.speciality | as_crispy_field }}</div>
-                        <div class="col-md-12">{{ form.present_hospital | as_crispy_field }}</div>
-                        <div class="col-md-12">{{ form.picture|as_crispy_field }}</div>
-                        <div class="col-md-12">{{ form.year_of_experience|as_crispy_field }}</div>
-                        <div class="col-md-12">{{ form.availability_days|as_crispy_field }}</div>
-                        <div class="col-md-12">{{ form.availability_time|as_crispy_field }}</div>
 
+                    <div class="col-md-5 border-right">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-right">Profile Settings</h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12"> {{ form.doctor_id|as_crispy_field }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12"> {{ form.name|as_crispy_field }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">{{ form.speciality | as_crispy_field }}</div>
+                                <div class="col-md-12">{{ form.present_hospital | as_crispy_field }}</div>
+                                <div class="col-md-12">{{ form.picture|as_crispy_field }}</div>
+                                <div class="col-md-12">{{ form.year_of_experience|as_crispy_field }}</div>
+                                <div class="col-md-12">{{ form.availability_days|as_crispy_field }}</div>
+                                <div class="col-md-12">{{ form.availability_time|as_crispy_field }}</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-md-12">{{ form.facebook|as_crispy_field }}</div>
-                        <div class="col-md-6">{{ form.twitter|as_crispy_field }}</div>
-                        <div class="col-md-6">{{ form.instagram|as_crispy_field }}</div>
+
+                    <div class="col-md-4">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center experience">
+                                <span>Present Address</span></div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">{{ form.division | as_crispy_field }}</div>
+                                <div class="col-md-6">{{ form.district | as_crispy_field }}</div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">{{ form.upazila | as_crispy_field }}</div>
+                                <div class="col-md-6">{{ form.post_code | as_crispy_field }}</div>
+                            </div>
+                            <br>
+                            <div class="col-md-12">{{ form.address | as_crispy_field }}</div>
+                            <br>
+                            <div class="col-md-12">{{ form.details | as_crispy_field }}</div>
+
+                            <div class="row">
+                                <div class="col-md-12">{{ form.facebook|as_crispy_field }}</div>
+                                <div class="col-md-12">{{ form.twitter|as_crispy_field }}</div>
+                                <div class="col-md-12">{{ form.instagram|as_crispy_field }}</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mt-5 text-center">
-                        <button class="btn btn-primary profile-button" type="submit">Update Profile</button>
+
+                    <div class="col-md-3"></div>
+                    <div class="col-md-9">
+                        <div class="py-3">
+                            <div class="d-flex justify-content-between align-items-center experience">
+                                <span>Educations</span></div>
+                            <br>
+                            {{ doctor_degree_formset.management_form }}
+                            {{ doctor_degree_formset.non_form_errors }}
+
+                            {% for degree_form in doctor_degree_formset %}
+                             {{ degree_form.id }}
+                                <div class="inline {{ doctor_degree_formset.prefix }} row">
+                                    <div class="col-md-10">
+                                        <div class="row grid_for_all">
+                                            <div class="col-md-3 pr-0">
+                                                {{ degree_form.degree|as_crispy_field }}
+                                            </div>
+                                            <div class="col-md-3">
+                                                {{ degree_form.subject|as_crispy_field }}
+                                            </div>
+                                            <div class="col-md-4">
+                                                {{ degree_form.institute|as_crispy_field }}
+                                            </div>
+                                            <div class="col-md-2">
+                                                {{ degree_form.passing_year|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        {% if doctor_degree_formset.can_delete %}
+                                         {{ degree_form.DELETE }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="mt-5 mb-5 text-center">
+                            <button class="btn btn-primary profile-button btn-lg" type="submit">Update Profile</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center experience">
-                        <span>Present Address</span></div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-6">{{ form.division | as_crispy_field }}</div>
-                        <div class="col-md-6">{{ form.district | as_crispy_field }}</div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-6">{{ form.upazila | as_crispy_field }}</div>
-                        <div class="col-md-6">{{ form.post_code | as_crispy_field }}</div>
-                    </div>
-                    <br>
-                    <div class="col-md-12">{{ form.address | as_crispy_field }}</div>
-                    <br>
-                    <div class="col-md-12">{{ form.details | as_crispy_field }}</div>
-                </div>
-            </div>
-            </form>
         </div>
     </div>
-</div>
-</div>
-
-
-</div>
 </form>
 {% endblock %}
 
 {% block extra_ja %}
-<script>
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#imagePreview').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-$("#id_picture").change(function(){
-    readURL(this);
-});
-
-</script>
 <script src="{% static 'custom/load_data.js' %}"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#id_picture").change(function(){
+        readURL(this);
+    });
+
+    $(document).ready(function() {
+        $('select').select2();
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $(".inline.{{ doctor_degree_formset.prefix }}").formset({
+            prefix: "{{ doctor_degree_formset.prefix }}",
+            addCssClass: "add-row btn btn-primary",
+            deleteCssClass: "delete-row",
+            addText: "Add More Degree",
+            deleteText: '<i class="fa fa-trash text-danger"></i>',
+            formCssClass: "inline-form",
+        });
+    });
+</script>
 {% endblock %}

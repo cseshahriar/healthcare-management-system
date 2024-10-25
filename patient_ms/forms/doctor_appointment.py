@@ -5,7 +5,6 @@ from django.core.exceptions import ValidationError
 from patient_ms.models import DoctorAppointment
 
 
-
 class DoctorAppointmentForm(forms.ModelForm):
     class Meta:
         model = DoctorAppointment

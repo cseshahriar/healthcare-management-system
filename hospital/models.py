@@ -187,6 +187,17 @@ class Doctor(CommonField):
     def __str__(self):
         return str(self.name)
 
+    def today_has_appointment(self):
+        ''' return today has appointment limit left '''
+        today = timezone.now().date()
+        today_appointed_count = self.doctorappointment_set.objects.filter(
+            created_at=today
+        ).count()
+        if today_appointed_count < self.daily_appointment_limit:
+            return True
+        else:
+            return False
+
     @property
     def average_rating(self):
         # Calculate the average rating

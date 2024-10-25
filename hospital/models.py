@@ -191,12 +191,22 @@ class Doctor(CommonField):
         ''' return today has appointment limit left '''
         today = timezone.now().date()
         today_appointed_count = self.doctorappointment_set.objects.filter(
-            created_at=today
+            created_at__date=today
         ).count()
         if today_appointed_count < self.daily_appointment_limit:
             return True
         else:
             return False
+
+    def remaining_appointments_today(self):
+        """Returns the number of appointment slots left for today."""
+        today = timezone.now().date()
+        today_appointed_count = self.doctorappointment_set.filter(
+            created_at__date=today
+        ).count()
+        remaining_slots = self.daily_appointment_limit - today_appointed_count
+        # Ensure remaining slots are not negative
+        return max(remaining_slots, 0)
 
     @property
     def average_rating(self):

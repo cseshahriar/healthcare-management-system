@@ -1,5 +1,9 @@
 from django import forms
+from django.utils import timezone
+from django.core.exceptions import ValidationError
+
 from patient_ms.models import DoctorAppointment
+
 
 
 class DoctorAppointmentForm(forms.ModelForm):
@@ -39,3 +43,20 @@ class DoctorAppointmentForm(forms.ModelForm):
         self.fields['appointment_time'].required = True
         self.fields['speciality'].required = True
 
+    def clean(self):
+        cleaned_data = super().clean()
+        doctor = cleaned_data.get('doctor')
+        today = timezone.now().date()
+        doctor_daily_limit = doctor.daily_appointment_limit
+        # max limit per day
+        today_appointed_count = DoctorAppointment.objects.filter(
+            created_at=today, doctor=doctor
+        ).count()
+
+        if today_appointed_count >= doctor_daily_limit:
+            raise ValidationError(
+                "Daily appointment limit reached for this doctor. \
+                    Please try other days"
+            )
+
+        return cleaned_data

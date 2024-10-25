@@ -2,6 +2,7 @@ from django import forms
 from hospital.models import Doctor, DoctorDegree
 from django.forms import inlineformset_factory
 
+
 class DoctorForm(forms.ModelForm):
 
     class Meta:
@@ -57,8 +58,6 @@ class DoctorFormUpdate(forms.ModelForm):
             ),
             'is_vacation_mode': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
-
-
 
     def __init__(self, *args, **kwargs):
         super(DoctorFormUpdate, self).__init__(*args, **kwargs)

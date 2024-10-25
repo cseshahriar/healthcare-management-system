@@ -180,6 +180,9 @@ class Doctor(CommonField):
         max_length=255, help_text="10:00 AM - 12:00 PM & 05:00 PM - 10:00 PM",
         null=True, blank=False
     )
+    daily_appointment_limit = models.PositiveIntegerField(
+        default=10, help_text="Maximum number of appointments per day"
+    )
 
     def __str__(self):
         return str(self.name)

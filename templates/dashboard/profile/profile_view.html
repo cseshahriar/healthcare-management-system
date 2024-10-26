@@ -112,6 +112,26 @@
                     </div>
                   </div>
                   <hr>
+
+                  <h4>
+
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Degreee</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {% for doctor_degree in doctor.doctor_degrees.all %}
+                          {{ doctor_degree }}
+                          {% if degree.subject %}
+                            ({{degree.subject}})
+                          {% endif %}
+
+                          {% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                    <hr>
+
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Phone</h6>
@@ -121,6 +141,7 @@
                     </div>
                   </div>
                   <hr>
+
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Speciality</h6>

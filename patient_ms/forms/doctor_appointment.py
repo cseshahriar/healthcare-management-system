@@ -49,7 +49,8 @@ class DoctorAppointmentForm(forms.ModelForm):
         doctor_daily_limit = doctor.daily_appointment_limit
         # max limit per day
         today_appointed_count = DoctorAppointment.objects.filter(
-            created_at__date=today, doctor=doctor
+            created_at__date=today, doctor=doctor,
+            status__in=['confirmed', 'completed']
         ).count()
 
         if today_appointed_count >= doctor_daily_limit:

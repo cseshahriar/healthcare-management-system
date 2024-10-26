@@ -80,8 +80,14 @@
               <li><a class="ytp" href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
             </ul>
 
-            {% if not object.is_vacation_mode %}
-              <a class="book-app" href="{% url 'patient_ms:appointment' %}">Book an Appointment</a>
+            {% if not object.is_vacation_mode  %}
+              {% if object.remaining_appointments_today > 0 %}
+                <a class="book-app" href="{% url 'patient_ms:appointment' %}">Book an Appointment ({{ object.remaining_appointments_today }})</a>
+              {% else %}
+                <h4 class="text-secondary" disabled>Today's appointment quota fulfilled, please take an appointment other days.</h4>
+              {% endif %}
+            {% else %}
+            <h4 class="text-secondary" disabled>Doctor now in a vacation.</h4>
             {% endif %}
 
           </div>

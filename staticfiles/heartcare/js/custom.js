@@ -93,15 +93,18 @@ $(document).ready(function () {
             format: 'LT'
         });
     }
+
     //sidemenu
     $("#menu-close").on('click', function (e) {
         e.preventDefault();
         $("#sidebar-wrapper").toggleClass("active");
     });
+
     $("#menu-toggle").on('click', function (e) {
         e.preventDefault();
         $("#sidebar-wrapper").toggleClass("active");
     });
+
     // Preety Photo
     if ($('.gallery').length) {
         $("area[data-rel^='prettyPhoto']").prettyPhoto();

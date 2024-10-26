@@ -41,7 +41,7 @@
                             <img src="{% static 'heartcare/images/logo.png' %}" alt=""></a>
                         </div>
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <!-- MOBILE MENU -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li><a href="{% url 'index' %}">Home</a></li>
@@ -69,7 +69,6 @@
                                     </li>
 
                                     <li class="dropdown">
-
                                         <li href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                             {% if login_user.picture %}
                                                 <img src="{{ login_user.picture.url }}" width="40" height="40" class="rounded-circle">
@@ -97,11 +96,11 @@
                                     <li><a class="appoint" href="{% url 'registration_type' %}">Registration</a></li>
                                 {% endif %}
 
-                                <li>
+                                {% comment %} <li>
                                     <a id="menu-toggle" href="#" class="toggle">
                                         <img src="{% static 'heartcare/images/bars.png' %}" alt="">
                                     </a>
-                                </li>
+                                </li> {% endcomment %}
                             </ul>
                         </div>
                         <!-- /.navbar-collapse -->

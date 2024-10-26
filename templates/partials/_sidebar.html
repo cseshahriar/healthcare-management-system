@@ -1,5 +1,7 @@
 {% load static %}
-<div id="sidebar-wrapper">
+{% load group_checker_tag %}
+
+<div id="sidebar-wrapper"> <!-- mobile menu -->
   <a id="menu-close" href="#" class="close toggle"><i class="fa fa-times" aria-hidden="true"></i></a>
   <ul class="sidebar-nav">
     <li class="sidebar-brand"> <a href=""><img src="{% static 'heartcare/images/footer-logo.png' %}" alt=""></a> </li>
@@ -13,6 +15,27 @@
         <li><a href="{% url 'faqs' %}">Faqs</a></li>
       </ul>
     </li>
+
     <li><a href="{% url 'contact' %}">Contacts</a></li>
+
+    {% if user.is_authenticated %}
+      {% if user|is_superuser %}
+        <li><a href="/manage" target="_blank"> Manage </a></li>
+      {% endif %}
+
+      {% if user|is_doctor %}
+        <li><a href="{% url 'doctor_dashboard' %}"> Dashboard </a></li>
+      {% endif %}
+
+      {% if user|is_patient %}
+        <li><a href="{% url 'patient_ms:patient_profile' %}"> Profile </a></li>
+      {% endif %}
+
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+    {% else %}
+      <li><a class="appoint" href="{% url 'login' %}">Sign In</a></li>
+      <li><a class="appoint" href="{% url 'registration_type' %}">Registration</a></li>
+    {% endif %}
+
   </ul>
 </div>

@@ -183,6 +183,9 @@ class Doctor(CommonField):
     daily_appointment_limit = models.PositiveIntegerField(
         default=10, help_text="Maximum number of appointments per day"
     )
+    # sms credentials
+    api_key = models.CharField(max_length=255, null=True, blank=True)
+    senderid = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return str(self.name)

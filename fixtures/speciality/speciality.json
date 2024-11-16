@@ -1,572 +1,914 @@
 [
-    {
-        "model": "hospital.speciality",
-        "pk": 1,
-        "fields": {
-            "name": "Anesthesiologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 2,
-        "fields": {
-            "name": "Plastic Surgeon",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 3,
-        "fields": {
-            "name": "Cardiologist (Heart)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 4,
-        "fields": {
-            "name": "Dentist (Maxillofacial)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 5,
-        "fields": {
-            "name": "Dermatologist (Skin &amp; Sex)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 6,
-        "fields": {
-            "name": "Otolaryngologists (ENT)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 7,
-        "fields": {
-            "name": "Gastroenterologist (Gastric)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 8,
-        "fields": {
-            "name": "Gynaecologist (Obstetric)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 9,
-        "fields": {
-            "name": "Hematologist (Blood)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 10,
-        "fields": {
-            "name": "Hepatologist (Liver)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 11,
-        "fields": {
-            "name": "Immunologist (Allergy)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 12,
-        "fields": {
-            "name": "Infertility Specialist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 13,
-        "fields": {
-            "name": "Medicine Specialist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 14,
-        "fields": {
-            "name": "Neonatologist (New Born)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 15,
-        "fields": {
-            "name": "Nephrologist (Kidney)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 16,
-        "fields": {
-            "name": "Neuro Surgeon",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 17,
-        "fields": {
-            "name": "Neurologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 18,
-        "fields": {
-            "name": "Oncologist (Cancer)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 19,
-        "fields": {
-            "name": "Ophthalmologist (Eye)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 20,
-        "fields": {
-            "name": "Orthopedist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 21,
-        "fields": {
-            "name": " Pathologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 22,
-        "fields": {
-            "name": "  Pediatrician (Child)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 23,
-        "fields": {
-            "name": "Physiotherapist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 24,
-        "fields": {
-            "name": "Psychiatrist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 25,
-        "fields": {
-            "name": "Pulmonologist (Chest)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 26,
-        "fields": {
-            "name": "Radiologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 27,
-        "fields": {
-            "name": "Rheumatologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 28,
-        "fields": {
-            "name": "Urologist (Urinary)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 29,
-        "fields": {
-            "name": "Vascular Surgeon (Arteries)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 30,
-        "fields": {
-            "name": "Cardiac Surgeon (Heart)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 31,
-        "fields": {
-            "name": "Proctologists (Colon & Rectum)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 32,
-        "fields": {
-            "name": "Cardiothoracic Surgeon",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 33,
-        "fields": {
-            "name": "Hepatobiliary Surgeon",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 34,
-        "fields": {
-            "name": "Endocrinologist (Thyroid)",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 35,
-        "fields": {
-            "name": " Diabetologists",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 36,
-        "fields": {
-            "name": "  Nutritionist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 37,
-        "fields": {
-            "name": "Thoracic Surgeon",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 38,
-        "fields": {
-            "name": " Laparoscopic Surgeon",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 39,
-        "fields": {
-            "name": "Surgeon",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 40,
-        "fields": {
-            "name": "Respiratory Specialist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 41,
-        "fields": {
-            "name": "Internal Medicine Specialist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 42,
-        "fields": {
-            "name": "Pediatric Surgeon",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 43,
-        "fields": {
-            "name": "Physical Medicine Specialistn",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 44,
-        "fields": {
-            "name": "Pain Specialist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 45,
-        "fields": {
-            "name": "Pain Specialist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 46,
-        "fields": {
-            "name": "Pediatric Neurologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 47,
-        "fields": {
-            "name": "Pediatric Gastroenterologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 48,
-        "fields": {
-            "name": "Pediatric Orthopedist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 49,
-        "fields": {
-            "name": "Pediatric Oncologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 50,
-        "fields": {
-            "name": "Pediatric Hematologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 51,
-        "fields": {
-            "name": "Orthopedic Surgeon",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 52,
-        "fields": {
-            "name": "Pediatric Pulmonologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 53,
-        "fields": {
-            "name": "Pediatric Cardiologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 54,
-        "fields": {
-            "name": "Gynecologic Oncologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 55,
-        "fields": {
-            "name": "Pediatric Nephrologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 56,
-        "fields": {
-            "name": "Pediatric Ophthalmologist",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
-    },
-    {
-        "model": "hospital.speciality",
-        "pk": 57,
-        "fields": {
-            "name": "Pediatric Neurosurgeon",
-            "status": "pending",
-            "created_at": "2024-10-21T10:00:00Z",
-            "updated_at": "2024-10-21T10:00:00Z"
-        }
+{
+    "model": "hospital.speciality",
+    "pk": 1,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "1",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.632Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Anesthesiologist"
     }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 2,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "2",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.615Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Plastic Surgeon"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 3,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "3",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.593Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Cardiologist (Heart)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 4,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "4",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.575Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Dentist (Maxillofacial)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 5,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "5",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.558Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Dermatologist (Skin &amp; Sex)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 6,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "6",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.541Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Otolaryngologists (ENT)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 7,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "7",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.522Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Gastroenterologist (Gastric)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 8,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "8",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.504Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Gynaecologist (Obstetric)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 9,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "9",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.486Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Hematologist (Blood)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 10,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "10",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.458Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Hepatologist (Liver)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 11,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "11",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.440Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Immunologist (Allergy)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 12,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "12",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.420Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Infertility Specialist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 13,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "13",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.394Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Medicine Specialist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 14,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "14",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.359Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Neonatologist (New Born)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 15,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "15",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.325Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Nephrologist (Kidney)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 16,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "16",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.278Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Neuro Surgeon"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 17,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "17",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.259Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Neurologist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 18,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "18",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.242Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Oncologist (Cancer)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 19,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "19",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.221Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Ophthalmologist (Eye)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 20,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "20",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.203Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Orthopedist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 21,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "21",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.183Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": " Pathologist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 22,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "22",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.163Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "  Pediatrician (Child)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 23,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "23",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.146Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Physiotherapist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 24,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "24",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.130Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Psychiatrist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 25,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "25",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.114Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pulmonologist (Chest)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 26,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "26",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.096Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Radiologist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 27,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "27",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.076Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Rheumatologist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 28,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "28",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.061Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Urologist (Urinary)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 29,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "29",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.043Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Vascular Surgeon (Arteries)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 30,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "30",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.024Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Cardiac Surgeon (Heart)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 31,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "31",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:07.009Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Proctologists (Colon & Rectum)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 32,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "32",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.992Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Cardiothoracic Surgeon"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 33,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "33",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.975Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Hepatobiliary Surgeon"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 34,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "34",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.956Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Endocrinologist (Thyroid)"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 35,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "35",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.940Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": " Diabetologists"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 36,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "36",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.923Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "  Nutritionist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 37,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "37",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.908Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Thoracic Surgeon"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 38,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "38",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.891Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": " Laparoscopic Surgeon"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 39,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "39",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.870Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Surgeon"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 40,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "40",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.853Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Respiratory Specialist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 41,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "41",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.835Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Internal Medicine Specialist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 42,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "42",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.819Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pediatric Surgeon"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 43,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "43",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.804Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Physical Medicine Specialistn"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 44,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "44",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.788Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pain Specialist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 45,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "45",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.772Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pain Specialist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 46,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "46",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.753Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pediatric Neurologist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 47,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "47",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.735Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pediatric Gastroenterologist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 48,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "48",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.719Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pediatric Orthopedist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 49,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "49",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.702Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pediatric Oncologist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 50,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "50",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.684Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pediatric Hematologist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 51,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "51",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.666Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Orthopedic Surgeon"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 52,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "52",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.649Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pediatric Pulmonologist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 53,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "53",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.633Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pediatric Cardiologist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 54,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "54",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.615Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Gynecologic Oncologist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 55,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "55",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.598Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pediatric Nephrologist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 56,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "56",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.580Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pediatric Ophthalmologist"
+    }
+},
+{
+    "model": "hospital.speciality",
+    "pk": 57,
+    "fields": {
+        "status": "pending",
+        "created_user": null,
+        "update_user": null,
+        "deleted_user": null,
+        "order": "57",
+        "created_at": "2024-10-21T10:00:00Z",
+        "updated_at": "2024-11-16T16:36:06.549Z",
+        "is_active": true,
+        "is_deleted": false,
+        "name": "Pediatric Neurosurgeon"
+    }
+}
 ]

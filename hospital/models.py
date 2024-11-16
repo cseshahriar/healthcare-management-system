@@ -70,14 +70,14 @@ class Slider(CommonField):
 
 
 class Speciality(CommonField):
-    ''' Doctor speciality '''
+    ''' Doctor Specialists '''
     name = models.CharField(max_length=150)
 
     def __str__(self):
         return str(self.name)
 
     class Meta:
-        verbose_name_plural = 'Doctor Speciality'
+        verbose_name_plural = 'Doctor Specialists'
 
 
 class Service(CommonField):

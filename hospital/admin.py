@@ -118,7 +118,6 @@ class DoctorAdmin(admin.ModelAdmin):
         'name',
         'doctor_id',
         'picture',
-        'details',
         'present_hospital',
         'twitter',
         'facebook',

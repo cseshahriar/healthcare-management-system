@@ -1,0 +1,57 @@
+id,name,is_active
+2, Anesthesiologist,TRUE
+3, Plastic Surgeon,TRUE
+4, Cardiologist (Heart),TRUE
+5, Dentist (Maxillofacial),TRUE
+6, Dermatologist (Skin & Sex),TRUE
+7, Otolaryngologists (ENT),TRUE
+8, Gastroenterologist (Gastric),TRUE
+9, Gynaecologist (Obstetric),TRUE
+10, Hematologist (Blood),TRUE
+11, Hepatologist (Liver),TRUE
+12, Immunologist (Allergy),TRUE
+13, Infertility Specialist,TRUE
+15, Medicine Specialist,TRUE
+16, Neonatologist (New Born),TRUE
+17, Nephrologist (Kidney),TRUE
+18, Neuro Surgeon,TRUE
+19, Neurologist,TRUE
+20, Oncologist (Cancer),TRUE
+21, Ophthalmologist (Eye),TRUE
+22, Orthopedist,TRUE
+23, Pathologist,TRUE
+24, Pediatrician (Child),TRUE
+25, Physiotherapist,TRUE
+26, Psychiatrist,TRUE
+27, Pulmonologist (Chest),TRUE
+28, Radiologist,TRUE
+29, Rheumatologist,TRUE
+30, Urologist (Urinary),TRUE
+31, Vascular Surgeon (Arteries),TRUE
+32, Cardiac Surgeon (Heart),TRUE
+34, Proctologists (Colon & Rectum),TRUE
+35, Cardiothoracic Surgeon,TRUE
+36, Hepatobiliary Surgeon,TRUE
+37, Endocrinologist (Thyroid),TRUE
+38, Diabetologists,TRUE
+39, Nutritionist,TRUE
+40, Thoracic Surgeon,TRUE
+41, Laparoscopic Surgeon,TRUE
+42, Surgeon,TRUE
+43, Respiratory Specialist,TRUE
+44, Internal Medicine Specialist,TRUE
+45, Pediatric Surgeon,TRUE
+46, Physical Medicine Specialist,TRUE
+47, Pain Specialist,TRUE
+48, Pediatric Neurologist,TRUE
+49, Pediatric Gastroenterologist,TRUE
+50, Pediatric Orthopedist,TRUE
+51, Pediatric Oncologist,TRUE
+52, Pediatric Hematologist,TRUE
+54, Orthopedic Surgeon,TRUE
+61, Pediatric Pulmonologist,TRUE
+62, Pediatric Cardiologist,TRUE
+63, Gynecologic Oncologist,TRUE
+64, Pediatric Nephrologist,TRUE
+65, Pediatric Ophthalmologist,TRUE
+66, Pediatric Neurosurgeon,TRUE

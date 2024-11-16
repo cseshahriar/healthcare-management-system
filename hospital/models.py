@@ -326,6 +326,10 @@ class Feedback(CommonField):
 
 class Symptom(CommonField):
     """ Symptoms model """
+    speciality = models.ForeignKey(
+        Speciality, on_delete=models.CASCADE, null=True, blank=True,
+        related_name='symptoms'
+    )
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=500, blank=True)
 

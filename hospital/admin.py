@@ -144,29 +144,6 @@ class DoctorAdmin(admin.ModelAdmin):
     list_editable = ('order', 'is_active', 'is_deleted', )
 
 
-@admin.register(Expertize)
-class ExpertizeAdmin(admin.ModelAdmin):
-    list_display = (
-        'id',
-        'order',
-        'created_at',
-        'is_active',
-        'is_deleted',
-        'name',
-    )
-    list_filter = (
-        'created_user',
-        'update_user',
-        'deleted_user',
-        'created_at',
-        'is_active',
-        'is_deleted',
-    )
-    search_fields = ('name',)
-    date_hierarchy = 'created_at'
-    list_editable = ('order', 'is_active', 'is_deleted', )
-
-
 @admin.register(Faq)
 class FaqAdmin(admin.ModelAdmin):
     list_display = (
@@ -270,10 +247,12 @@ class SymptomAdmin(admin.ModelAdmin):
         'is_active',
         'is_deleted',
         'name',
+        'speciality'
     )
-    search_fields = ('name',)
+    search_fields = ('name', 'speciality__name', )
     date_hierarchy = 'created_at'
     list_editable = ('is_active', 'is_deleted', )
+    list_filter = ('speciality', )
 
 
 admin.site.register(Subject)

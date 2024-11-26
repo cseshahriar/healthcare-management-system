@@ -112,21 +112,20 @@ class DoctorAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'order',
-        'created_at',
         'is_active',
-        'is_deleted',
-        'user',
         'name',
         'doctor_id',
-        'picture',
+        'license_number',
+        'valid_license_document',
+        'user',
         'present_hospital',
-        'twitter',
-        'facebook',
-        'instagram',
+        'online_fee',
+        'offline_fee',
         'division',
         'district',
         'post_code',
         'address',
+        'zoom_link'
     )
     list_filter = (
         'created_user',
@@ -142,7 +141,7 @@ class DoctorAdmin(admin.ModelAdmin):
     )
     search_fields = ('name',)
     date_hierarchy = 'created_at'
-    list_editable = ('order', 'is_active', 'is_deleted', )
+    list_editable = ('order', 'is_active', )
 
 
 @admin.register(Faq)
@@ -243,17 +242,13 @@ class FeedbackAdmin(admin.ModelAdmin):
 class SymptomAdmin(ImportExportModelAdmin):
     list_display = (
         'id',
-        'order',
-        'created_at',
-        'is_active',
-        'is_deleted',
         'name',
         'speciality'
     )
     search_fields = ('name', 'speciality__name', )
     date_hierarchy = 'created_at'
-    list_editable = ('is_active', 'is_deleted', )
     list_filter = ('speciality', )
+    ordering = ('name', )
 
 
 admin.site.register(Subject)

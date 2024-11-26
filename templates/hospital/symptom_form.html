@@ -17,7 +17,7 @@
                     <!-- email -->
                     <div class="form-row p-1">
                         {% include 'snippets/input_field.html' with form=form formfld=form.name placeholder=form.name.label icon='' %}
-                        <p>{{ form.name.help_text }}</p>
+                        <p class="mt-2">{{ form.name.help_text }}</p>
                     </div>
                     <br/>
 
@@ -25,7 +25,7 @@
                       <div class="row">
                           <div class="col-md-4"></div>
                           <div class="col-md-4">
-                            <button id='submit' class="btn btn-sm btn-block btn-info font-saira w-100 mt-2" type="submit">
+                            <button id='submit' class="btn btn-sm btn-block btn-success font-saira w-100 mt-2" type="submit">
                               <i class="fas fa-sign-in-alt mr-1"></i>Search
                             </button>
                           </div>

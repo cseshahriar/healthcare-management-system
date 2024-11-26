@@ -59,6 +59,8 @@ class DoctorAppointment(CommonField):
     is_visited = models.BooleanField(
         _('Is Doctor Check'), default=False
     )
+    fee = models.DecimalField(max_digits=10, decimal_places=3, default=0)
+    is_paid = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.patient}- Dr:({self.doctor}), Time: \

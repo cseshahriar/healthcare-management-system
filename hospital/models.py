@@ -186,6 +186,17 @@ class Doctor(CommonField):
     # sms credentials
     api_key = models.CharField(max_length=255, null=True, blank=True)
     senderid = models.CharField(max_length=255, null=True, blank=True)
+    # fees
+    online_fee = models.DecimalField(
+        max_digits=10, decimal_places=3, default=0)
+    offline_fee = models.DecimalField(
+        max_digits=10, decimal_places=3, default=0)
+    # license information
+    license_number = models.CharField(max_length=255, null=True, blank=True)
+    valid_license_document = models.FileField(
+        upload_to="license_document/", null=True, blank=True)
+    # zoom link
+    zoom_link = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return str(self.name)

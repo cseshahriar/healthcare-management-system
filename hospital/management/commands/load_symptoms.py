@@ -1,6 +1,5 @@
 import logging
 import pandas as pd
-from django.utils import timezone
 from django.core.management.base import BaseCommand
 from hospital.models import Speciality, Symptom
 
@@ -9,7 +8,8 @@ logger = logging.getLogger(__name__)
 
 class Command(BaseCommand):
     help = """Load symptom data from Excel file into the
-        command: python manage.py load_symptom symptoms.xlsx
+        command: python manage.py load_symptoms symptoms.xlsx
+        1038 symptoms
         """
 
     def add_arguments(self, parser):

@@ -255,16 +255,15 @@ joblib.dump(model, 'dataset/symptom_speciality_model.pkl')
 model = joblib.load('dataset/symptom_speciality_model.pkl')
 
 
-def detect_speciality(symptom_name):
-    # Predict speciality
-    predicted_speciality = model.predict([symptom_name])[0]
-    speciality, _ = Speciality.objects.get_or_create(name=predicted_speciality)
-    symptom, _ = Symptom.objects.get_or_create(
-        name=symptom_name,
-        speciality=predicted_speciality,
-    )
-    doctors = Doctor.objects.filter(speciality=speciality)
-    return {'speciality': speciality, 'doctors': doctors}
+def search_doctor_by_speciality(symptom_names):
+    data = []
+    for symptom_name in symptom_names:
+        symptom_name = symptom_name.strip()
+        symptom_list = list(Symptom.objects.filter(
+            name__icontains=symptom_name
+        ).values_list('speciality_id', flat=True))
+        data = symptom_list
+    return Doctor.objects.filter(speciality__pk__in=data)
 
 
 def search_doctor(request):
@@ -276,7 +275,8 @@ def search_doctor(request):
         form = SymptomSearchForm(request.POST)
         if form.is_valid():
             symptom_names = form.cleaned_data.get('name').split(',')
-            doctors = detect_speciality(symptom_names)  # get specialists
+            logger.info(f"{'*' * 10} input data : {symptom_names}\n")
+            doctors = search_doctor_by_speciality(symptom_names)
             if len(doctors) > 0:
                 return render(
                     request,
@@ -286,7 +286,9 @@ def search_doctor(request):
             else:
                 form = SymptomSearchForm(request.POST or None)
                 messages.warning(
-                    request, "No doctors found for the given symptoms")
+                    request,
+                    "Sorry, No doctors record found for the given data"
+                )
                 return render(request, template_name, {"form": form})
     else:
         logger.info(f"{'*' * 10} get \n")

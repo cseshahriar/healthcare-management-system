@@ -125,7 +125,8 @@ class DoctorAdmin(admin.ModelAdmin):
         'district',
         'post_code',
         'address',
-        'zoom_link'
+        'zoom_link',
+        'specialties'
     )
     list_filter = (
         'created_user',
@@ -142,6 +143,9 @@ class DoctorAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     date_hierarchy = 'created_at'
     list_editable = ('order', 'is_active', )
+
+    def specialties(self, obj):
+        return ', '.join([sp.name for sp in obj.speciality.all()])
 
 
 @admin.register(Faq)

@@ -17,6 +17,8 @@ from Core.views import (
     dr_change_password
 )
 from hospital import prediction_views
+from hospital.views import search_doctor
+
 urlpatterns = [
     path('', views.HomeView.as_view(), name='index'),
     path(
@@ -72,12 +74,13 @@ urlpatterns = [
         'doctor/password/change/',
         dr_change_password, name='dr_change_password'
     ),
-
-
     # Prediction url
     path(
         'prediction/type/', prediction_views.PredictionType.as_view(),
         name='prediction_type'
+    ),
+    path(
+        'search/doctors', search_doctor, name='search_doctor'
     ),
 
 ]

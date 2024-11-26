@@ -217,3 +217,78 @@ class ContactView(TemplateView):
                 messages.success(request, " Unable to take This request")
 
         return redirect('contact')
+
+
+# =========== symptoms ================
+from django.shortcuts import render, redirect
+from .models import Symptom, Speciality
+from .forms import SymptomSearchForm
+
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+import joblib
+
+
+# Load the dataset
+# data = pd.read_excel('dataset/symptoms_data.xlsx')
+
+# Features and labels
+# X = data['Symptom']
+# y = data['Speciality']
+
+# Create a pipeline: TF-IDF Vectorizer + Logistic Regression
+model = Pipeline([
+    ('tfidf', TfidfVectorizer()),
+    ('classifier', LogisticRegression(max_iter=1000)),
+])
+
+# Train the model
+# model.fit(X, y)
+
+# Save the model to a file
+joblib.dump(model, 'dataset/symptom_speciality_model.pkl')
+
+
+# Load the trained model
+model = joblib.load('dataset/symptom_speciality_model.pkl')
+
+
+def detect_speciality(symptom_name):
+    # Predict speciality
+    predicted_speciality = model.predict([symptom_name])[0]
+    speciality, _ = Speciality.objects.get_or_create(name=predicted_speciality)
+    symptom, _ = Symptom.objects.get_or_create(
+        name=symptom_name,
+        speciality=predicted_speciality,
+    )
+    doctors = Doctor.objects.filter(speciality=speciality)
+    return {'speciality': speciality, 'doctors': doctors}
+
+
+def search_doctor(request):
+    logger.info(f"{'*' * 10} search_doctor called \n")
+    template_name = "hospital/symptom_form.html"
+    recommendation_template_name = "hospital/recommendation.html"
+    doctors = []
+    if request.method == 'POST':
+        form = SymptomSearchForm(request.POST)
+        if form.is_valid():
+            symptom_names = form.cleaned_data.get('name').split(',')
+            doctors = detect_speciality(symptom_names)  # get specialists
+            if len(doctors) > 0:
+                return render(
+                    request,
+                    recommendation_template_name,
+                    {"doctors": doctors}
+                )
+            else:
+                form = SymptomSearchForm(request.POST or None)
+                messages.warning(
+                    request, "No doctors found for the given symptoms")
+                return render(request, template_name, {"form": form})
+    else:
+        logger.info(f"{'*' * 10} get \n")
+        form = SymptomSearchForm(request.POST or None)
+        return render(request, template_name, {"form": form})

@@ -1,0 +1,9 @@
+<h1>Detected Specialities</h1>
+<ul>
+    {% for obj in doctors %}
+        <li>
+            Symptom: {{ .objsymptom.name }} - Speciality: {{ obj.doctor.name }}
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'search_symptoms' %}">Search Again</a>

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
 
 from .models import (
     Slider, Speciality, Service, Item, Doctor, Expertize, Faq, Gallery,
@@ -34,7 +35,7 @@ class SliderAdmin(admin.ModelAdmin):
 
 
 @admin.register(Speciality)
-class SpecialityAdmin(admin.ModelAdmin):
+class SpecialityAdmin(ImportExportModelAdmin):
     list_display = (
         'id',
         'order',
@@ -239,7 +240,7 @@ class FeedbackAdmin(admin.ModelAdmin):
 
 
 @admin.register(Symptom)
-class SymptomAdmin(admin.ModelAdmin):
+class SymptomAdmin(ImportExportModelAdmin):
     list_display = (
         'id',
         'order',

@@ -5,11 +5,14 @@ from .doctor import (
 from .login_form import (
     CustomLoginForm,
 )
+from .symptom_forms import (SymptomSearchForm, SymptomSearchFormSet, )
 
 __all__ = [
     DoctorForm,
     CustomLoginForm,
     DoctorFormUpdate,
     DoctorDegreeForm,
-    DoctorDegreeFormSet
+    DoctorDegreeFormSet,
+    SymptomSearchForm,
+    SymptomSearchFormSet
 ]

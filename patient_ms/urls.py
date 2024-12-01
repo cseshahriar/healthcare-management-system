@@ -1,7 +1,7 @@
 from django.urls import path
 from patient_ms.views import (
     PatientInfoUpdate,
-    DoctorAppointment,
+    DoctorAppointmentView,
     doctor_filter,
     DoctorPrescriptionView,
     ViewAllSavedRecord,
@@ -24,7 +24,7 @@ urlpatterns = [
 
     path(
         'calender/appointment/',
-        DoctorAppointment.as_view(), name='appointment'
+        DoctorAppointmentView.as_view(), name='appointment'
     ),
     path(
         'appointment/<int:pk>/confirmation',

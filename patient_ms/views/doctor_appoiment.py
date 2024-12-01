@@ -12,7 +12,7 @@ from patient_ms.forms import DoctorAppointmentForm
 logger = logging.getLogger(__name__)
 
 
-class DoctorAppointment(
+class DoctorAppointmentView(
     UserPassesTestMixin,
     LoginRequiredMixin,
     CreateView
@@ -39,6 +39,7 @@ class DoctorAppointment(
             "appointment_day"
         ).strftime("%Y-%m-%d")
         doctor = form.cleaned_data.get("doctor")
+        print('----------------------', doctor, type(doctor))
         serial = 1
         try:
             save_object = self.model.objects.filter(

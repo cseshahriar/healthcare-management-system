@@ -102,7 +102,7 @@ class UserAdmin(
     """Admin for User model"""
     ordering = ('email', )
     list_display = (
-        'email', 'first_name', 'last_name', 'phone', 'last_login',
+        'id', 'phone', 'last_login',
         'last_updated', 'date_joined', 'is_staff', 'is_superuser', 'is_active',
     )
     fieldsets = (
@@ -125,6 +125,7 @@ class UserAdmin(
     search_fields = ('id', 'email', 'first_name', 'last_name', 'phone')
     inlines = (ProfileInline, )
     resource_class = UserResource  # import_export
+    list_display_links = ('phone', )
 
     def get_inline_instances(self, request, obj=None):
         """hides inlines during 'add user' view"""

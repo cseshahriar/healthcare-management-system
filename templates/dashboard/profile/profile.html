@@ -41,7 +41,33 @@
     <div class="col-md-12">
         <div class="container-fluid rounded bg-white mt-5 mb-5">
             <div class="row">
+                <div class="col-md-12">
+                 {% if messages %}
+                    <div class="container mt-3" id="message">
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <script>
+                        setTimeout(function() {
+                            const alerts = document.querySelectorAll('.alert');
+                            alerts.forEach(alert => {
+                                alert.classList.remove('show');
+                                alert.classList.add('fade');
+                                setTimeout(() => alert.remove(), 300);
+                            });
+                        }, 3000);
+                    </script>
+                </div>
+            </div>
 
+
+            <div class="row">
+                    {{ form.errors }}
                     <div class="col-md-3 border-right">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                             <img id="imagePreview" class="rounded-circle mt-5 col-12" src="{{ object.picture.url }}">
@@ -60,19 +86,22 @@
                                 <h4 class="text-right">Profile Settings</h4>
                             </div>
                             <div class="row">
-                                <div class="col-md-12"> {{ form.doctor_id|as_crispy_field }}</div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-12"> {{ form.name|as_crispy_field }}</div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">{{ form.speciality | as_crispy_field }}</div>
+                                <div class="col-md-12">{{ form.speciality|as_crispy_field }}</div>
                                 <div class="col-md-12">{{ form.present_hospital | as_crispy_field }}</div>
                                 <div class="col-md-12">{{ form.picture|as_crispy_field }}</div>
                                 <div class="col-md-12">{{ form.year_of_experience|as_crispy_field }}</div>
                                 <div class="col-md-12">{{ form.availability_days|as_crispy_field }}</div>
                                 <div class="col-md-12">{{ form.availability_time|as_crispy_field }}</div>
                                 <div class="col-md-12">{{ form.daily_appointment_limit|as_crispy_field }}</div>
+                                <div class="col-md-12">
+                                    {{ form.offline_fee|as_crispy_field }}
+                                    <p>Note: Doctor Consultation fees</p>
+                                </div>
+                                <div class="col-md-12">{{ form.license_number|as_crispy_field }}</div>
+                                <div class="col-md-12">{{ form.valid_license_document|as_crispy_field }}</div>
                             </div>
                         </div>
                     </div>
@@ -80,27 +109,26 @@
                     <div class="col-md-4">
                         <div class="p-3 py-5">
                             <div class="d-flex justify-content-between align-items-center experience">
-                                <span>Present Address</span></div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">{{ form.division | as_crispy_field }}</div>
-                                <div class="col-md-6">{{ form.district | as_crispy_field }}</div>
+                                <span>Present Address</span>
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-md-6">{{ form.upazila | as_crispy_field }}</div>
-                                <div class="col-md-6">{{ form.post_code | as_crispy_field }}</div>
+                                <div class="col-md-6">{{ form.division|as_crispy_field }}</div>
+                                <div class="col-md-6">{{ form.district|as_crispy_field }}</div>
                             </div>
                             <br>
-                            <div class="col-md-12">{{ form.address | as_crispy_field }}</div>
+                            <div class="row">
+                                <div class="col-md-6">{{ form.upazila|as_crispy_field }}</div>
+                                <div class="col-md-6">{{ form.post_code|as_crispy_field }}</div>
+                                <div class="col-md-12">{{ form.address|as_crispy_field }}</div>
+                                <div class="col-md-12">{{ form.details|as_crispy_field }}</div>
+                            </div>
                             <br>
-                            <div class="col-md-12">{{ form.details | as_crispy_field }}</div>
+                            <!-- social -->
+                            <div class="col-md-12">{{ form.facebook|as_crispy_field }}</div>
+                            <div class="col-md-12">{{ form.twitter|as_crispy_field }}</div>
+                            <div class="col-md-12">{{ form.instagram|as_crispy_field }}</div>
 
-                            <div class="row">
-                                <div class="col-md-12">{{ form.facebook|as_crispy_field }}</div>
-                                <div class="col-md-12">{{ form.twitter|as_crispy_field }}</div>
-                                <div class="col-md-12">{{ form.instagram|as_crispy_field }}</div>
-                            </div>
                         </div>
                     </div>
 
@@ -146,10 +174,11 @@
                     <div class="col-md-9">
                         <div class="py-3">
                             <div class="d-flex justify-content-between align-items-center experience">
-                                <span>SMS Configurations</span>
+                                <h2>SMS Configurations</h2>
                             </div>
                             <div class="row">
-                                <p>If you are want to send confirmation of appointment to patient, so please provide sms crediantials from <a href="https://bulksmsbd.com/" target="_blank">bulksmsbd.com</a> </p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;if you are want to send confirmation of appointment to patient, so please provide sms credentials from
+                                    <a href="https://bulksmsbd.com/" target="_blank">Bulksmsbd.com</a> </p>
                                 <div class="col-md-12">{{ form.api_key|as_crispy_field }}</div>
                                 <div class="col-md-12">{{ form.senderid|as_crispy_field }}</div>
                             </div>

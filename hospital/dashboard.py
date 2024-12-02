@@ -145,6 +145,7 @@ class ProfileUpdate(LoginRequiredMixin, UpdateView):
 
     def form_invalid(self, form, doctor_degree_formset):
         """If the form is invalid, render the invalid form."""
+        messages.warning(self.request, "Form Invalid")
         return self.render_to_response(self.get_context_data(
             form=form, doctor_degree_formset=doctor_degree_formset))
 

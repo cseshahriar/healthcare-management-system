@@ -45,7 +45,7 @@ class DoctorFormUpdate(forms.ModelForm):
                     'type': 'time'
                 }),
             'details': forms.Textarea(
-                attrs={'rows': 3, 'cols': 5}
+                attrs={'rows': 10, 'cols': 5}
             ),
             'year_of_experience': forms.Textarea(
                 attrs={'rows': 1, 'cols': 5}
@@ -56,7 +56,8 @@ class DoctorFormUpdate(forms.ModelForm):
             'availability_time': forms.Textarea(
                 attrs={'rows': 1, 'cols': 5}
             ),
-            'is_vacation_mode': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'is_vacation_mode': forms.CheckboxInput(
+                attrs={'class': 'form-check-input'}),
         }
 
     def __init__(self, *args, **kwargs):
@@ -64,7 +65,11 @@ class DoctorFormUpdate(forms.ModelForm):
         self.fields["name"].required = True
         self.fields["picture"].required = True
         self.fields["present_hospital"].required = True
+        self.fields["offline_fee"].required = True
+        self.fields["license_number"].required = True
+        self.fields["valid_license_document"].required = True
         self.fields["speciality"].required = True
+        self.fields["online_fee"].required = False
         self.fields['address'].widget.attrs['rows'] = 3
 
 

@@ -126,7 +126,7 @@ class Doctor(CommonField):
     )
     name = models.CharField(max_length=120, null=True, blank=True)
     doctor_id = models.CharField(
-        max_length=255, null=True, unique=True
+        max_length=255, null=True, unique=True, blank=True
     )
     speciality = models.ManyToManyField(
         Speciality, blank=True, related_name="specialities"

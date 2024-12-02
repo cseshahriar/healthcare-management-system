@@ -52,5 +52,10 @@ class PatientUpdateForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(PatientUpdateForm, self).__init__(*args, **kwargs)
+        self.fields["name"].required = True
         self.fields["age"].required = True
         self.fields["nid"].required = True
+        self.fields["picture"].required = True
+        self.fields["address"].required = True
+        self.fields["upazila"].required = False
+        self.fields["post_code"].required = False

@@ -31,7 +31,7 @@ class ForgetAppointmentSerialView(
         ).last()
         appointment_list = self.model.objects.filter(
             patient=self.request.user,
-        ).order_by('created_at')
+        ).order_by('-appointment_day', '-appointment_time')
         context = {
             "last_appitment": last_appitment,
             "appointment_list": appointment_list

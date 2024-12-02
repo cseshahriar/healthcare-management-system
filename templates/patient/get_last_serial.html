@@ -37,83 +37,58 @@
 <div class="container-fluid make-box">
     <br>
     <div class="row">
-        <di class="col-md-6 float-left">
-            {%if last_appitment %}
-            <a href="{% url 'patient_ms:appointment_confirmation' pk=last_appitment.pk %}" class="btn" target="_blank">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Last Appointment</h5> <br>
-                        <img class="image-class" src="{% static 'image/click.gif' %}">
-                    </div>
-                </div>
-            </a>
-            {% endif %}
-        </di>
-
-        <di class="col-md-6 float-right">
-            <a href="#" class="btn" data-toggle="modal"
-               data-target="#exampleModalCenter">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Search by Filter</h5>
-                        <img class="image-class_search"
-                             src="{% static 'image/search.gif' %}">
-                    </div>
-                </div>
-            </a>
-        </di>
-
         <div class="col-md-12" style="margin-top:30px">
-            <h2>History</h2>
+            <h2>My Appointment History</h2>
+            <br/>
+
             <div class="table-responsive">
-            <table class="table table-striped table-bordered">
-              <thead>
-                <tr>
-                    <th>SL</th>
-                    <th>Doctor Name</th>
-                    <th>Hospital</th>
-                    <th>Date and Time</th>
-                    <th>Serial Number</th>
-                    <th>Fee</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </th>
-              </thead>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Doctor Name</th>
+                            <th>Hospital</th>
+                            <th>Date and Time</th>
+                            <th>Serial Number</th>
+                            <th>Fee</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </th>
+                    </thead>
 
-              <tbody>
-                {% for appointment in appointment_list %}
-                <tr>
-                  <td>{{ forloop.counter }}</td>
-                  <td>{{appointment.doctor}}</td>
-                  <td>{{appointment.doctor}}  {{ appointment.doctor.present_hospital }}</td>
-                  <td style="width:140px">
-                    {{ appointment.appointment_day }} <br/>( <strong> Time:</strong> {{ appointment.appointment_time }})
-                  </td>
-                  <td> {{ appointment.serial_number }}</td>
-                  <td> {{ appointment.fee }}</td>
-                  <td>
-                    {% if appointment.status == "pending"  %}
-                        <span class="label label-default">{{ appointment.status|title }}</storng>
-                    {% elif appointment.status == "cancelled"  %}
-                        <span class="label label-danger">{{ appointment.status|title }}</storng>
-                    {% elif appointment.status == "confirmed"  %}
-                        <span class="label label-primary">{{ appointment.status|title }}</storng>
-                    {% elif appointment.status == "completed"  %}
-                        <span class="label label-success">{{ appointment.status|title }}</storng>
-                    {% endif %}
-                  </td>
-                  <td>
-                    {% if appointment.status != "pending" or appointment.status != "cancelled" %}
-                    <a class="btn btn-outline-primary" href="{% url 'patient_ms:appointment_download' pk=appointment.pk %}">
-                        <i class="fa fa-plus-square-o" aria-hidden="true"> Download</i>
-                     </a>
-                    {% endif %}
-                  </td>
-                </tr>
-                {% endfor %}
-
-              </tbody>
-            </table>
+                    <tbody>
+                        {% for appointment in appointment_list %}
+                        <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{appointment.doctor}}</td>
+                        <td>{{appointment.doctor}}  {{ appointment.doctor.present_hospital }}</td>
+                        <td style="width:140px">
+                            {{ appointment.appointment_day }} <br/>( <strong> Time:</strong> {{ appointment.appointment_time }})
+                        </td>
+                        <td> {{ appointment.serial_number }}</td>
+                        <td> {{ appointment.fee }}</td>
+                        <td>
+                            {% if appointment.status == "pending"  %}
+                                <span class="label label-default">{{ appointment.status|title }}</storng>
+                            {% elif appointment.status == "cancelled"  %}
+                                <span class="label label-danger">{{ appointment.status|title }}</storng>
+                            {% elif appointment.status == "confirmed"  %}
+                                <span class="label label-primary">{{ appointment.status|title }}</storng>
+                            {% elif appointment.status == "completed"  %}
+                                <span class="label label-success">{{ appointment.status|title }}</storng>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if appointment.status == "confirmed" %}
+                            <a class="btn btn-outline-primary" href="{% url 'patient_ms:appointment_download' pk=appointment.pk %}">
+                                <i class="fa fa-plus-square-o" aria-hidden="true"> Download</i>
+                            </a>
+                            {% endif %}
+                        </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             <div>
         </div>
     </div>

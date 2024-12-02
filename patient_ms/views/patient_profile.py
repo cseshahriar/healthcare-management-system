@@ -46,8 +46,8 @@ class PatientInfoUpdate(
     LoginRequiredMixin,
     UpdateView
 ):
-    template_name = 'patient/update_patient.html'
     model = Patient
+    template_name = 'patient/update_patient.html'
     form_class = PatientUpdateForm
 
     def test_func(self):

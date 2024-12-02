@@ -31,13 +31,13 @@ class ViewAllSavedRecord(
             patient_object = Patient.objects.get(
                 pk=pk
             )
-            objects_list = self.model.objects.filter(
-                patient=patient_object
-            ).order_by('-created_at')
         except Exception as e:
             logging.debug(request, f'Unable to get data {e}')
-            objects_list = None
+            patient_object = None
 
+        objects_list = self.model.objects.filter(
+            patient=patient_object
+        ).order_by('-created_at')
         context = {
             "objects_list": objects_list,
             "patient": patient_object

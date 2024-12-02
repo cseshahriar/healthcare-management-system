@@ -96,7 +96,7 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Patient Name</h6>
+                      <h6 class="mb-0">Patient Name:</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                       {{ patient.name }}
@@ -105,7 +105,7 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Phone</h6>
+                      <h6 class="mb-0">Phone:</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                       {{ patient.user }}
@@ -115,7 +115,7 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Age</h6>
+                      <h6 class="mb-0">Age:</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                       {{ patient.age }}
@@ -125,20 +125,20 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Patient Division</h6>
+                      <h6 class="mb-0">Patient Division:</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      {{ patient.division }}
+                      {{ patient.division|default_if_none:"" }}
                     </div>
                   </div>
 
                     <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Patient District</h6>
+                      <h6 class="mb-0">Patient District:</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      {{ patient.district }}
+                      {{ patient.district|default_if_none:"" }}
                     </div>
                   </div>
 
@@ -149,10 +149,8 @@
             </div>
           </div>
 
-
-
           <div class="row gutters-sm">
-             {% for object in objects_list %}
+            {% for object in objects_list %}
             <div class="col-md-3 mb-3"></div>
             <div class="col-md-7">
               <div class="card mb-3">
@@ -184,28 +182,26 @@
               </div>
 
             </div>
-            <div class="col-md-2 mb-3">
-              {% if object.file %}
-              {% for f in object.file.all %}
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex flex-column align-items-center text-center">
 
-                    <div class="text-secondary">
-                      <strong>Files {{ forloop.counter }}: </strong> <a href="{{ f.document.url }}">{{ f.file_name }}</a>
+            <div class="col-md-3 mb-3"></div>
+            <div class="col-md-7 mb-3">
+              {% if object.file %}
+                {% for f in object.file.all %}
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-column align-items-left">
+
+                      <div class="text-secondary">
+                        <strong>Files {{ forloop.counter }}: </strong> <a href="{{ f.document.url }}">{{ f.file_name }}</a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              {% endfor %}
+                {% endfor %}
               {% endif %}
-
             </div>
-
             {% endfor %}
-
           </div>
-
         </div>
     </div>
 

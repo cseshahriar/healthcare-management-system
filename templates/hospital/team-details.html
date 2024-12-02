@@ -82,7 +82,7 @@
 
             {% if not object.is_vacation_mode  %}
               {% if object.remaining_appointments_today > 0 %}
-                <a class="book-app" href="{% url 'patient_ms:appointment' %}">Book an Appointment ({{ object.remaining_appointments_today }})</a>
+                <a class="book-app" href="{% url 'patient_ms:appointment' %}">Book an Appointment (Remaining {{ object.remaining_appointments_today }})</a>
               {% else %}
                 <h4 class="text-secondary" disabled>Today's appointment quota fulfilled, please take an appointment other days.</h4>
               {% endif %}

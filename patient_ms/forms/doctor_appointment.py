@@ -40,16 +40,19 @@ class DoctorAppointmentForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request', None)  # Pop the request if passed
         super(DoctorAppointmentForm, self).__init__(*args, **kwargs)
         self.fields['doctor'].required = True
         self.fields['appointment_day'].required = True
         self.fields['appointment_time'].required = True
-        self.fields['speciality'].required = True
-
+        self.fields['problem'].required = True
         self.fields['doctor'].queryset = Doctor.objects.annotate(
             today_appointments_count=Count(
                 'doctorappointment',
-                filter=Q(doctorappointment__created_at__date=today, doctorappointment__status__in=['confirmed', 'completed'])  # noqa
+                filter=Q(
+                    doctorappointment__created_at__date=today,
+                    doctorappointment__status__in=['confirmed', 'completed']
+                )  # noqa
             )
         ).filter(today_appointments_count__lt=F('daily_appointment_limit'))
 
@@ -69,5 +72,13 @@ class DoctorAppointmentForm(forms.ModelForm):
                 "Daily appointment limit reached for this doctor. \
                     Please try other days"
             )
+
+        # a patient can one appointment a doctor
+        if DoctorAppointment.objects.filter(
+            patient=self.request.user,  # Assuming patient has a `user` field,
+            doctor=doctor,
+            appointment_day=today
+        ).exists():
+            self.add_error('doctor', 'Already a appointment exist for today for this Doctor.')  # noqa
 
         return cleaned_data

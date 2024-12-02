@@ -1,3 +1,4 @@
+import logging
 import datetime
 from django.urls import reverse_lazy
 from patient_ms.models import Patient
@@ -11,8 +12,8 @@ from django.contrib import messages
 from django.contrib.auth.mixins import (
     LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 )
-import logging
 
+from hospital.uility import sent_sms
 logger = logging.getLogger(__name__)
 
 
@@ -59,15 +60,54 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
         # with page number
         submit = request.POST.get('submit')
         if submit == "confirm":
+            appointment_date = request.POST.get('appointment_date')
+            appointment_time = request.POST.get('appointment_time')
             instance = self.get_instance(request)
             # Check if instance exists
             if not instance:
                 messages.warning(request, "Invoice not found.")
                 return redirect('uncheck_appointment_list')
 
-            instance.status = "confirmed"
-            instance.save()
-            messages.success(request, "Confirm successful!")
+            if instance.serial_number <= instance.doctor.daily_appointment_limit:  # limit exceeded check  # noqa
+                instance.status = "confirmed"
+                if appointment_date != '' and appointment_time != '':
+                    instance.appointment_day = datetime.datetime.strptime(
+                        appointment_date, '%Y-%m-%d'
+                    ).date()
+                    instance.appointment_time = datetime.datetime.strptime(
+                        appointment_time, '%H:%M:%S'
+                    ).time()
+                instance.save()
+                messages.success(request, "Confirm successful!")
+                # ================================= send sms ==================
+                try:
+                    logger.info(f"{'*' * 10} sms block called\n")
+                    api_key = instance.doctor.api_key  # config
+                    sender_id = instance.doctor.sender_id  # config
+                    address = instance.doctor.address
+                    serial_number = instance.serial_number
+                    appointment_datetime = datetime.combine(
+                        instance.appointment_time, instance.appointment_time
+                    )
+                    time_string = appointment_datetime.strftime('%Y-%m-%d %H:%M:%S')  # noqa
+                    msg = f"Your appointment is confirmed. Serial: {serial_number}, Time: {time_string}, address: {address}"  # noqa
+                    logger.info(f"{'*' * 10} sms body : {msg}\n")
+                    response = sent_sms(
+                        api_key=api_key,
+                        senderid=sender_id,
+                        phone=instance.patient.phone,
+                        message=msg
+                    )
+                    logger.info(f"{'*' * 10} sms response: {response}\n")
+                except Exception:
+                    logger.info(
+                        self.request,
+                        "Oops! Unable to send SMS. Please try again."
+                    )
+            else:
+                messages.warning(
+                    request, "Sorry, Today appointment is fulfilled.")
+                return redirect('uncheck_appointment_list')
         elif submit == "completed":
             instance = self.get_instance(request)
             # Check if instance exists

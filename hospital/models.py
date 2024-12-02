@@ -1,10 +1,9 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from django.db.models import Avg
 from django.core.validators import RegexValidator
 from django.utils.translation import gettext_lazy as _
-from django.db.models import Avg
-
 from address.models import District, Division, Upazila, Thana
 
 

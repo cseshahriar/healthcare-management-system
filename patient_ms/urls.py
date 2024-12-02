@@ -21,7 +21,6 @@ urlpatterns = [
         '<int:pk>/update/',
         PatientInfoUpdate.as_view(), name='patient_info_update'
     ),
-
     path(
         'calender/appointment/',
         DoctorAppointmentView.as_view(), name='appointment'

@@ -4,10 +4,10 @@
 {% block extra_css  %}
     <style>
         img.image-sise {
-        width: 60%;
-        margin: 0 25%
-    }
-</style>
+            width: 60%;
+            margin: 0 25%
+        }
+    </style>
 {% endblock extra_css %}
 
 {% block title_text %}Not Visit Appointment {% endblock title_text %}
@@ -51,12 +51,12 @@
                     </td>
                     <td class="col-md-3 col-xs-1">
                         <!-- status update : for confirm and complete -->
-                        <a class="btn btn-outline-success" href="{% url 'patient_ms:view_record' pk=object.patient.patient_data.pk %}">
+                        <a class="btn btn-outline-info" href="{% url 'patient_ms:view_record' pk=object.patient.patient_data.pk %}">
                             <i class="fa fa-clipboard"> All Record </i>
                         </a>
                         {% if object.status == "pending"  %}
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal-{{object.pk}}">
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal-{{object.pk}}">
                                 Confirm Appointment
                             </button>
 
@@ -74,11 +74,15 @@
                                             {% csrf_token %}
                                             <div class="modal-body">
                                                 <input type="hidden" name="id" value="{{object.pk}}" />
+                                                <p>Appointment Date: <strong>{{ object.appointment_day|date:'m/d/Y'}}</strong> Appointment Time: <strong>{{ object.appointment_time}}</strong></p>
+                                                <p class="help-block">If want to confirm other day, then change the date and time.</p>
+                                                <input type="date" name="appointment_date" value="{{object.appointment_day}}" />
+                                                <input type="time" name="appointment_time" value="{{object.appointment_time}}" />
                                             </div>
 
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="submit" name="submit" value="confirm" class="btn btn-primary">Confirm</button>
+                                                <button type="submit" name="submit" value="confirm" class="btn btn-success">Confirm</button>
                                             </div>
                                         </form>
                                     </div>

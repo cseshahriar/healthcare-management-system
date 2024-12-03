@@ -70,12 +70,14 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
 
             if instance.serial_number <= instance.doctor.daily_appointment_limit:  # limit exceeded check  # noqa
                 instance.status = "confirmed"
-                if appointment_date != '' and appointment_time != '':
+                if appointment_date != '':
                     instance.appointment_day = datetime.datetime.strptime(
                         appointment_date, '%Y-%m-%d'
                     ).date()
+
+                if appointment_time != '':
                     instance.appointment_time = datetime.datetime.strptime(
-                        appointment_time, '%H:%M:%S'
+                        appointment_time, '%H:%M'
                     ).time()
                 instance.save()
                 messages.success(request, "Confirm successful!")
@@ -108,7 +110,7 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
                 messages.warning(
                     request, "Sorry, Today appointment is fulfilled.")
                 return redirect('uncheck_appointment_list')
-        elif submit == "completed":
+        elif submit == "completed" or submit == "completed_paid":
             instance = self.get_instance(request)
             # Check if instance exists
             if not instance:
@@ -116,6 +118,9 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
                 return redirect('uncheck_appointment_list')
 
             instance.status = "completed"
+            if submit == "completed_paid":
+                instance.paid = True
+
             instance.save()
             messages.success(request, "completed successful!")
 

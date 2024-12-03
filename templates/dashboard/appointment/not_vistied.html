@@ -50,10 +50,13 @@
                         {% endif %}
                     </td>
                     <td class="col-md-3 col-xs-1">
+                        {% if object.status == "completed"  %}
                         <!-- status update : for confirm and complete -->
                         <a class="btn btn-outline-info" href="{% url 'patient_ms:view_record' pk=object.patient.patient_data.pk %}">
                             <i class="fa fa-clipboard"> All Record </i>
                         </a>
+                        {% endif %}
+
                         {% if object.status == "pending"  %}
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal-{{object.pk}}">
@@ -113,13 +116,14 @@
                                             <form action="" method="POST" class="w-100">
                                                 {% csrf_token %}
                                                 <div class="modal-body">
-                                                    <p class="text-info">Please make sure add prescription and recored before completed</p>
+                                                    <p class="text-info">Please make sure add prescription and record before completed</p>
                                                     <input type="hidden" name="id" value="{{object.pk}}" />
                                                 </div>
 
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                    <button type="submit" name="submit" value="completed" class="btn btn-primary">Confirm</button>
+                                                    <button type="submit" name="submit" value="completed" class="btn btn-primary">Complete</button>
+                                                    <button type="submit" name="submit" value="completed_paid" class="btn btn-success">Complete & Paid</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -130,12 +134,8 @@
                 </tr>
                 {% endfor  %}
             {% else %}
-
             </tbody>
         </table>
-        <div class="image_div">
-         <img class="image-sise" src="{% static 'image/list.gif' %}">
-        </div>
         {% endif %}
     </div>
 </div>

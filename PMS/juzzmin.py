@@ -6,15 +6,15 @@ https://django-jazzmin.readthedocs.io/configuration/
 CONFIG = {  # -----------------------------------------------------------------
 
     # title of the window
-    "site_title": "Patient Care",
+    "site_title": "Health Care",
     # Title on the brand, and the login screen (19 chars max)
-    "site_header": "Patient Care System", 
+    "site_header": "Health Care System",
     # square logo to use for your site
-    "site_logo": "image/PM.png",
+    "site_logo": "image/logo.png",
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to PMS",
+    "welcome_sign": "Welcome to HMS",
     # Copyright on the footer
-    "copyright": "PM-System",
+    "copyright": "HM-System",
     # The model admin to search from the search bar
     "search_model": "Core.user",
     # Field name on user model that contains avatar image

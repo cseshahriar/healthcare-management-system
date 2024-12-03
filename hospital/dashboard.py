@@ -28,6 +28,10 @@ class VisitedAppointmentList(LoginRequiredMixin, ListView):
             appointment_day=today,
             status="completed",
         )
+        date = self.request.GET.get('date')
+        if date:
+            date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+            qs = qs.filter(appointment_day=date)
         return qs
 
 
@@ -49,6 +53,10 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
             status__in=["pending", "confirmed", "cancelled"],
             appointment_day=today,
         ).order_by('serial_number')
+        date = self.request.GET.get('date')
+        if date:
+            date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+            qs = qs.filter(appointment_day=date)
         return qs
 
     def get_instance(self, request):
@@ -141,7 +149,11 @@ class AllAppointmentList(LoginRequiredMixin, ListView):
     def get_queryset(self):
         qs = self.model.objects.filter(
             doctor__user=self.request.user,
-        ).order_by('-created_at')
+        ).order_by('-appointment_day')
+        date = self.request.GET.get('date')
+        if date:
+            date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+            qs = qs.filter(appointment_day=date)
         return qs
 
 

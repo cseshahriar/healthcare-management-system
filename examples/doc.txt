@@ -1,3 +1,6 @@
 01720376755	 - patient - admin123#
 01998563978	 - doc - admin123#
 01710835653 - su - admin123#
+
+Online Healthcare Management System
+Convenient Care, Anytime, Anywhere

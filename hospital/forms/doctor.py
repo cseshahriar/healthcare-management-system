@@ -11,7 +11,7 @@ class DoctorForm(forms.ModelForm):
             "name",
             "picture",
             'speciality',
-            'doctor_id',
+            'license_number',
         ]
 
     def __init__(self, *args, **kwargs):
@@ -19,6 +19,7 @@ class DoctorForm(forms.ModelForm):
         self.fields["name"].required = True
         self.fields["picture"].required = True
         self.fields["speciality"].required = True
+        self.fields["license_number"].required = True
 
 
 class DoctorFormUpdate(forms.ModelForm):

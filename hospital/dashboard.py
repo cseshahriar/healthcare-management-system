@@ -65,6 +65,7 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
 
     def post(self, request, *args, **kwargs):
         """post object with lines if not any payments"""
+        doctor = Doctor.objects.filter(user=request.user).first()
         # with page number
         submit = request.POST.get('submit')
         if submit == "confirm":
@@ -76,7 +77,7 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
                 messages.warning(request, "Invoice not found.")
                 return redirect('uncheck_appointment_list')
 
-            if instance.serial_number <= instance.doctor.daily_appointment_limit:  # limit exceeded check  # noqa
+            if instance.serial_number <= doctor.daily_appointment_limit:  # limit exceeded check  # noqa
                 instance.status = "confirmed"
                 if appointment_date != '':
                     instance.appointment_day = datetime.datetime.strptime(
@@ -92,15 +93,13 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
                 # ================================= send sms ==================
                 try:
                     logger.info(f"{'*' * 10} sms block called\n")
-                    api_key = instance.doctor.api_key  # config
-                    sender_id = instance.doctor.sender_id  # config
-                    address = instance.doctor.address
+                    api_key = doctor.api_key  # config
+                    sender_id = doctor.senderid  # config
+                    address = doctor.address
                     serial_number = instance.serial_number
-                    appointment_datetime = datetime.combine(
-                        instance.appointment_time, instance.appointment_time
-                    )
-                    time_string = appointment_datetime.strftime('%Y-%m-%d %H:%M:%S')  # noqa
-                    msg = f"Your appointment is confirmed. Serial: {serial_number}, Time: {time_string}, address: {address}"  # noqa
+                    date = instance.appointment_day.strftime('%Y-%m-%d')
+                    time = instance.appointment_time.strftime('%H:%M')
+                    msg = f"Your appointment is confirmed. Serial: {serial_number}, Date: {date}, Time:{time}, address: {address}"  # noqa
                     logger.info(f"{'*' * 10} sms body : {msg}\n")
                     response = sent_sms(
                         api_key=api_key,

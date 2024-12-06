@@ -48,5 +48,4 @@ urlpatterns = [
         'patient/<int:pk>/record/view/',
         ViewAllSavedRecord.as_view(), name='view_record'
     ),
-
 ]

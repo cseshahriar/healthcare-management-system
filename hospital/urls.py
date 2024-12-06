@@ -52,11 +52,11 @@ urlpatterns = [
     path('load-upazila/', load_upazila, name='load_upazila'),
     # Appointments
     path(
-        'uncheck/appointment/list/',
+        'pending/appointment/list/',
         UnVisitedAppointmentList.as_view(), name='uncheck_appointment_list'
     ),
     path(
-        'checked/appointment/list/',
+        'confirm/appointment/list/',
         VisitedAppointmentList.as_view(), name='checked_appointment_list'
     ),
     path(

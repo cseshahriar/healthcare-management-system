@@ -70,9 +70,11 @@
                     </td>
                     <td class="col-md-3 col-xs-1">
                         {% if object.status == "confirmed" or object.status == "completed"  %}
-                            <a class="btn btn-outline-success" href="{% url 'patient_ms:view_record' pk=object.patient.patient_data.pk %}"> <!-- object.patient is user -->
-                                <i class="fa fa-clipboard"> All Record </i>
-                            </a>
+                            {% if object.patient.patient_data %}
+                                <a class="btn btn-outline-success" href="{% url 'patient_ms:view_record' pk=object.patient.patient_data.pk %}"> <!-- object.patient is user -->
+                                    <i class="fa fa-clipboard"> All Record </i>
+                                </a>
+                            {% endif %}
                         {% endif %}
                     </td>
                 </tr>

@@ -76,4 +76,4 @@ class DoctorPrescriptionView(
     def get_success_url(self):
         messages.success(self.request, "Successfully new Prescription added")
         logger.debug("Successfully new Prescription added")
-        return reverse_lazy("all_appointment_list")
+        return reverse_lazy("checked_appointment_list")

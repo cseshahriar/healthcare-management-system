@@ -24,17 +24,6 @@
 <div class="main-content">
   <div class="team-page">
     <div class="container">
-
-      <div class="row">
-        <div class="col-md-9"></div>
-        <div class="col-md-3">
-            <a href="{% url 'search_doctor' %}" target="_blank" class="btn btn-danger">
-              Doctor Recommendation
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
-        </div>
-      </div>
-
       <div class="row">
         {% for doctor in object_list %}
         <div class="col-md-6 col-sm-6">

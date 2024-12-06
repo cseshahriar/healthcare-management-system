@@ -80,7 +80,7 @@ urlpatterns = [
         name='prediction_type'
     ),
     path(
-        'search/doctors', search_doctor, name='search_doctor'
+        'recommendation/doctors', search_doctor, name='search_doctor'
     ),
 
 ]

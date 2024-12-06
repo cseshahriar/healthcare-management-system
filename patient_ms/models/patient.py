@@ -2,11 +2,13 @@
 import logging
 # DJANGO IMPORTS
 from django.db import models
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import RegexValidator
 from django.conf import settings
 from address.models import District, Division, Upazila
-
+from django.conf import settings
 
 # CORE IMPORTS
 
@@ -18,7 +20,6 @@ class Patient(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
         blank=True, null=True, related_name="patient_data"
     )
-
     name = models.CharField(
     _("Patient Name"), max_length=120, null=True, blank=True
     )
@@ -81,3 +82,10 @@ class Patient(models.Model):
 
         return save_present_address
 
+
+# @receiver(post_save, sender=settings.AUTH_USER_MODEL)
+# def create_or_update_patient(sender, instance, created, **kwargs):
+#     """Creates or updates patient, when User object changes"""
+#     if created:
+#         Patient.objects.get_or_create(user=instance)
+#     instance.user.save()

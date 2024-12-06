@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
-
+{% load group_checker_tag %}
 
 {% block maincontent %}
 <!--inner banner-->
@@ -82,7 +81,9 @@
 
             {% if not object.is_vacation_mode  %}
               {% if object.remaining_appointments_today > 0 %}
-                <a class="book-app" href="{% url 'patient_ms:appointment' %}">Book an Appointment (Remaining {{ object.remaining_appointments_today }})</a>
+                {% if user|is_patient %}
+                  <a class="book-app" href="{% url 'patient_ms:appointment' %}">Book an Appointment (Remaining {{ object.remaining_appointments_today }})</a>
+                {% endif %}
               {% else %}
                 <h4 class="text-secondary" disabled>Today's appointment quota fulfilled, please take an appointment other days.</h4>
               {% endif %}

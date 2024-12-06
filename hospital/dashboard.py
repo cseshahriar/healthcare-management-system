@@ -48,7 +48,7 @@ class VisitedAppointmentList(LoginRequiredMixin, ListView):
         date = self.request.GET.get('date')
         if date:
             date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
-            qs = qs.filter(appointment_day__date=date)
+            qs = qs.filter(appointment_day=date)
         return qs
 
 
@@ -196,6 +196,75 @@ class AllAppointmentList(LoginRequiredMixin, ListView):
 
         return qs.distinct()
 
+    def post(self, request, *args, **kwargs):
+        """post object with lines if not any payments"""
+        doctor = Doctor.objects.filter(user=request.user).first()
+        # with page number
+        submit = request.POST.get('submit')
+        if submit == "confirm":
+            appointment_date = request.POST.get('appointment_date')
+            appointment_time = request.POST.get('appointment_time')
+            instance = self.get_instance(request)
+            # Check if instance exists
+            if not instance:
+                messages.warning(request, "Invoice not found.")
+                return redirect('uncheck_appointment_list')
+
+            if instance.serial_number <= doctor.daily_appointment_limit:  # limit exceeded check  # noqa
+                instance.status = "confirmed"
+                if appointment_date != '':
+                    instance.appointment_day = datetime.datetime.strptime(
+                        appointment_date, '%Y-%m-%d'
+                    ).date()
+
+                if appointment_time != '':
+                    instance.appointment_time = datetime.datetime.strptime(
+                        appointment_time, '%H:%M'
+                    ).time()
+                instance.save()
+                messages.success(request, "Confirm successful!")
+                # ================================= send sms ==================
+                try:
+                    logger.info(f"{'*' * 10} sms block called\n")
+                    api_key = doctor.api_key  # config
+                    sender_id = doctor.senderid  # config
+                    address = doctor.address
+                    serial_number = instance.serial_number
+                    date = instance.appointment_day.strftime('%Y-%m-%d')
+                    time = instance.appointment_time.strftime('%H:%M')
+                    msg = f"Your appointment is confirmed. Serial: {serial_number}, Date: {date}, Time:{time}, address: {address}"  # noqa
+                    logger.info(f"{'*' * 10} sms body : {msg}\n")
+                    response = sent_sms(
+                        api_key=api_key,
+                        senderid=sender_id,
+                        phone=instance.patient.phone,
+                        message=msg
+                    )
+                    logger.info(f"{'*' * 10} sms response: {response}\n")
+                except Exception:
+                    logger.info(
+                        self.request,
+                        "Oops! Unable to send SMS. Please try again."
+                    )
+            else:
+                messages.warning(
+                    request, "Sorry, Today appointment is fulfilled.")
+                return redirect('uncheck_appointment_list')
+        elif submit == "completed" or submit == "completed_paid":
+            instance = self.get_instance(request)
+            # Check if instance exists
+            if not instance:
+                messages.warning(request, "Invoice not found.")
+                return redirect('uncheck_appointment_list')
+
+            instance.status = "completed"
+            if submit == "completed_paid":
+                instance.paid = True
+
+            instance.save()
+            messages.success(request, "completed successful!")
+
+        return redirect('uncheck_appointment_list')
 
 class AllPatientList(LoginRequiredMixin, ListView):
     model = Patient

@@ -1,5 +1,6 @@
 import logging
 import datetime
+from django.db.models import Q
 from django.urls import reverse_lazy
 from patient_ms.models import Patient
 from django.shortcuts import redirect
@@ -21,6 +22,15 @@ class VisitedAppointmentList(LoginRequiredMixin, ListView):
     model = DoctorAppointment
     template_name = 'dashboard/appointment/vistied.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["doctor"] = Doctor.objects.filter(
+            user=self.request.user).first()
+        context["total"] = self.get_queryset().count()
+        q = self.request.GET.get('q')
+        context["q"] = q
+        return context
+
     def get_queryset(self):
         today = datetime.date.today()
         qs = self.model.objects.filter(
@@ -28,10 +38,17 @@ class VisitedAppointmentList(LoginRequiredMixin, ListView):
             appointment_day=today,
             status="completed",
         )
+        q = self.request.GET.get('q')
+        if q:
+            q = q.strip()
+            qs = qs.filter(
+                patient__phone__icontains=q
+            )
+
         date = self.request.GET.get('date')
         if date:
             date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
-            qs = qs.filter(appointment_day=date)
+            qs = qs.filter(appointment_day__date=date)
         return qs
 
 
@@ -44,6 +61,8 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
         context["doctor"] = Doctor.objects.filter(
             user=self.request.user).first()
         context["total"] = self.get_queryset().count()
+        q = self.request.GET.get('q')
+        context["q"] = q
         return context
 
     def get_queryset(self):
@@ -53,10 +72,17 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
             status__in=["pending", "confirmed", "cancelled"],
             appointment_day=today,
         ).order_by('serial_number')
+        q = self.request.GET.get('q')
+        if q:
+            q = q.strip()
+            qs = qs.filter(
+                patient__phone__icontains=q
+            )
+
         date = self.request.GET.get('date')
         if date:
-            date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
-            qs = qs.filter(appointment_day=date)
+            filter_date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+            qs = qs.filter(appointment_day=filter_date)
         return qs
 
     def get_instance(self, request):
@@ -143,17 +169,32 @@ class AllAppointmentList(LoginRequiredMixin, ListView):
         context["doctor"] = Doctor.objects.filter(
             user=self.request.user).first()
         context["total"] = self.get_queryset().count()
+        q = self.request.GET.get('q')
+        context["q"] = q
         return context
 
     def get_queryset(self):
         qs = self.model.objects.filter(
             doctor__user=self.request.user,
         ).order_by('-appointment_day')
+
+        q = self.request.GET.get('q')
+        logger.info(f"{'*' * 10} q: {q}\n")
+        if q:
+            q = q.strip()
+            qs = qs.filter(
+                patient__phone__icontains=q
+            )
+            logger.info(f"{'*' * 10} q qs: {qs}\n")
+
         date = self.request.GET.get('date')
         if date:
-            date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
-            qs = qs.filter(appointment_day=date)
-        return qs
+            filter_date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+            logger.info(f"{'*' * 10} date: {filter_date} {type(filter_date)}\n")
+            qs = qs.filter(appointment_day=filter_date)
+            logger.info(f"{'*' * 10} date qs: {qs}\n")
+
+        return qs.distinct()
 
 
 class AllPatientList(LoginRequiredMixin, ListView):

@@ -15,13 +15,17 @@
 {% block body  %}
 <div class="col-md-12" style="margin-bottom:30px">
     <form class="row row-cols-lg-auto g-3 align-items-center" action="" method="GET">
-    <div class="col-md-8">
-        <input type="date" name="date" class="form-control" id="id_date" placeholder="">
-    </div>
+        <div class="col-md-4">
+            <input type="text" name="q" value={{q|default_if_none:""}} class="form-control" id="id_q" placeholder="Search by Phone number">
+        </div>
 
-    <div class="col-md-4">
-        <button type="submit" class="btn btn-primary">Search</button>
-    </div>
+        <div class="col-md-4">
+            <input type="date" name="date" class="form-control" id="id_date" placeholder="">
+        </div>
+
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
     </form>
 </div>
 
@@ -30,15 +34,17 @@
         <h3 class="tile-title">New Patient List</h3>
         <table class="table table-bordered">
             <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Phone Number</th>
-                <th>Age</th>
-                <th>Time</th>
-                <th>Status</th>
-                <th class="col-md-3 col-xs-1">Actions</th>
-            </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Age</th>
+                    <th>Problem</th>
+                    <th>Appointment Day</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th class="col-md-3 col-xs-1">Actions</th>
+                </tr>
             </thead>
             <tbody>
             {% if object_list %}
@@ -47,9 +53,11 @@
                     <td>{{ forloop.counter }}</td>
                     <td>{{ object.patient.patient_data.name }}</td>
                     <td>{{ object.patient.phone }}</td>
-
                     <td>{{ object.patient.patient_data.age }}</td>
+                    <td>{{ object.problem }}</td>
+                    <td>{{ object.appointment_day|date:"l, M d, Y" }}</td>
                     <td>{{ object.appointment_time }}</td>
+
                     <td title="{{object.status}}">
                         {% if object.status == "pending"  %}
                             <span class="label label-default">{{ object.status|title }}</storng>

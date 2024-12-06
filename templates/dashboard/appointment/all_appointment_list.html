@@ -15,11 +15,16 @@
 {% block body  %}
 <div class="col-md-12" style="margin-bottom:30px">
     <form class="row row-cols-lg-auto g-3 align-items-center" action="" method="GET">
-    <div class="col-md-8">
+    <div class="col-md-4">
+        <input type="text" name="q" value="{{q|default_if_none:""}}" class="form-control" id="id_q" placeholder="Search by Phone number">
+    </div>
+
+    <div class="col-md-4">
         <input type="date" name="date" class="form-control" id="id_date" placeholder="">
     </div>
 
     <div class="col-md-4">
+        <a href="{% url 'all_appointment_list' %}" class="btn btn-info">Reset</a>
         <button type="submit" class="btn btn-primary">Search</button>
     </div>
     </form>
@@ -36,8 +41,8 @@
                 <th>Phone Number</th>
                 <th>Age</th>
                 <th>Problem</th>
+                <th>Appointment Day</th>
                 <th>Time</th>
-                <th>Created At</th>
                 <th>Status</th>
                 <th class="col-md-3 col-xs-1">Actions</th>
             </tr>
@@ -51,8 +56,8 @@
                     <td>{{ object.patient.phone }}</td>
                     <td>{{ object.patient.patient_data.age }}</td>
                     <td>{{ object.problem }}</td>
+                    <td>{{ object.appointment_day|date:"l, M d, Y" }}</td>
                     <td>{{ object.appointment_time }}</td>
-                    <td>{{ object.created_at|date:"l, M d, Y h:i:s a" }}</td>
                     <td class="text-center">
                         {% if object.status == "pending"  %}
                             <span class="label label-default">{{ object.status|title }}</storng>
@@ -77,12 +82,8 @@
                 </tr>
                 {% endfor  %}
             {% else %}
-
             </tbody>
         </table>
-        <div class="image_div">
-         <img class="image-sise" src="{% static 'image/list.gif' %}">
-        </div>
         {% endif %}
     </div>
 </div>

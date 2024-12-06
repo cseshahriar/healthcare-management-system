@@ -16,7 +16,7 @@
 <div class="col-md-12" style="margin-bottom:30px">
     <form class="row row-cols-lg-auto g-3 align-items-center" action="" method="GET">
         <div class="col-md-4">
-            <input type="text" name="q" value="{{q|default_if_none:''}}"" class="form-control" id="id_q" placeholder="Search by Phone number">
+            <input type="text" name="q" value="{{q|default_if_none:''}}" class="form-control" id="id_q" placeholder="Search by Phone number">
         </div>
 
         <div class="col-md-4">
@@ -71,13 +71,6 @@
                         {% endif %}
                     </td>
                     <td class="col-md-3 col-xs-1">
-                        {% if object.status != "pending"  %}
-                            <!-- status update : for confirm and complete -->
-                            <a class="btn btn-outline-info" href="{% url 'patient_ms:view_record' pk=object.patient.patient_data.pk %}">
-                                <i class="fa fa-clipboard"> All Record </i>
-                            </a>
-                        {% endif %}
-
                         {% if object.status == "pending"  %}
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal-{{object.pk}}">
@@ -106,42 +99,6 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                 <button type="submit" name="submit" value="confirm" class="btn btn-success">Confirm</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-
-                        {% if object.status == "confirmed" %}
-                            <a class="btn btn-outline-primary" href="{% url 'patient_ms:add_record' pk=object.patient.patient_data.pk %}">
-                                <i class="fa fa-plus-square-o" aria-hidden="true"> Add Record</i>
-                            </a>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#confirmModal-{{object.pk}}">
-                                Make Completed
-                            </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="confirmModal-{{object.pk}}" tabindex="-1" role="dialog" aria-labelledby="completeModalLabel-{{object.pk}}">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h5 class="modal-title" id="completeModalLabel-{{object.pk}}">
-                                                Are you sure want completed this job?
-                                            </h5>
-                                        </div>
-                                        <form action="" method="POST" class="w-100">
-                                            {% csrf_token %}
-                                            <div class="modal-body">
-                                                <p class="text-info">Please make sure add prescription and record before completed</p>
-                                                <input type="hidden" name="id" value="{{object.pk}}" />
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="submit" name="submit" value="completed" class="btn btn-primary">Complete</button>
-                                                <button type="submit" name="submit" value="completed_paid" class="btn btn-success">Complete & Paid</button>
                                             </div>
                                         </form>
                                     </div>

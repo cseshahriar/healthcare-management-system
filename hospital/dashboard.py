@@ -69,7 +69,7 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
         today = datetime.date.today()
         qs = self.model.objects.filter(
             doctor__user=self.request.user,
-            status__in=["pending", "confirmed", "cancelled"],
+            status__in=["pending", "cancelled"],
             appointment_day=today,
         ).order_by('serial_number')
         q = self.request.GET.get('q')

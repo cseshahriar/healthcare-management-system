@@ -111,12 +111,15 @@
 
 
 {% block extra_js %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.2/dist/semantic.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.2/dist/semantic.min.js"></script>
+
 <script>
-
-$('#id_appointment_day').calendar({
-  type: 'date'
-});
-
+  $('#id_appointment_day').calendar({
+    type: 'date',
+    minDate: new Date() // Disable all previous dates
+  });
 </script>
 <script src="{% static 'heartcare/data_load.js' %}"></script>
 

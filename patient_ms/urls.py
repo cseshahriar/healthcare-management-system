@@ -8,7 +8,8 @@ from patient_ms.views import (
     PatientProfile,
     ForgetAppointmentSerialView,
     AppointmentConfirmationLetterView,
-    AppointmentCopyPDFView
+    AppointmentCopyPDFView,
+    ViewAllDownloadRecord
 )
 
 app_name = 'patient_ms'
@@ -47,5 +48,9 @@ urlpatterns = [
     path(
         'patient/<int:pk>/record/view/',
         ViewAllSavedRecord.as_view(), name='view_record'
+    ),
+    path(
+        'patient/<int:pk>/record/pdf',
+        ViewAllDownloadRecord.as_view(), name='view_record_pdf'
     ),
 ]

@@ -1,7 +1,7 @@
 from .doctor_appoiment import DoctorAppointmentView
 from .doctor_appointment_filter import doctor_filter
 from .add_record import DoctorPrescriptionView
-from .record_view import ViewAllSavedRecord
+from .record_view import ViewAllSavedRecord, ViewAllDownloadRecord
 from .patient_profile import (
     PatientProfile,
     PatientInfoUpdate,
@@ -21,5 +21,6 @@ __all__ = [
     ForgetAppointmentSerialView,
     AppointmentConfirmationLetterView,
     render_pdf,
-    AppointmentCopyPDFView
+    AppointmentCopyPDFView,
+    ViewAllDownloadRecord
 ]

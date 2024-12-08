@@ -69,10 +69,10 @@
                 </td>
                  <td class="col-md-3 col-xs-1">
                     {% if object.patient.patient_data %}
-                        <a class="btn btn-outline-success" href="{% url 'patient_ms:view_record' object.patient.patient_data.pk %}">
+                        <a class="btn btn-outline-success" href="{% url 'patient_ms:view_record' object.pk %}">
                             <i class="fa fa-clipboard">All Record </i>
                         </a>
-                        <a class="btn btn-outline-primary" href="{% url 'patient_ms:add_record' object.patient.patient_data.pk %}">
+                        <a class="btn btn-outline-primary" href="{% url 'patient_ms:add_record' object.pk %}">
                             <i class="fa fa-plus-square-o" aria-hidden="true"> Add Record</i>
                         </a>
                     {% endif %}

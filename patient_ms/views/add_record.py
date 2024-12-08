@@ -36,22 +36,27 @@ class DoctorPrescriptionView(
         return self.request.user.is_active  # any active user
 
     def get(self, request, pk):
-        patient_object = Patient.objects.filter(pk=pk).first()
+        appointment = DoctorAppointment.objects.filter(pk=pk).first()
+        patient_object = appointment.patient.patient_data  # user.patient
         context = {
             'form': self.form_class,
             'file': self.file_form,
-            'patient_object': patient_object
+            'patient_object': patient_object,
+            'object': appointment
         }
         return render(request, self.template_name, context)
 
     def post(self, request, pk):
+        appointment = DoctorAppointment.objects.filter(pk=pk).first()
+        patient_object = appointment.patient.patient_data  # user.patient
+
         form = self.form_class(request.POST)
         file_form = self.file_form(request.POST, request.FILES)
-        patient_object = Patient.objects.filter(pk=pk).first()
         logger.info(f"{'*' * 10} patient_object: {patient_object}\n")
         try:
-            if patient_object and form.is_valid() and file_form.is_valid():
+            if appointment and form.is_valid() and file_form.is_valid():
                 save_object = form.save(commit=False)
+                save_object.appointment = appointment
                 save_object.doctor = self.request.user
                 save_object.patient = patient_object
                 save_object.save()
@@ -67,11 +72,11 @@ class DoctorPrescriptionView(
                 logger.info(f"{'*' * 10} form.errors: {form.errors}\n")
                 logger.info(f"{'*' * 10} file_form.errors: {file_form.errors}\n")
                 messages.warning(self.request, "Unable to save record")
-                return reverse_lazy("add_record", {'pk': patient_object.pk})
+                return reverse_lazy("add_record", {'pk': appointment.pk})
         except Exception as e:
             logging.debug(request, f"Unable to save record {e}")
             messages.warning(self.request, "Unable to save record")
-            return reverse_lazy("add_record", {'pk': patient_object.pk})
+            return reverse_lazy("add_record", {'pk': appointment.pk})
 
     def get_success_url(self):
         messages.success(self.request, "Successfully new Prescription added")

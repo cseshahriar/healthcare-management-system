@@ -9,7 +9,8 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from patient_ms.models import (
     DoctorPrescription,
-    Patient
+    Patient,
+    DoctorAppointment
 )
 from patient_ms.views.get_pdf import render_pdf
 
@@ -22,6 +23,31 @@ class ViewAllSavedRecord(
     View
 ):
     template_name = 'dashboard/record/record_view.html'
+    model = DoctorPrescription
+
+    def test_func(self):
+        """Tests if the user is active"""
+        return self.request.user.is_active  # any active user
+
+    def get(self, request, pk):
+        appointment = DoctorAppointment.objects.get(pk=pk)
+        objects_list = self.model.objects.filter(
+            appointment=appointment,
+            patient=appointment.patient.patient_data
+        ).order_by('-created_at')
+        context = {
+            "objects_list": objects_list,
+            "patient": appointment.patient.patient_data
+        }
+        return render(request, self.template_name, context)
+
+
+class PMSViewAllSavedRecord(
+    UserPassesTestMixin,
+    LoginRequiredMixin,
+    View
+):
+    template_name = 'dashboard/record/pms_record_view.html'
     model = DoctorPrescription
 
     def test_func(self):
@@ -45,7 +71,6 @@ class ViewAllSavedRecord(
             "patient": patient_object
         }
         return render(request, self.template_name, context)
-
 
 class ViewAllDownloadRecord(UserPassesTestMixin, LoginRequiredMixin, View):
     template_name = 'dashboard/record/record_view_pdf.html'

@@ -55,7 +55,10 @@
         <!-- User Menu-->
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li><a class="dropdown-item" href="{% url 'doctor_view'  pk=request.user.doctor.pk %}"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+            {% if request.user.doctor %}
+              <li><a class="dropdown-item" href="{% url 'doctor_view'  pk=request.user.doctor.pk %}">
+                <i class="fa fa-user fa-lg"></i> Profile</a></li>
+            {% endif %}
             <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out fa-lg"></i> Signout</a></li>
           </ul>
         </li>
@@ -106,10 +109,11 @@
 
           <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Profile</span><i class="treeview-indicator fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
+              {% if request.user.doctor %}
               <li><a class="treeview-item" href="{% url 'doctor_view'  pk=request.user.doctor.pk %}"><i class="icon fa fa-circle-o"></i> Profile Details</a></li>
               <li><a class="treeview-item" href="{% url 'doctor_update'  pk=request.user.doctor.pk %}"><i class="icon fa fa-circle-o"></i> Update profile</a></li>
               <li><a class="treeview-item" href="{% url 'dr_change_password' %}"><i class="icon fa fa-circle-o"></i> Change Password</a></li>
-
+              {% endif %}
             </ul>
           </li>
           {% comment %} <li><a class="app-menu__item" href="{% url 'prediction_type' %}"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Prediction</span></a></li> {% endcomment %}

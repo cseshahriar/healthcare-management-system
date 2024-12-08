@@ -148,7 +148,8 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
                     address = doctor.address
                     serial_number = instance.serial_number
                     date = instance.appointment_day.strftime('%Y-%m-%d')
-                    time = instance.appointment_time.strftime('%H:%M')
+                    # time = instance.appointment_time.strftime('%H:%M')
+                    time = instance.appointment_time.strftime('%I:%M %p')
                     msg = f"Your appointment is confirmed. Serial: {serial_number}, Date: {date}, Time:{time}, address: {address}"  # noqa
                     logger.info(f"{'*' * 10} sms body : {msg}\n")
                     response = sent_sms(

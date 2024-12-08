@@ -9,7 +9,8 @@ from patient_ms.views import (
     ForgetAppointmentSerialView,
     AppointmentConfirmationLetterView,
     AppointmentCopyPDFView,
-    ViewAllDownloadRecord
+    ViewAllDownloadRecord,
+    PMSViewAllSavedRecord
 )
 
 app_name = 'patient_ms'
@@ -37,17 +38,23 @@ urlpatterns = [
         name='appointment_download'
     ),
     path(
-        'forget/appointment/',
+        'appointment/list',
         ForgetAppointmentSerialView.as_view(), name='appointment_forget'
     ),
     path('appointment/filter/', doctor_filter, name='load_doctor'),
+    # for doctor
     path(
-        'patient/<int:pk>/add/record/',
+        'doctor/appointment/<int:pk>/add/record/',
         DoctorPrescriptionView.as_view(), name='add_record'
     ),
     path(
-        'patient/<int:pk>/record/view/',
+        'doctor/appointment/<int:pk>/record/view/',
         ViewAllSavedRecord.as_view(), name='view_record'
+    ),
+    # for patient record
+    path(
+        'appointment/<int:pk>/record/view/',
+        PMSViewAllSavedRecord.as_view(), name='pms_view_record'
     ),
     path(
         'patient/<int:pk>/record/pdf',

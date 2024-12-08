@@ -55,22 +55,17 @@ class PMSViewAllSavedRecord(
         return self.request.user.is_active  # any active user
 
     def get(self, request, pk):
-        try:
-            patient_object = Patient.objects.get(
-                pk=pk
-            )
-        except Exception as e:
-            logging.debug(request, f'Unable to get data {e}')
-            patient_object = None
-
+        appointment = DoctorAppointment.objects.get(pk=pk)
         objects_list = self.model.objects.filter(
-            patient=patient_object
+            appointment=appointment,
+            patient=appointment.patient.patient_data
         ).order_by('-created_at')
         context = {
             "objects_list": objects_list,
-            "patient": patient_object
+            "patient": appointment.patient.patient_data
         }
         return render(request, self.template_name, context)
+
 
 class ViewAllDownloadRecord(UserPassesTestMixin, LoginRequiredMixin, View):
     template_name = 'dashboard/record/record_view_pdf.html'

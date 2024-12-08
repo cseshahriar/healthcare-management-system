@@ -87,7 +87,7 @@
 
                             {% if appointment.status == "completed"  %}
                                 {% if appointment.patient.patient_data %}
-                                    <a class="btn btn-outline-success" href="{% url 'patient_ms:pms_view_record' pk=appointment.patient.patient_data.pk %}"> <!-- object.patient is user -->
+                                    <a class="btn btn-outline-success" href="{% url 'patient_ms:pms_view_record' pk=appointment.pk %}"> <!-- object.patient is user -->
                                         <i class="fa fa-clipboard"> All Record </i>
                                     </a>
                                 {% endif %}

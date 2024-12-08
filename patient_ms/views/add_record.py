@@ -37,7 +37,12 @@ class DoctorPrescriptionView(
 
     def get(self, request, pk):
         appointment = DoctorAppointment.objects.filter(pk=pk).first()
-        patient_object = appointment.patient.patient_data  # user.patient
+        try:
+            patient_object = appointment.patient.patient_data  # user.patient
+        except Exception as e:
+            logger.info(f"{'*' * 10} e: {e}\n")
+            patient_object = None
+
         context = {
             'form': self.form_class,
             'file': self.file_form,
@@ -48,7 +53,11 @@ class DoctorPrescriptionView(
 
     def post(self, request, pk):
         appointment = DoctorAppointment.objects.filter(pk=pk).first()
-        patient_object = appointment.patient.patient_data  # user.patient
+        try:
+            patient_object = appointment.patient.patient_data  # user.patient
+        except Exception as e:
+            logger.info(f"{'*' * 10} e: {e}\n")
+            patient_object = None
 
         form = self.form_class(request.POST)
         file_form = self.file_form(request.POST, request.FILES)
@@ -67,6 +76,8 @@ class DoctorPrescriptionView(
                         file = file_form_object.save(commit=False)
                         file.record = save_object
                         file.save()
+
+                messages.success(request, "Record saved successfully")
                 return HttpResponseRedirect(self.get_success_url())
             else:
                 logger.info(f"{'*' * 10} form.errors: {form.errors}\n")

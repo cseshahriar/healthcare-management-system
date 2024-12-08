@@ -31,13 +31,19 @@ class ViewAllSavedRecord(
 
     def get(self, request, pk):
         appointment = DoctorAppointment.objects.get(pk=pk)
+        try:
+            patient_data = appointment.patient.patient_data
+        except Exception as e:
+            logger.info(f"{'*' * 10} e: {e}\n")
+            patient_data = None
+
         objects_list = self.model.objects.filter(
             appointment=appointment,
-            patient=appointment.patient.patient_data
+            patient=patient_data
         ).order_by('-created_at')
         context = {
             "objects_list": objects_list,
-            "patient": appointment.patient.patient_data
+            "patient": patient_data
         }
         return render(request, self.template_name, context)
 
@@ -56,13 +62,19 @@ class PMSViewAllSavedRecord(
 
     def get(self, request, pk):
         appointment = DoctorAppointment.objects.get(pk=pk)
+        try:
+            patient_data = appointment.patient.patient_data
+        except Exception as e:
+            logger.info(f"{'*' * 10} e: {e}\n")
+            patient_data = None
+
         objects_list = self.model.objects.filter(
             appointment=appointment,
-            patient=appointment.patient.patient_data
+            patient=patient_data
         ).order_by('-created_at')
         context = {
             "objects_list": objects_list,
-            "patient": appointment.patient.patient_data
+            "patient": patient_data
         }
         return render(request, self.template_name, context)
 
@@ -77,20 +89,18 @@ class ViewAllDownloadRecord(UserPassesTestMixin, LoginRequiredMixin, View):
 
     def get(self, request, pk):
         prescription_pk = request.GET.get('prescription_pk')
-        try:
-            patient_object = Patient.objects.get(
-                pk=pk
-            )
-        except Exception as e:
-            logging.debug(request, f'Unable to get data {e}')
-            patient_object = None
-
         prescription = self.model.objects.filter(pk=prescription_pk).first()
+        try:
+            patient_data = prescription.patient
+        except Exception as e:
+            logger.info(f"{'*' * 10} e: {e}\n")
+            patient_data = None
+
         today_date = datetime.today().strftime('%Y-%m-%d')  # Format: YYYY-MM-DD
         file_name = f"prescription_copy-{prescription.pk}-{today_date}"
 
         context = {
             "object": prescription,
-            "patient": patient_object
+            "patient": patient_data
         }
         return render_pdf(request, self.template_name, context, file_name)

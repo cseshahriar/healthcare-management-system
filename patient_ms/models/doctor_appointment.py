@@ -68,6 +68,9 @@ class DoctorAppointment(CommonField):
             {self.appointment_time}'
 
     def save(self, *args, **kwargs):
-        if self.doctor and self.doctor.offline_fee:
-            self.fee = self.doctor.offline_fee
+        try:
+            if self.doctor and self.doctor.offline_fee:
+                self.fee = self.doctor.offline_fee
+        except Exception as e:
+            logger.info(f"{'*' * 10} e: {e}\n")
         super().save(*args, **kwargs)

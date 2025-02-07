@@ -1,3 +1,4 @@
+import logging
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
@@ -5,6 +6,9 @@ from django.db.models import Avg
 from django.core.validators import RegexValidator
 from django.utils.translation import gettext_lazy as _
 from address.models import District, Division, Upazila, Thana
+
+
+logger = logging.getLogger(__name__)
 
 
 class CommonField(models.Model):
@@ -217,7 +221,9 @@ class Doctor(CommonField):
         today_appointed_count = self.doctorappointment_set.filter(
             created_at__date=today, status__in=['confirmed', 'completed']
         ).count()
+        logger.info(f"{'*' * 10} today_appointed_count {today_appointed_count}, limit {self.daily_appointment_limit }\n")
         remaining_slots = self.daily_appointment_limit - today_appointed_count
+        logger.info(f"{'*' * 10} remaining_slots: {remaining_slots}\n")
         if remaining_slots > 0:
             return remaining_slots
         else:

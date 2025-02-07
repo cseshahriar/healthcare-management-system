@@ -166,22 +166,6 @@
             </div>
 
             <div class="col-md-3 mb-3"></div>
-            <div class="col-md-7 mb-3">
-              {% if object.file %}
-                {% for f in object.file.all %}
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex flex-column align-items-left">
-
-                      <div class="text-secondary">
-                        <strong>Files {{ forloop.counter }}: </strong> <a href="{{ f.document.url }}">{{ f.file_name }}</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {% endfor %}
-              {% endif %}
-            </div>
           </div>
         </div>
     </div>

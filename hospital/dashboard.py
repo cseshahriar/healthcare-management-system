@@ -1,5 +1,6 @@
 import logging
 import datetime
+from django.utils import timezone
 from django.db.models import Q
 from django.urls import reverse_lazy
 from patient_ms.models import Patient
@@ -116,6 +117,7 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
     def post(self, request, *args, **kwargs):
         """post object with lines if not any payments"""
         doctor = Doctor.objects.filter(user=request.user).first()
+        today = timezone.now().date()
         # with page number
         submit = request.POST.get('submit')
         if submit == "confirm":
@@ -138,6 +140,7 @@ class UnVisitedAppointmentList(LoginRequiredMixin, ListView):
                     instance.appointment_time = datetime.datetime.strptime(
                         appointment_time, '%H:%M'
                     ).time()
+
                 instance.save()
                 messages.success(request, "Confirm successful!")
                 # ================================= send sms ==================

@@ -41,6 +41,7 @@
                     <th>Problem</th>
                     <th>Appointment Day</th>
                     <th>Time</th>
+                    <th>Serial No</th>
                     <th>Status</th>
                     <th class="col-md-3 col-xs-1">Actions</th>
                 </tr>
@@ -56,6 +57,7 @@
                 <td>{{ object.problem }}</td>
                 <td>{{ object.appointment_day|date:"l, M d, Y" }}</td>
                 <td>{{ object.appointment_time }}</td>
+                <td>{{ object.serial_number }}</td>
                 <td>
                     {% if object.status == "pending"  %}
                         <span class="label label-default">{{ object.status|title }}</storng>

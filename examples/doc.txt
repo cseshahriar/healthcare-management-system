@@ -1,10 +1,18 @@
+------------- users ---------------
 01720376755	 - patient - admin123#
+
 01998563978	 - doc - admin123#
+
 01710835653 - su - admin123#
 
+-----------name and slogan--------
 Online Healthcare Management System
 Convenient Care, Anytime, Anywhere
 
+---------doctor specialty---------
 Pediatric Gastroenterologist:
   abdominal pain
   food allergies
+
+----------------sms--------------
+tuEO1jjwOY6isFILuqFI8809617622143

@@ -196,7 +196,9 @@
                     <div class="d-flex flex-column align-items-left">
 
                       <div class="text-secondary">
+                        {% if f.file %}
                         <strong>Files {{ forloop.counter }}: </strong> <a href="{{ f.document.url }}">{{ f.file_name }}</a>
+                        {% endif %}
                       </div>
                     </div>
                   </div>

@@ -1,0 +1,17 @@
+[Unit]
+Description=Healthcare Management System uWSGI instance
+After=network.target postgresql-15.service
+
+[Service]
+User=ec2-user
+Group=nginx
+WorkingDirectory=/opt/healthcare-management-system
+Environment="PATH=/opt/healthcare-management-system/venv/bin"
+ExecStart=/opt/healthcare-management-system/venv/bin/uwsgi --ini /opt/healthcare-management-system/uwsgi/uwsgi.ini
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target

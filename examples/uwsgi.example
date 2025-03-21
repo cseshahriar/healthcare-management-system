@@ -1,36 +1,20 @@
 [uwsgi]
-# https://docs.djangoproject.com/en/3.1/howto/deployment/wsgi/uwsgi/
 
+# Django-related settings
 # the base directory (full path)
-chdir           = /opt/AI_Based_Patient_Management_System
-
+chdir           = /opt/healthcare-management-system
 # Django's wsgi file (this will be the folder name where wsgi.py and settings.py is)
 module          = PMS.wsgi
-
 # the virtualenv (full path)
-home            = /opt/AI_Based_Patient_Management_System/venv
-
+home            = /opt/healthcare-management-system/venv
 # process-related settings
+# master
 master          = true
-
 # maximum number of worker processes
-processes       = 8
-threads         = 2
-enable-threads  = True
-
+processes       = 10
 # the socket (use the full path to be safe
-socket          = /opt/AI_Based_Patient_Management_System/uwsgi/uwsgi.sock
-
+socket          = /opt/healthcare-management-system/uwsgi/uwsgi.sock
 # ... with appropriate permissions - may be needed
 chmod-socket    = 666
-
 # clear environment on exit
 vacuum          = true
-
-# respawning
-harakiri        = 30
-max-requests    = 5000
-
-# increase buffer size
-buffer-size     = 65535
-listen          = 4096
